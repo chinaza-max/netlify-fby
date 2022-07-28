@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+@@include("../components/head.html")
+
+<body class="horizontal-layout boxed">
+<div class="app-loader main-loader">
+  <div class="loader-box">
+    <div class="bounceball"></div>
+    <div class="text">Medic<span>app</span></div>
+  </div>
+</div>
+<!-- .main-loader -->
+
+<div class="page-box">
+  <div class="app-container">
+    <!-- Horizontal navbar -->
+    @@include("../components/navbar.html", {
+      "class": "horizontal", "id": "navbar1",
+      "components": [
+        "../components/sidebar-button.html",
+        "../components/logo.html",
+        "../components/search.html",
+        "../components/actions.html"
+      ]
+    })
+    <!-- end Horizontal navbar -->
+
+    <!-- Horizontal navbar 2 -->
+    @@include("../components/navbar.html", {
+      "class": "horizontal horizontal-vertical", "id": "navbar2",
+      "components": [
+        "../components/sidebar-close.html",
+        "../components/logo.html",
+        "../components/main-menu-horizontal.html"
+      ]
+    })
+    <!-- endHorizontal navbar 2 -->
+
+    <main class="main-content">
+      <div class="app-loader"><i class="icofont-spinner-alt-4 rotate"></i></div>
+
+      <div class="main-content-wrap">
+        <header class="page-header">
+          <h1 class="page-title">Tabs</h1>
+        </header>
+
+        <div class="page-content">
+          <div class="card">
+            <div class="card-header">
+              Basic
+            </div>
+            <div class="card-body">
+              <ul class="nav nav-tabs mb-3" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-1" type="button" role="tab" aria-controls="tab-1" aria-selected="true">Home</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2" type="button" role="tab" aria-controls="tab-2" aria-selected="false">Profile</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3" type="button" role="tab" aria-controls="tab-3" aria-selected="false">Contact</button>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="tab-1" role="tabpanel">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet ex, exercitationem inventore labore laborum maxime nostrum nulla odio officiis placeat, possimus praesentium quas quod repellat. Commodi debitis delectus distinctio eius facilis fugit illum molestiae, perspiciatis! Ab dolor ducimus enim fugit illo ipsum mollitia nesciunt obcaecati provident quia velit, voluptate.
+                </div>
+                <div class="tab-pane fade" id="tab-2" role="tabpanel">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci animi asperiores assumenda atque corporis culpa cumque cupiditate debitis dicta dignissimos dolor, dolorem dolores eius est et facere fugit harum hic illo impedit in libero nesciunt nisi nostrum obcaecati quae quam qui ratione reiciendis repellendus rerum sit soluta veritatis vitae voluptas?
+                </div>
+                <div class="tab-pane fade" id="tab-3" role="tabpanel">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad aliquid asperiores consequatur dolore error hic id magnam, optio, praesentium repellendus sunt tempora velit? Asperiores doloremque molestiae odio rem repellendus, sit totam voluptas! Commodi culpa, deserunt dolor et magnam molestiae mollitia necessitatibus officia officiis praesentium quam sit suscipit, tempore!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              Pills
+            </div>
+            <div class="card-body">
+              <ul class="nav nav-pills mb-3" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-7" type="button" role="tab" aria-selected="true">Home</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-8" type="button" role="tab" aria-selected="false">Profile</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-9" type="button" role="tab" aria-selected="false">Contact</button>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="tab-7" role="tabpanel">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet ex, exercitationem inventore labore laborum maxime nostrum nulla odio officiis placeat, possimus praesentium quas quod repellat. Commodi debitis delectus distinctio eius facilis fugit illum molestiae, perspiciatis! Ab dolor ducimus enim fugit illo ipsum mollitia nesciunt obcaecati provident quia velit, voluptate.
+                </div>
+                <div class="tab-pane fade" id="tab-8" role="tabpanel">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci animi asperiores assumenda atque corporis culpa cumque cupiditate debitis dicta dignissimos dolor, dolorem dolores eius est et facere fugit harum hic illo impedit in libero nesciunt nisi nostrum obcaecati quae quam qui ratione reiciendis repellendus rerum sit soluta veritatis vitae voluptas?
+                </div>
+                <div class="tab-pane fade" id="tab-9" role="tabpanel">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad aliquid asperiores consequatur dolore error hic id magnam, optio, praesentium repellendus sunt tempora velit? Asperiores doloremque molestiae odio rem repellendus, sit totam voluptas! Commodi culpa, deserunt dolor et magnam molestiae mollitia necessitatibus officia officiis praesentium quam sit suscipit, tempore!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-0">
+            <div class="card-header">
+              Vertical pills
+            </div>
+            <div class="card-body">
+              <div class="d-flex align-items-start">
+                <div class="nav flex-column nav-pills me-3" role="tablist" aria-orientation="vertical">
+                  <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-10" type="button" role="tab" aria-selected="true">Home</button>
+                  <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-11" type="button" role="tab" aria-selected="false">Profile</button>
+                  <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-12" type="button" role="tab" aria-selected="false">Messages</button>
+                </div>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="tab-10" role="tabpanel">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet ex, exercitationem inventore labore laborum maxime nostrum nulla odio officiis placeat, possimus praesentium quas quod repellat. Commodi debitis delectus distinctio eius facilis fugit illum molestiae, perspiciatis! Ab dolor ducimus enim fugit illo ipsum mollitia nesciunt obcaecati provident quia velit, voluptate.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, soluta.</p>
+                  </div>
+                  <div class="tab-pane fade" id="tab-11" role="tabpanel">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci animi asperiores assumenda atque corporis culpa cumque cupiditate debitis dicta dignissimos dolor, dolorem dolores eius est et facere fugit harum hic illo impedit in libero nesciunt nisi nostrum obcaecati quae quam qui ratione reiciendis repellendus rerum sit soluta veritatis vitae voluptas?</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque facilis nihil nisi, numquam
+                      perferendis sed!</p>
+                  </div>
+                  <div class="tab-pane fade" id="tab-12" role="tabpanel">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad aliquid asperiores consequatur dolore error hic id magnam, optio, praesentium repellendus sunt tempora velit? Asperiores doloremque molestiae odio rem repellendus, sit totam voluptas! Commodi culpa, deserunt dolor et magnam molestiae mollitia necessitatibus officia officiis praesentium quam sit suscipit, tempore!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque laboriosam laudantium
+                      repellat.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    @@include("../components/footer.html", {
+      "crumbs": [
+        { "title": "UI Kit", "link": "#" },
+        { "title": "Components", "link": "#" },
+        { "title": "Alerts", "link": "#" }
+      ]
+    })
+  </div>
+</div>
+
+@@include("../components/add-patient-modal.html")
+@@include("../components/settings-modal.html")
+
+@@include("../components/scripts.html")
+
+</body>
+</html>

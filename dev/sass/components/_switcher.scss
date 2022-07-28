@@ -1,0 +1,67 @@
+$_bg: (
+  default: #ebebeb,
+  hover: #ebebeb,
+  active: accent-palette(500),
+  disabled: rgba(#ccc,.1)
+);
+$_border: (
+  default: #ebebeb,
+  hover: #ebebeb,
+  active: accent-palette(500),
+  disabled: rgba(#ccc,.5)
+);
+$_color: (
+  default: main-palette(500),
+  hover: accent-palette(500),
+  active: accent-contrast(500),
+  disabled: #bdbdbd
+);
+$_label-color: (
+  default: inherit,
+  hover: inherit,
+  active: inherit,
+  disabled: #bdbdbd
+);
+
+$_module-rem: $module-rem;
+$_border-style: solid;
+$_border-width: 1px;
+$_fs: 1rem;
+$_shape: 500px;
+$_animation: $animation;
+$_height: $_module-rem * 2;
+$_width: $_module-rem * 4;
+
+.form-switch {
+  min-height: $_height;
+  padding-left: $_width + $_module-rem;
+
+  .form-check-label {
+    color: map-get($_label-color, default);
+    cursor: pointer;
+    font-weight: 500;
+  }
+  .form-check-input {
+    background-color: map-get($_bg, default);
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#1f2022'/></svg>");
+    border: $_border-width $_border-style map-get($_border, default);
+    border-radius: $_shape;
+    cursor: pointer;
+    display: block;
+    height: $_height;
+    margin: 0 0 0 (-$_width - $_module-rem);
+    transition:
+      background-position .2s $_animation,
+      background-color .2s $_animation,
+      border .2s $_animation;
+    width: $_width;
+
+    &:hover:not(:checked) {
+      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#336cfb'/></svg>");
+    }
+    &:checked {
+      background-color: map-get($_bg, active);
+      border-color: map-get($_bg, active);
+    }
+  }
+}
