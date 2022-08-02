@@ -131,20 +131,9 @@
                       Edit account
                     </a>
                   </li>
+                  
                   <li>
-                    <a href="./user-profile.html" class="align-items-center">
-                      <span class="icon icofont-ui-user"></span>
-                      User profile
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="align-items-center">
-                      <span class="icon icofont-ui-calendar"></span>
-                      Calendar
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="align-items-center">
+                    <a href="#" class="align-items-center"  data-bs-toggle="modal" data-bs-target="#settings">
                       <span class="icon icofont-ui-settings"></span>
                       Settings
                     </a>
@@ -152,7 +141,7 @@
                   <li>
                     <a href="./sign-in.html" class="align-items-center">
                       <span class="icon icofont-logout"></span>
-                      Log Out
+                      Log Out 
                     </a>
                   </li>
                 </ul>
@@ -192,6 +181,7 @@
         
           <button class="no-style navbar-toggle navbar-close icofont-close-line d-lg-none"></button>
 
+        
           <div class="app-logo">
             <div class="logo-wrap">
               <!-- Image logo -->
@@ -201,65 +191,63 @@
             </div>
           </div>
         
-          <!-- start menu --> 
-          <div class="main-menu">
-            <nav class="main-menu-wrap">
-              <ul class="menu-ul">
-                <li class="menu-item">
-                  <span class="group-title">MENU</span>
-                </li>
-                <li class="menu-item">
-                  <a class="item-link" href="index.html">
-                    <div class="link-icon icon sli-grid"></div>
-                    <span class="link-text">Dashboard</span>
-                  </a>
-                </li>
-                
-                <li class="menu-item">
-                  <a class="item-link" href="Jobs.html">
-                    <div class="link-icon icofont-tasks-alt"></div>
-                    <span class="link-text">Jobs</span>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a class="item-link" href="jobDetails.html">
-                    <span class="link-icon icofont-doctor"></span>
-                    <span class="link-text">Job Details</span>
-                  </a>
-                </li>
-               
-                <li class="menu-item">
-                  <a class="item-link" href="FBYmemo.html">
-                    <div class="link-icon icofont-letter"></div>
-                    <span class="link-text">FBY memo</span>
-                  </a>
-                </li>
+               <!-- start menu --> 
+                  <div class="main-menu">
+                    <nav class="main-menu-wrap">
+                      <ul class="menu-ul">
+                        <li class="menu-item">
+                          <span class="group-title">MENU</span>
+                        </li>
+                        <li class="menu-item">
+                          <a class="item-link" href="index.html">
+                            <div class="link-icon icon sli-grid"></div>
+                            <span class="link-text">Dashboard</span>
+                          </a>
+                        </li>
+                        
+                        <li class="menu-item">
+                          <a class="item-link" href="Jobs.html">
+                            <div class="link-icon icofont-tasks-alt"></div>
+                            <span class="link-text">Jobs</span>
+                          </a>
+                        </li>
+                        <li class="menu-item">
+                          <a class="item-link" href="jobDetails.html">
+                            <span class="link-icon icofont-doctor"></span>
+                            <span class="link-text">Job Details</span>
+                          </a>
+                        </li>
+                      
+                        <li class="menu-item">
+                          <a class="item-link" href="FBYmemo.html">
+                            <div class="link-icon icofont-letter"></div>
+                            <span class="link-text">FBY memo</span>
+                          </a>
+                        </li>
 
-                <li class="menu-item">
-                  <a class="item-link" href="withdraw.html">
-                    <div class="link-icon icofont-pay"></div>
-                    <span class="link-text">withdraw</span>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a class="item-link" href="withdrawalHistory.html">
-                    <div class="link-icon icofont-list"></div>
-                    <span class="link-text">Withdrawal History</span>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a class="item-link" href="Earnings.html">
-                    <span class="link-icon icofont-pay"></span>
-                    <span class="link-text">Earnings</span>
-                  </a>
-                </li>
-               
-              </ul>
-            </nav>
-          </div>
-        <!-- end menu --> 
-       
-
+                        <li class="menu-item">
+                          <a class="item-link" href="withdraw.html">
+                            <div class="link-icon icofont-pay"></div>
+                            <span class="link-text">withdraw</span>
+                          </a>
+                        </li>
+                        <li class="menu-item">
+                          <a class="item-link" href="withdrawalHistory.html">
+                            <div class="link-icon icofont-list"></div>
+                            <span class="link-text">Withdrawal History</span>
+                          </a>
+                        </li>
+                        <li class="menu-item">
+                          <a class="item-link" href="Earnings.html">
+                            <span class="link-icon icofont-pay"></span>
+                            <span class="link-text">Earnings</span>
+                          </a>
+                        </li>
+                      
+                      </ul>
+                    </nav>
+                  </div>
+                <!-- end menu --> 
         
         <div class="navbar-skeleton vertical">
           <div class="top-part">
@@ -317,111 +305,53 @@
       <div class="app-loader"><i class="icofont-spinner-alt-4 rotate"></i></div>
 
       <div class="main-content-wrap">
-        <header class="page-header">
-          <h1 class="page-title">Edit account</h1>
-        </header>
-
         <div class="page-content">
-          <div class="row justify-content-center">
-            <div class="col col-12 col-xl-8">
-              <form class="mb-4">
-                <label>Photo</label>
-                <div class="form-group avatar-box d-flex align-items-center">
-                  <img src="../assets/content/user-400-1.jpg" width="100" height="100" alt="" class="rounded-500 me-4">
-
-                  <button class="btn btn-outline-primary" type="button">
-                    Change photo<span class="btn-icon icofont-ui-user ms-2"></span>
-                  </button>
-                </div>
-
-                <div class="form-group">
-                  <label>First name</label>
-                  <input class="form-control" type="text" placeholder="First name" value="Liam">
-                </div>
-
-                <div class="form-group">
-                  <label>Last name</label>
-                  <input class="form-control" type="text" placeholder="Last name" value="Jouns">
-                </div>
-
-                
-                <div class="form-group">
-                  <label>Email address</label>
-                  <input class="form-control" type="text" placeholder="Last name" value="Jouns">
-                </div>
-
-                <div class="row">
-                  <div class="col-12 col-sm-6">
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="card border-light">
+               
+                <div class="card-body">
+                           
+                  <figure class="text-center">
+                    <blockquote class="blockquote">
+                      <p class="mb-0 group-title">
+                        Enter Amount to Withdraw from your Earnings. Minimum Withdrawal is ₦ 1000    
+                      </p>
+                    </blockquote>
+                  </figure>
+                  <hr>     
+                  <form>
                     <div class="form-group">
-                      <label>Age</label>
-                      <input class="form-control" type="number" placeholder="Age" value="25">
+                      <label>Amount</label>
+                      <input class="form-control" type="text" placeholder=" ₦ 1000">
                     </div>
-                  </div>
-                  <div class="col-12 col-sm-6">
-                    <div class="form-group">
-                      <label>Gender</label>
-                      <select class="selectpicker" title="Gender">
-                        <option selected>Male</option>
-                        <option>Female</option>
-                      </select>
-                    </div>
-                  </div>
+
+                    <button class="btn w-100 btn-primary">Withdraw</button>
+                  </form>
                 </div>
-
-                <div class="form-group">
-                  <label>Phone number</label>
-                  <input class="form-control" type="number" placeholder="Age" value="0126596578">
-                </div>
-
-                <div class="form-group">
-                  <label>Address</label>
-                  <textarea class="form-control" placeholder="Address" rows="3">71 Pilgrim Avenue Chevy Chase, MD 20815</textarea>
-                </div>
-
-                <div class="form-group">
-                  <label>License expiry date</label>
-                  <input class="form-control" type="text" placeholder="Last visit" value="18 Dec 2019" readonly>
-                </div>
-
-                <div class="form-group">
-                  <label>Status</label>
-                  <select class="selectpicker" title="Status">
-                    <option selected>Available to Accept Jobs</option>
-                    <option>Not Available for Jobs</option>
-                  </select>
-                </div>
-
-                <div class="row">
-                  <div class="col">
-                    <button type="button" class="btn btn-success">Save changes</button>
-                  </div>
-                  <div class="col text-end">
-                    <button type="button" class="btn btn-outline-danger">
-                      <span class="d-none d-sm-block">Delete account</span>
-                      <span class="d-sm-none">Delete</span>
-                    </button>
-                  </div>
-                </div>
-              </form>
-
-              <hr>
-
-              <h4>Change password</h4>
-
-              <form>
-                <div class="row">
-                  <div class="col-12 col-sm-6">
-                    <div class="form-group">
-                      <label>Current password</label>
-                      <input class="form-control" type="text" placeholder="Current password">
-                    </div>
-                  </div>
-                </div>
-            
-
-                <button type="button" class="btn btn-outline-dark">Change password</button>
-              </form>
+              </div>
             </div>
+
+            <div class="col-12 col-md-6">
+              <div class="card text-dark border-dark">
+                <div class="card-header">
+                  Bank details
+                </div>
+                <div class="card-body">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Bank Name </span>
+                    <input type="text" class="form-control" placeholder="Ogbonna Chinaza" disabled>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Bank Account </span>
+                    <input type="text" class="form-control" placeholder="3120189146" disabled>
+                  </div>
+
+    
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -430,33 +360,10 @@
     <div class="app-footer">
       <div class="footer-wrap">
         <div class="row h-100 align-items-center">
-          <div class="col-12 col-md-6 d-none d-md-block">
-            <ul class="page-breadcrumbs">
-              
-                <li class="item">
-                  <a href=# class="link">Apps</a>
-
-                  <i class="separator icofont-thin-right"></i>
-                </li>
-              
-                <li class="item">
-                  <a href=# class="link">Service pages</a>
-
-                  <i class="separator icofont-thin-right"></i>
-                </li>
-              
-                <li class="item">
-                  <a href=# class="link">Edit account</a>
-
-                  <i class="separator icofont-thin-right"></i>
-                </li>
-              
-            </ul>
-          </div>
-
+          
           <div class="col-12 col-md-6 text-end">
             <div class="d-flex align-items-center justify-content-center justify-content-md-end">
-              <span>Version 1.2.0</span>
+              <span>Setting</span>
               <button class="no-style ms-2 settings-btn" data-bs-toggle="modal" data-bs-target="#settings">
                 <span class="icon icofont-ui-settings text-primary"></span>
               </button>
@@ -596,6 +503,131 @@
   </div>
 </div>
 <!-- end Add patients modals -->
+
+<!-- Add appointment modals -->
+<div class="modal fade" id="add-department" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add department</h5>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group avatar-box d-flex">
+            <img src="../assets/content/anonymous-400.jpg" width="40" height="40" alt="" class="rounded-500 me-4">
+
+            <button class="btn btn-outline-primary" type="button">
+              Select image
+            </button>
+          </div>
+
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Title">
+          </div>
+
+          <div class="form-group">
+            <textarea class="form-control" placeholder="Descriptions" rows="3"></textarea>
+          </div>
+
+          <div>
+            <label>Employees</label>
+
+            <div class="social-list">
+              <div class="social-item">
+                <div class="row">
+                  <div class="col">
+                    <div class="row">
+                      <div class="col-12 col-sm-6">
+                        <div class="form-group">
+                          <div class="prefix-icon"></div>
+                          <input class="form-control" type="text" placeholder="Icon class" value="Dr. Sophie" readonly>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-6">
+                        <div class="form-group">
+                          <input class="form-control" type="text" placeholder="Link" value="assets/content/doctor-1.jpg">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col col-auto">
+                    <button class="btn btn-outline-danger btn-square rounded-pill" type="button">
+                      <span class="btn-icon icofont-ui-delete"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="social-item">
+                <div class="row">
+                  <div class="col">
+                    <div class="row">
+                      <div class="col-12 col-sm-6">
+                        <div class="form-group">
+                          <input class="form-control" type="text" placeholder="Icon class" value="Dr. Liam" readonly>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-6">
+                        <div class="form-group">
+                          <input class="form-control" type="text" placeholder="Link" value="assets/content/doctor-2.jpg">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col col-auto">
+                    <button class="btn btn-outline-danger btn-square rounded-pill" type="button">
+                      <span class="btn-icon icofont-ui-delete"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr class="mt-0">
+
+            <label>Add employee</label>
+
+            <div class="social-list">
+              <div class="social-item">
+                <div class="row">
+                  <div class="col">
+                    <div class="row">
+                      <div class="col-12 col-sm-6">
+                        <div class="form-group mb-sm-0">
+                          <input class="form-control" type="text" placeholder="Doctor name">
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-6">
+                        <div class="form-group mb-0">
+                          <input class="form-control" type="text" placeholder="Doctor image">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col col-auto">
+                    <button class="btn btn-outline-primary btn-square rounded-pill" type="button">
+                      <span class="btn-icon icofont-plus"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer d-block">
+        <div class="actions justify-content-between">
+          <button type="button" class="btn btn-error" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-info">Add department</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end Add appointment modals -->
 
 
 <script src="../assets/js/jquery-3.6.0.min.js"></script>
