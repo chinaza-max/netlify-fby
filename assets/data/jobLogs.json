@@ -17,13 +17,20 @@
         "Date": "2/20/22",
         "Time": "9:00 AM",
         "Activity": "Clock in",
-        "location": "nil"
+        "location": "nill"
       }
       ,
       {
         "Date": "2/20/22",
-        "Time": "9:00 AM",
-        "Activity": "Clock",
+        "Time": "1:00 PM",
+        "Activity": "Clock out",
+        "location": "nill"
+      }
+      ,
+      {
+        "Date": "2/20/22",
+        "Time": "10:00 AM",
+        "Activity": "Clock out",
         "location": "ok"
       }
     ]

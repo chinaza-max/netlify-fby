@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>MedicApp - Medical & Hospital HTML5/Bootstrap admin template</title>
+  <title>FBY security app</title>
   <meta name="keywords" content="MedicApp">
   <meta name="description" content="">
   <meta name="author" content="">
@@ -131,20 +131,9 @@
                       Edit account
                     </a>
                   </li>
+                  
                   <li>
-                    <a href="./user-profile.html" class="align-items-center">
-                      <span class="icon icofont-ui-user"></span>
-                      User profile
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="align-items-center">
-                      <span class="icon icofont-ui-calendar"></span>
-                      Calendar
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="align-items-center">
+                    <a href="#" class="align-items-center"  data-bs-toggle="modal" data-bs-target="#settings">
                       <span class="icon icofont-ui-settings"></span>
                       Settings
                     </a>
@@ -159,9 +148,6 @@
               </div>
             </div>
           </div>
-
-        
-
         
         <div class="navbar-skeleton horizontal">
           <div class="left-part d-flex align-items-center">
@@ -381,6 +367,7 @@
                 <div class="form-group">
                   <label>License expiry date</label>
                   <input class="form-control" type="text" placeholder="Last visit" value="18 Dec 2019" readonly>
+                  <button type="button" class="btn btn-outline-dark mt-1">Upload license</button>
                 </div>
 
                 <div class="form-group">
@@ -430,33 +417,9 @@
     <div class="app-footer">
       <div class="footer-wrap">
         <div class="row h-100 align-items-center">
-          <div class="col-12 col-md-6 d-none d-md-block">
-            <ul class="page-breadcrumbs">
-              
-                <li class="item">
-                  <a href=# class="link">Apps</a>
-
-                  <i class="separator icofont-thin-right"></i>
-                </li>
-              
-                <li class="item">
-                  <a href=# class="link">Service pages</a>
-
-                  <i class="separator icofont-thin-right"></i>
-                </li>
-              
-                <li class="item">
-                  <a href=# class="link">Edit account</a>
-
-                  <i class="separator icofont-thin-right"></i>
-                </li>
-              
-            </ul>
-          </div>
-
           <div class="col-12 col-md-6 text-end">
             <div class="d-flex align-items-center justify-content-center justify-content-md-end">
-              <span>Version 1.2.0</span>
+              <span>Settings</span>
               <button class="no-style ms-2 settings-btn" data-bs-toggle="modal" data-bs-target="#settings">
                 <span class="icon icofont-ui-settings text-primary"></span>
               </button>
@@ -489,63 +452,6 @@
   </div>
 </div>
 
-<!-- Add patients modals -->
-<div class="modal fade" id="add-patient" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add new patient</h5>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group avatar-box d-flex">
-            <img src="../assets/content/anonymous-400.jpg" width="40" height="40" alt="" class="rounded-500 me-4">
-
-            <button class="btn btn-outline-primary" type="button">
-              Select image<span class="btn-icon icofont-ui-user ms-2"></span>
-            </button>
-          </div>
-
-          <div class="form-group">
-            <input class="form-control" type="text" placeholder="Name">
-          </div>
-
-          <div class="form-group">
-            <input class="form-control" type="number" placeholder="Number">
-          </div>
-
-          <div class="row">
-            <div class="col-12 col-sm-6">
-              <div class="form-group">
-                <input class="form-control" type="number" placeholder="Age">
-              </div>
-            </div>
-            <div class="col-12 col-sm-6">
-              <div class="form-group">
-                <select class="selectpicker" title="Gender">
-                  <option class="d-none">Gender</option>
-                  <option>Male</option>
-                  <option>Female</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group mb-0">
-            <textarea class="form-control" placeholder="Address" rows="3"></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer d-block">
-        <div class="actions justify-content-between">
-          <button type="button" class="btn btn-error" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-info">Add patient</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end Add patients modals -->
 
 <!-- Add patients modals -->
 <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-hidden="true">

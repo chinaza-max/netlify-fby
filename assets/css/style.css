@@ -52,7 +52,7 @@
   width: 30px;
 }
 .app-loader.main-loader .loader-box .bounceball:before {
-  background: #336cfb;
+  background: rgb(28,13, 46);
   border-radius: 50%;
   content: "";
   display: block;
@@ -68,7 +68,7 @@
   margin-left: 15px;
 }
 .app-loader.main-loader .loader-box .text span {
-  color: #336cfb;
+  color: rgb(28,13, 46);;
   font-size: 15px;
 }
 .loaded .app-loader {
@@ -724,7 +724,7 @@ body.loaded .app-footer .footer-wrap .footer-skeleton {
   transition: transform 0.2s ease-in-out 0.2s;
 }
 .main-menu .main-menu-wrap .menu-ul .menu-item.active > .item-link {
-  color: #336cfb;
+  color:#e9e165;
 }
 .main-menu .main-menu-wrap .menu-ul .menu-item.active > .item-link .link-caret {
   transform: rotate(90deg);
@@ -1608,12 +1608,12 @@ body.loaded .app-navbar .navbar-skeleton {
   color: #fff;
 }
 .btn.btn-outline-primary {
-  border-color: #336cfb;
-  color: #336cfb;
+  border-color: rgb(28,13, 46);
+  color: rgb(28,13, 46);
 }
 .active .btn.btn-outline-primary,
 .btn.btn-outline-primary:hover {
-  background: #336cfb;
+  background: rgb(28,13, 46);;
   color: #fff;
 }
 .btn.btn-secondary {
@@ -2741,6 +2741,7 @@ textarea.form-control.is-valid {
 .table tr td:last-child,
 .table tr th:last-child {
   padding-right: 1.42857rem;
+  white-space: nowrap;
 }
 .table tr th {
   background: rgba(31, 32, 34, 0.1);

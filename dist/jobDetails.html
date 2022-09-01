@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>MedicApp - Medical & Hospital HTML5/Bootstrap admin template</title>
+  <title>FBY security app</title>
   <meta name="keywords" content="MedicApp">
   <meta name="description" content="">
   <meta name="author" content="">
@@ -77,7 +77,7 @@
                       <div class="icon  icofont-hour-glass"></div> 
 
                       <div class="content">
-                        <span class="desc">new Pending project</span>
+                        <span class="desc">new Pending job</span>
                         <span class="date">17 minutes ago</span>
                       </div>
                     </a>
@@ -87,7 +87,7 @@
                       <div class="icon  icofont-hour-glass"></div> 
 
                       <div class="content">
-                        <span class="desc">new Pending project</span>
+                        <span class="desc">new Pending job</span>
                         <span class="date">17 minutes ago</span>
                       </div>
                     </a>
@@ -316,7 +316,7 @@
         <div class="page-content">
 
 
-          <!-- START PROJECT LOCATION -->
+          <!-- START JOB LOCATION -->
           <figure>
             <figcaption class="blockquote-footer">
               <div class="card mb-md-0">
@@ -327,7 +327,7 @@
                       <div class="icon icofont-location-pin fs-30 text-muted"></div>
                     </div>
                     <div class="col">
-                      <div>Project Address</div>
+                      <div>Job Address</div>
                       71 Pilgrim Avenue Chevy Chase, MD 20815
                     </div>
                   </div>
@@ -342,7 +342,7 @@
           <hr>
 
 
-          <!-- END PROJECT LOCATION -->
+          <!-- END JOB LOCATION -->
 
 
           <div class="card mb-10">
@@ -373,11 +373,11 @@
             </div>
           </div>
 
-          <!-- START PROJECT SCHEDULE -->
+          <!-- START JOB SCHEDULE -->
 
           <div class="card">
             <div class="card-header">
-                Project schedule
+              Job schedule
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -405,7 +405,10 @@
             
             <div class="card-body">
               <div class="alert alert-light outline text-dark" role="alert">
-               Project frequency -<strong> Daily</strong>
+                Job type: <strong> Subscription</strong>
+              </div>
+              <div class="alert alert-light outline text-dark" role="alert">
+                Job frequency -<strong> Daily</strong>
               </div>
               <div class="table-responsive">
                 <table class="table table-dark table-sm">
@@ -487,17 +490,18 @@
 
             <div class="elements-list  mt-3">
               <button type="button" class="btn btn-outline-secondary mt-3">Clock in</button>
-              <button type="button" class="btn btn-outline-secondary mt-3">Clock out</button>
-              <button type="button" class="btn btn-outline-secondary">Security <br> Check</button>
+              <button type="button" class="btn btn-outline-secondary mt-3">Clock out</button><br>
+              <button type="button" class="btn btn-outline-secondary mt-3">security  Check</button>
+              <button type="button" class="btn btn-outline-secondary mt-3">scan QR code</button>
             </div>
 
 
             <!--START SECURITY BUTTON-->
           </div>
 
-          <!-- END PROJECT SCHEDULE -->
+          <!-- END Job SCHEDULE -->
 
-          <!-- END PROJECT EVENT -->
+          <!-- END Job EVENT -->
 
           <div class="v-timeline">
             <div class="line"></div>
@@ -514,12 +518,12 @@
 
                   <div class="content-block">
                     <div class="item-header">
-                      <h3 class="h5 item-title">perform Security check</h3>
+                      <h3 class="h5 item-title">perform security check</h3>
 
                       <div class="item-date"><span>12 pm</span></div>
                     </div>
 
-                    <div class="item-desc">Lorem ipsum dolor sit.</div>
+                    <div class="item-desc">security check to be perform on project</div>
                   </div>
                 </div>
 
@@ -530,7 +534,7 @@
 
                   <div class="content-block">
                     <div class="item-header">
-                      <h3 class="h5 item-title">scan barcode</h3>
+                      <h3 class="h5 item-title">scan QR code</h3>
 
                       <div class="item-date"><span>10:00 Am </span></div>
                     </div>
@@ -542,7 +546,7 @@
               </div>
             </div>
           </div>
-           <!-- END PROJECT LOCATION -->
+           <!-- END JOB LOCATION -->
 
             <div class="add-action-box" onclick="smoothScroll(document.getElementById('chatContainer'))">
               <button class="btn btn-primary rounded-0 btn-sm" data-bs-toggle="modal" data-bs-target="#modal-2" >
@@ -559,10 +563,10 @@
             <div class="card-body">
               <ul class="nav nav-tabs mb-3" role="tablist">
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-1" type="button" role="tab" aria-controls="tab-1" aria-selected="true" onclick="smoothScroll2(document.getElementById('tab-1'))">Project task</button>
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-1" type="button" role="tab" aria-controls="tab-1" aria-selected="true" onclick="smoothScroll2(document.getElementById('tab-1'))">Job task</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2" type="button" role="tab" aria-controls="tab-2" aria-selected="false" onclick="smoothScroll2(document.getElementById('tab-2'))">Project logs</button>
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2" type="button" role="tab" aria-controls="tab-2" aria-selected="false" onclick="smoothScroll2(document.getElementById('tab-2'))">Job logs</button>
                 </li>
               </ul>
               <div class="tab-content">
@@ -572,11 +576,11 @@
                     <div class="card-body">
                       <div class="custom-control custom-checkbox mb-3">
                         <input type="checkbox" class="custom-control-input" id="customCheck1">
-                        <label class="custom-control-label" for="customCheck1">perform security check</label>
+                        <label class="custom-control-label" for="customCheck1">guard must checking with MOD when arriving on site</label>
                       </div>
                       <div class="custom-control custom-checkbox mb-3">
                         <input type="checkbox" class="custom-control-input" id="customCheck2" checked>
-                        <label class="custom-control-label" for="customCheck2">perform security check</label>
+                        <label class="custom-control-label" for="customCheck2">Interior coverage</label>
                       </div>
                       <div class="custom-control custom-checkbox mb-3">
                         <input type="checkbox" class="custom-control-input" id="customCheck3">
@@ -590,8 +594,8 @@
                   <div class="card">
                     <div class="card-body">
                       <table
-                        class="table data-table"
-                        data-ajax="../assets/data/projectLogs.json"
+                        class="table data-table nowrap"
+                        data-ajax="../assets/data/jobLogs.json"
                         data-columns='[
                           { "data": "Date" },
                           { "data": "Time" },
@@ -621,7 +625,7 @@
       </div>
     </main>
 
-      <!-- Modals -->
+      <!-- start map -->
     <div class="modal fade" id="modal-1" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -652,7 +656,7 @@
         </div>
       </div>
     </div>
-
+      <!-- end map -->
 
     <!--start chat -->
     <div class="modal fade" id="modal-2" tabindex="-1" role="dialog" aria-hidden="true">
