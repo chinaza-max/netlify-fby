@@ -23,10 +23,9 @@
   <link rel="stylesheet" href="../assets/css/leaflet.css">
   <link rel="stylesheet" href="../assets/css/chatUI.css">
 
-
-
-  <!-- Theme CSS -->
-  <link rel="stylesheet" href="../assets/css/style.css"> 
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/slider.css"> 
+ 
 </head>
 
 
@@ -305,7 +304,7 @@
       <div class="main-content-wrap">
         <div style="float: right">
           <button class="btn btn-outline-info btn-square rounded-pill">
-            SOS
+            Emergency
           </button>
         </div>
 
@@ -489,13 +488,23 @@
             <!--START SECURITY BUTTON-->
 
             <div class="elements-list  mt-3">
-              <button type="button" class="btn btn-outline-secondary mt-3">Clock in</button>
-              <button type="button" class="btn btn-outline-secondary mt-3">Clock out</button><br>
-              <button type="button" class="btn btn-outline-secondary mt-3">security  Check</button>
+             
+              <button type="button" class="btn btn-outline-secondary mt-3">security  check</button>
               <button type="button" class="btn btn-outline-secondary mt-3">scan QR code</button>
             </div>
 
-
+            <div class="alert alert-light outline text-dark mt-3" role="alert">
+              <div class="thething">
+                <div id="switch">
+                  <span class="handle">Clock in</span>
+                </div>            
+              </div>
+              <div class="thething">
+                <div id="switch2">
+                  <span class="handle">Clock out</span>
+                </div>            
+              </div>
+            </div>
             <!--START SECURITY BUTTON-->
           </div>
 
@@ -888,6 +897,11 @@
 
 
 <script src="../assets/js/main.js"></script>
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
+<script src="../assets/js/jobDetails.js"></script>
+
 
 
 </body>
