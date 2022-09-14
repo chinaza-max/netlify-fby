@@ -1,8 +1,9 @@
-.thething {
-    margin:0 auto;
-    width: 290px;
-    height: 60px;
+  .thething {
+      margin:0 auto;
+      width: 290px;
+      height: 60px;
   }
+  
   
   .option {
     color: #A8B1BB;
@@ -75,4 +76,10 @@
     line-height: 35px;
     text-align: center;
   }
-  
+  .thething  .icon{
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+  }

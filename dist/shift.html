@@ -22,8 +22,15 @@
   <link rel="stylesheet" href="../assets/css/morris.css">
   <link rel="stylesheet" href="../assets/css/leaflet.css">
 
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.8/css/rowReorder.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
+
   <!-- Theme CSS -->
   <link rel="stylesheet" href="../assets/css/style.css">
+
 </head>
 
 
@@ -45,7 +52,7 @@
           <button class="no-style navbar-toggle navbar-open d-lg-none">
             <span></span><span></span><span></span>
           </button>
-
+        
           <div class="app-actions">
             <div class="dropdown item">
               <button
@@ -141,15 +148,13 @@
                   <li>
                     <a href="./sign-in.html" class="align-items-center">
                       <span class="icon icofont-logout"></span>
-                      Log Out 
+                      Log Out
                     </a>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-
-        
 
         
         <div class="navbar-skeleton horizontal">
@@ -181,7 +186,6 @@
         
           <button class="no-style navbar-toggle navbar-close icofont-close-line d-lg-none"></button>
 
-        
           <div class="app-logo">
             <div class="logo-wrap">
               <!-- Image logo -->
@@ -191,63 +195,47 @@
             </div>
           </div>
         
-               <!-- start menu --> 
-                  <div class="main-menu">
-                    <nav class="main-menu-wrap">
-                      <ul class="menu-ul">
-                        <li class="menu-item">
-                          <span class="group-title">MENU</span>
-                        </li>
-                        <li class="menu-item">
-                          <a class="item-link" href="index.html">
-                            <div class="link-icon icon sli-grid"></div>
-                            <span class="link-text">Dashboard</span>
-                          </a>
-                        </li>
-                        
-                        <li class="menu-item">
-                          <a class="item-link" href="Jobs.html">
-                            <div class="link-icon icofont-tasks-alt"></div>
-                            <span class="link-text">Jobs</span>
-                          </a>
-                        </li>
-                        <li class="menu-item">
-                          <a class="item-link" href="jobDetails.html">
-                            <span class="link-icon icofont-doctor"></span>
-                            <span class="link-text">Job Details</span>
-                          </a>
-                        </li>
-                      
-                        <li class="menu-item">
-                          <a class="item-link" href="FBYmemo.html">
-                            <div class="link-icon icofont-letter"></div>
-                            <span class="link-text">FBY memo</span>
-                          </a>
-                        </li>
+          <!-- start menu --> 
+          <div class="main-menu">
+            <nav class="main-menu-wrap">
+              <ul class="menu-ul">
+                <li class="menu-item">
+                  <span class="group-title">MENU</span>
+                </li>
+                <li class="menu-item">
+                  <a class="item-link" href="index.html">
+                    <div class="link-icon icon sli-grid"></div>
+                    <span class="link-text">Dashboard</span>
+                  </a>
+                </li>
+                
+                <li class="menu-item">
+                  <a class="item-link" href="Jobs.html">
+                    <div class="link-icon icofont-tasks-alt"></div>
+                    <span class="link-text">Jobs</span>
+                  </a>
+                </li>
+              
+               
+                <li class="menu-item">
+                  <a class="item-link" href="FBYmemo.html">
+                    <div class="link-icon icofont-letter"></div>
+                    <span class="link-text">FBY memo</span>
+                  </a>
+                </li>
 
-                        <li class="menu-item active">
-                          <a class="item-link" href="withdraw.html">
-                            <div class="link-icon icofont-pay"></div>
-                            <span class="link-text">withdraw</span>
-                          </a>
-                        </li>
-                        <li class="menu-item">
-                          <a class="item-link" href="withdrawalHistory.html">
-                            <div class="link-icon icofont-list"></div>
-                            <span class="link-text">Withdrawal History</span>
-                          </a>
-                        </li>
-                        <li class="menu-item">
-                          <a class="item-link" href="Earnings.html">
-                            <span class="link-icon icofont-pay"></span>
-                            <span class="link-text">Earnings</span>
-                          </a>
-                        </li>
-                      
-                      </ul>
-                    </nav>
-                  </div>
-                <!-- end menu --> 
+                <li class="menu-item active">
+                  <a class="item-link" href="#">
+                    <span class="link-icon icofont-pay"></span>
+                    <span class="link-text">Shift</span>
+                  </a>
+                </li>
+               
+              </ul>
+            </nav>
+          </div>
+        <!-- end menu -->     
+
         
         <div class="navbar-skeleton vertical">
           <div class="top-part">
@@ -299,71 +287,157 @@
       </div>
     </div>
 
-    <!-- end Vertical navbar -->
-
     <main class="main-content">
-      <div class="app-loader"><i class="icofont-spinner-alt-4 rotate"></i></div>
-
-      <div class="main-content-wrap">
-        <div class="page-content">
-          <div class="row">
-            <div class="col-12 col-md-6">
-              <div class="card border-light">
-               
-                <div class="card-body">
-                           
-                  <figure class="text-center">
-                    <blockquote class="blockquote">
-                      <p class="mb-0 group-title">
-                        Enter Amount to Withdraw from your Earnings. Minimum Withdrawal is $ 1000    
-                      </p>
-                    </blockquote>
-                  </figure>
-                  <hr>     
-                  <form>
-                    <div class="form-group">
-                      <label>Amount</label>
-                      <input class="form-control" type="text" placeholder=" $ 1000">
+        <div class="app-loader"><i class="icofont-spinner-alt-4 rotate"></i></div>
+  
+        <div class="main-content-wrap">
+  
+          <div class="page-content">
+  
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <p class="text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, dolorem excepturi facilis magni necessitatibus
+                  perspiciatis repellendus 
+                </p>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="card bg-dark text-white">
+                  <div class="card-body">
+                    <div class="row text-center">
+                      <div class="col-6">
+                        <div>Total hours</div>
+                        <strong class="fs-20 text-success">100</strong>
+                      </div>
+  
+                      <div class="col-6">
+                        <div>Amount pending</div>
+                        <strong class="fs-20 text-danger">$2,540</strong>
+                      </div>
                     </div>
-
-                    <button class="btn w-100 btn-primary">Withdraw</button>
-                  </form>
+                  </div>
                 </div>
               </div>
             </div>
-
-            <div class="col-12 col-md-6">
-              <div class="card text-dark border-dark">
-                <div class="card-header">
-                  Bank details
-                </div>
-                <div class="card-body">
-                  <div class="input-group mb-3">
-                    <span class="input-group-text">Account Name </span>
-                    <input type="text" class="form-control" placeholder="Ogbonna Chinaza" disabled>
+  
+           
+            <div class="card">
+              <div class="card-body">
+                <div class="col-12">
+                  <div class="card text-secondary border-secondary">
+                   
+                    <div class="card-body w-100">
+  
+                      <div class="d-flex flex-row justify-content-between flex-wrap bd-highlight mb-3">
+                        <div class="form-group mb-md-0">
+                          <label>Customer name</label>
+                          <select class="selectpicker" id="customerName">
+                            <option  value="" selected>Select</option>
+                            <option value="Tokyo">Tokyo</option>
+                            <option value="desk">desk</option>
+                          </select>
+                        </div>
+                        <div class="form-group mb-md-0">
+                          <label>Site</label>
+                          <select class="selectpicker" id="Site">
+                            <option value="" selected>Select</option>
+                            <option value="Koforidua Central Business">Koforidua Central Business</option>
+                            <option value="Koforidua Business District">Koforidua Business District</option>
+                            <option value="Koforidua Central  District">Koforidua Central  District</option>
+                            <option value="Koforidua Central Business k">Koforidua Central Business k</option>
+                          </select>
+                        </div>
+                      
+  
+                        <table border="0" cellspacing="5" cellpadding="5">
+                          <tbody><tr>
+                              <td>From :</td>
+                              <td><input type="text" id="min" name="min"></td>
+                          </tr>
+                          <tr>
+                              <td>To :</td>
+                              <td><input type="text" id="max" name="max"></td>
+                          </tr>
+                        </tbody>
+          
+                        </table>
+          
+                        
+                      </div>
+                    </div>
                   </div>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text">Bank Account </span>
-                    <input type="text" class="form-control" placeholder="3120189146" disabled>
-                  </div>
-
-    
                 </div>
+  
+                <table
+                  id="example" 
+                  class="table table-bordered table-striped dataTable no-footer"
+                  data-ajax="../assets/data/view-shift.json"
+                  data-columns='[
+                    { "data": "start-date" },
+                    { "data": "name" },
+                    { "data": "customer" },
+                    { "data": "site" },
+                    { "data": "start-time" },
+                    { "data": "end-time" },
+                    { "data": "shift-hour" },
+                    { "data": "hourly-rate" },
+                    { "data": "check-in" },
+                    { "data": "check-out" },
+                    { "data": "shift-hour2"},
+                    { "data": "total-earn"}
+                  ]'
+                  data-paging="true"
+                  data-info="true"
+                  select="true"
+                >
+                  <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Name</th>
+                    <th>Customer </th>
+                    <th>Site</th>
+                    <th >Start time</th>
+                    <th>End time</th>
+                    <th>Shift hour</th>
+                    <th>Hourly rate</th>
+                    <th>Check in</th>
+                    <th>Check out</th>
+                    <th>Shift hour</th>
+                    <th>Total earn</th>
+                  </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
               </div>
             </div>
-
+  
           </div>
         </div>
-      </div>
-    </main>
+      </main>
 
     <div class="app-footer">
       <div class="footer-wrap">
         <div class="row h-100 align-items-center">
-          
+          <div class="col-12 col-md-6 d-none d-md-block">
+            <ul class="page-breadcrumbs">
+              
+                <li class="item">
+                  <a href=# class="link">Medicine</a>
+
+                  <i class="separator icofont-thin-right"></i>
+                </li>
+              
+                <li class="item">
+                  <a href=# class="link">Payments</a>
+
+                  <i class="separator icofont-thin-right"></i>
+                </li>
+              
+            </ul>
+          </div>
+
           <div class="col-12 col-md-6 text-end">
             <div class="d-flex align-items-center justify-content-center justify-content-md-end">
-              <span>Setting</span>
+              <span>Version 1.2.0</span>
               <button class="no-style ms-2 settings-btn" data-bs-toggle="modal" data-bs-target="#settings">
                 <span class="icon icofont-ui-settings text-primary"></span>
               </button>
@@ -448,7 +522,58 @@
 </div>
 <!-- end Add patients modals -->
 
+<!-- Add patients modals -->
+<div class="modal fade" id="add-payment" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add new payment</h5>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Bill NO">
+          </div>
 
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Patient">
+          </div>
+
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Doctor">
+          </div>
+
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Date">
+          </div>
+
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Charges">
+          </div>
+
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Tax">
+          </div>
+
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Discount">
+          </div>
+
+          <div class="form-group mb-0">
+            <input class="form-control" type="text" placeholder="Total">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer d-block">
+        <div class="actions justify-content-between">
+          <button type="button" class="btn btn-error" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-info">Add payment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end Add patients modals -->
 
 
 <script src="../assets/js/jquery-3.6.0.min.js"></script>
@@ -466,6 +591,17 @@
 <script src="../assets/js/echarts-gl.min.js"></script>
 
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/shift.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+<script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
+
+<script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+
+
+
 
 
 </body>

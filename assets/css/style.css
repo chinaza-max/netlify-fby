@@ -2337,6 +2337,138 @@ input:-webkit-autofill {
   font-size: 1rem;
   margin: 0.71429rem 0 0;
 }
+
+
+
+
+
+
+.addMultipleItem .card {
+  background-color: #ebebeb;
+  padding: 40px 10px;
+  margin: 0;
+}
+
+.addMultipleItem  input[type=date] {
+  color: black;
+}
+.addMultipleItem  input[type=time] {
+  color: black;
+}
+.addMultipleItem label {
+  color: black;
+}
+.addMultipleItem .text-grey {
+  color: black;
+}
+
+.addMultipleItem .fa {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.addMultipleItem input,
+.addMultipleItem select {
+  padding: 2px 6px;
+  border: none;
+  border-bottom: 1px solid rgb(15, 14, 14);
+  border-radius: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: black;
+  background-color: transparent;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-align: left !important;
+}
+
+.addMultipleItem input:focus,
+.addMultipleItem select:focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid #13161F;
+  outline-width: 0;
+}
+
+.addMultipleItem select option {
+  background-color: #616161;
+}
+
+.addMultipleItem select option:focus {
+  background-color: #13161F !important;
+}
+
+.addMultipleItem ::-webkit-input-placeholder {
+  color: black;
+  opacity: 1;
+}
+
+.addMultipleItem :-ms-input-placeholder {
+  color: black;
+  opacity: 1;
+}
+
+.addMultipleItem ::-ms-input-placeholder {
+  color: black;
+  opacity: 1;
+}
+
+.addMultipleItem ::placeholder {
+  color:black;
+  opacity: 1;
+}
+
+.addMultipleItem :-ms-input-placeholder {
+  color: black;
+}
+
+.addMultipleItem ::-ms-input-placeholder {
+  color:black;
+}
+
+.addMultipleItem button:focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  outline-width: 0;
+}
+
+.addMultipleItem .btn {
+  border-radius: 50px;
+  width: 120px;
+}
+
+.addMultipleItem .exit {
+  border: 1px solid #9E9E9E;
+  color: #9E9E9E;
+  background-color: transparent;
+}
+
+.addMultipleItem .exit:hover {
+  border: 1px solid #9E9E9E;
+  color: #000 !important;
+  background-color: #9E9E9E;
+}
+
+@media screen and (max-width: 768px) {
+  .addMultipleItem .mob {
+    width: 70%;
+  }
+  .addMultipleItem select.mob {
+    width: 50%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 label {
   font-weight: 600;
   margin: 0 0 0.71429rem;

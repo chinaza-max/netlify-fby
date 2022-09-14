@@ -22,6 +22,11 @@
   <link rel="stylesheet" href="../assets/css/morris.css">
   <link rel="stylesheet" href="../assets/css/leaflet.css">
 
+
+    
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <!-- Theme CSS -->
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
@@ -216,22 +221,11 @@
                   </a>
                 </li>
 
+           
                 <li class="menu-item">
-                  <a class="item-link" href="withdraw.html">
-                    <div class="link-icon icofont-pay"></div>
-                    <span class="link-text">withdraw</span>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a class="item-link" href="withdrawalHistory.html">
-                    <div class="link-icon icofont-list"></div>
-                    <span class="link-text">Withdrawal History</span>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a class="item-link" href="Earnings.html">
+                  <a class="item-link" href="shift.html">
                     <span class="link-icon icofont-pay"></span>
-                    <span class="link-text">Earnings</span>
+                    <span class="link-text">Shift</span>
                   </a>
                 </li>
                
@@ -726,6 +720,11 @@
             </div>
           </div>
         </div>
+        <div class="add-action-box">
+          <button class="btn btn-primary btn-lg btn-square rounded-pill"  data-bs-toggle="modal" data-bs-target="#add-job">
+            <span class="btn-icon icofont-plus"></span>
+          </button>
+        </div>
       </div>
     </main>
 
@@ -987,55 +986,686 @@
 </div>
 <!-- end Add patients modals -->
 
-<!-- start setting overlay -->
-<div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+
+<div class="modal fade" id="add-job" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        <i class="icofont-close-line"></i>
+      </button>
+
       <div class="modal-header">
-        <h5 class="modal-title">Application's settings</h5>
+        <h5 class="modal-title">Add Job</h5>
       </div>
       <div class="modal-body">
         <form>
-          <div class="form-group">
-            <label>Layout</label>
-            <select class="selectpicker" title="Layout" id="layout">
-              <option value="horizontal-layout">Horizontal</option>
-              <option value="vertical-layout">Vertical</option>
-            </select>
-          </div>
+          
+          <div class="card">
+          
+            <div class="card-body">
+              <form>
 
-          <div class="form-group">
-            <label>Light/dark topbar</label>
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="topbar">
+                <div class="form-group">
+                  <label>Customer Name</label>
+                  <select class="selectpicker" data-live-search="true">
+                    <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
+                    <option data-tokens="mustard">Burger, Shake and a Smile</option>
+                    <option data-tokens="frosting">Sugar, Spice and all things nice</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Site Name</label>
+                  <select class="selectpicker" data-live-search="true">
+                    <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
+                    <option data-tokens="mustard">Burger, Shake and a Smile</option>
+                    <option data-tokens="frosting">Sugar, Spice and all things nice</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Status</label>
+                  <div class="form-group mb-md-0">
+                    <select class="selectpicker">
+                      <option selected>Ongoing</option>
+                      <option>Awaiting Payment</option>
+                      <option>Completed</option>
+                      <option>Active</option>
+                      <option>Suspended</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Amount</label>
+                  <input class="form-control" type="tel" placeholder="Enter amount..." required>
+                </div>
+
+               
+                <div class="card mb-10">
+                  <div class="card-header">
+                     Schedule
+                  </div>
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label>Job type</label>
+                      <div class="form-group mb-md-0">
+                        <select class="selectpicker" id="JobTypeSelect" >
+                          <option selected>Select</option>
+                          <option value="Instant">Instant/one off</option>
+                          <option value="Ongoing">Ongoing</option>
+                          <option value="Temporary">Temporary</option>
+                          <option value="Permanent">Permanent</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              <div class="row StartDateEndDate"> 
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Start date </label>
+                        <input class="form-control" type="date">
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>End date</label>
+                        <input class="form-control" type="date" >
+                    </div>
+                  </div>
+
+              </div>
+
+                <div class="row startDate" >    
+                  <div class="col-12">
+                      <div class="form-group">
+                        <label>Start Date </label>
+                        <input class="form-control" type="date">
+                      </div>
+                  </div>
+                </div>
+
+            
+
+                <div class="row  dateTime">    
+                  <div class="col-12 col-sm-6">
+                      <div class="form-group">
+                        <label>Start date </label>
+                        <input class="form-control" type="date">
+                      </div>
+                  </div>
+                  <div class="col-12 col-sm-6">
+                      <div class="form-group">
+                        <label>Start time</label>
+                        <input class="form-control" type="time" >
+                      </div>
+                  </div>
+                </div>
+
+                <div class="form-group" id="JobTypeOccurance">
+                  <label>JobType occurance</label>
+                  <div class="form-group mb-md-0">
+                    <select class="selectpicker" id="JobTypeOccuranceType">
+                      <option >Select</option>
+                      <option value="Occurance">Occurance</option>
+                      <option value="Manually">Manually occurance</option>
+                    </select>
+                  </div>
+                </div>
+              
+                <div class="form-group" id="manually">
+                  <div class="addMultipleItem"  >
+                    <label>Set manually schedule</label>
+                    <div class="container-fluid px-0 px-sm-4 py-0 mx-auto">
+                      <div class="row d-flex justify-content-center">
+                          <div class="col-md-12 col-lg-12 col-xl-12">
+                              <div class="card border-0">
+                                  <div class="row px-3">
+                                      <div class="col-sm-10 list">
+                                          <div class="mb-2 row justify-content-between px-3"> 
+                                              <input class="mb-2 mob" style="max-width:120px;" type="date" >
+                                              <div class="mob" style="max-width:180px;" > <label class="text-grey mr-1">From</label> <input class="ml-1" type="time" name="from"> </div>
+                                              <div class="mob mb-2" style="max-width:180px;"> <label class="text-grey mr-4">To</label> <input class="ml-1" type="time" name="to"> </div>
+                                              <div class="mt-1 cancel fa fa-times text-danger" style="max-width:15px;"></div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row px-3 mt-3">
+                                      <div class="col-sm-2"></div>
+                                      <div class="col-sm-10">
+                                          <div class="row px-3">
+                                              <div class="fa fa-plus-circle text-secondary add" style="max-width:20px;"></div>
+                                              <p class="text-secondary ml-3 add" style="max-width:50px;">Add</p>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+             
+
+                <div class="form-group" id="Recurring" onMouseOver="this.style.cursor='pointer'" data-bs-toggle="modal" data-bs-target="#RecurringRule">
+                  <label>Set schedule</label>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="alert alert-secondary with-before-icon" role="alert">
+                        <div class="alert-icon"><i class="icofont-edit"></i></div>
+                        <div class="alert-content"><h5 id="scheduleData">Recurring Daily; Repeat every 1 day(s); Run until: 2022-08-17;</h3> </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row StartTimeEndTime" >    
+                  <div class="col-12 col-sm-6">
+                      <div class="form-group">
+                        <label>Start time </label>
+                        <input class="form-control" type="time">
+                      </div>
+                  </div>
+                  <div class="col-12 col-sm-6">
+                      <div class="form-group">
+                        <label>End time</label>
+                        <input class="form-control" type="time" >
+                      </div>
+                  </div>
+                </div>
+               <hr>
+                <div class="card text-dark border-dark mt-4">  
+                  <div class="card-body">
+                    This section is optional depend on customer requirement.
+                    The Instruction covers all staff.
+                  </div>
+                </div>
+
+                <div class="form-group" >
+                  <label>Special Instruction Type</label>
+                  <div class="form-group mb-md-0">
+                    <select class="selectpicker" id="SpecialInstructionType">
+                      <option selected>Select</option>
+                      <option value="Repeat">Repeat</option>
+                      <option value="manually">Follow manually input date below</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group" id="SpecialInstruction1">     
+                  <div class="addMultipleItem">
+                    <label>Special Instruction<span class="badge badge-secondary badge-inside">Optional</span></label>
+                    <div class="container-fluid px-0 px-sm-4 py-0 mx-auto">
+                      <div class="row d-flex justify-content-center">
+                          <div class="col-md-12 col-lg-12 col-xl-12">
+                              <div class="card border-0">
+                                  <div class="row px-3">
+                                      <div class="col-sm-10 list2">
+                                          <div class="mb-2 row justify-content-between px-3"> 
+                                            <textarea class="form-control border-secondary" rows="4" placeholder="Enter Special Instruction ...."></textarea>
+                                              <div class="mob" style="min-width:295px;"> <label class="text-grey mr-1" >Date</label> <input class="ml-1" type="date" name="from"> </div>
+                                              <div class="mt-1 cancel fa fa-times text-danger" style="max-width:15px;"></div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row px-3 mt-3">
+                                      <div class="col-sm-2"></div>
+                                      <div class="col-sm-10">
+                                          <div class="row px-3">
+                                              <div class="fa fa-plus-circle text-secondary add2" style="max-width:20px;"></div>
+                                              <p class="text-secondary ml-3 add2" style="max-width:50px;">Add</p>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group" id="SpecialInstruction2">     
+                  <div class="addMultipleItem">
+                    <label>Special Instruction<span class="badge badge-secondary badge-inside">Optional</span></label>
+                    <div class="container-fluid px-0 px-sm-4 py-0 mx-auto">
+                      <div class="row d-flex justify-content-center">
+                          <div class="col-md-12 col-lg-12 col-xl-12">
+                              <div class="card border-0">
+                                  <div class="row px-3">
+                                      <div class="col-sm-10 list3">
+                                          <div class="mb-2 row justify-content-between px-3"> 
+                                              <textarea class="form-control border-secondary" style="max-width:280px;" rows="4" placeholder="Enter Special Instruction ...."></textarea>
+                                              <div class="mt-1 cancel fa fa-times text-danger" style="max-width:15px;"></div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row px-3 mt-3">
+                                      <div class="col-sm-2"></div>
+                                      <div class="col-sm-10">
+                                          <div class="row px-3">
+                                              <div class="fa fa-plus-circle text-secondary add3" style="max-width:20px;"></div>
+                                              <p class="text-secondary ml-3 add3" style="max-width:50px;">Add</p>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label>Special Task Type</label>
+                  <div class="form-group mb-md-0">
+                    <select class="selectpicker" id="SpecialTaskType">
+                      <option selected>Select</option>
+                      <option value="Repeat">Repeat</option>
+                      <option value="manually">Follow manually input date below</option>
+                    </select>
+                  </div>
+                </div>
+
+                
+
+                <div class="form-group" id="SpecialTask1">
+                  <div class="addMultipleItem">
+                    <label>Special Task<span class="badge badge-secondary badge-inside">Optional</span></label>
+                    <div class="container-fluid px-0 px-sm-4 py-0 mx-auto">
+                      <div class="row d-flex justify-content-center">
+                          <div class="col-md-12 col-lg-12 col-xl-12">
+                              <div class="card border-0">
+                                  <div class="row px-3">
+                                      <div class="col-sm-10 list">
+                                          <div class="mb-2 row justify-content-between px-3"> 
+                                              <input class="mb-2 mob"  type="text"  placeholder="Enter title">
+                                              <textarea class="form-control border-secondary" rows="4" placeholder="Enter Special task ...."></textarea>
+
+                                              <div class="mob mb-2" style="max-width:200px;"> <label class="text-grey mr-4">Time</label> <input class="ml-1" type="time" name="to"> </div>
+                                              <div class="mt-1 cancel fa fa-times text-danger" style="max-width:15px;"></div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row px-3 mt-3">
+                                      <div class="col-sm-2"></div>
+                                      <div class="col-sm-10">
+                                          <div class="row px-3">
+                                              <div class="fa fa-plus-circle text-secondary add" style="max-width:20px;"></div>
+                                              <p class="text-secondary ml-3 add" style="max-width:50px;">Add</p>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group"  id="SpecialTask2">
+                  <div class="addMultipleItem">
+                    <label>Special Task<span class="badge badge-secondary badge-inside">Optional</span></label>
+                    <div class="container-fluid px-0 px-sm-4 py-0 mx-auto">
+                      <div class="row d-flex justify-content-center">
+                          <div class="col-md-12 col-lg-12 col-xl-12">
+                              <div class="card border-0">
+                                  <div class="row px-3">
+                                      <div class="col-sm-10 list5">
+                                          <div class="mb-2 row justify-content-between px-3"> 
+                                              <input class="mb-2 mob w-100"  type="text"  placeholder="Enter title">
+                                              <textarea class="form-control border-secondary" rows="4" placeholder="Enter Special Instruction ...."></textarea>
+
+                                              <div class="mob mb-2" style="min-width:295px;"> <label class="text-grey mr-4">Time</label> <input class="ml-1" type="time" name="to"> </div>
+                                              <div class="mob mb-2" style="min-width:295px;"> <label class="text-grey mr-4">Date</label> <input class="ml-1" type="date" name="to"> </div>
+                                              <div class="mt-1 cancel fa fa-times text-danger" style="max-width:15px;"></div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row px-3 mt-3">
+                                      <div class="col-sm-2"></div>
+                                      <div class="col-sm-10">
+                                          <div class="row px-3">
+                                              <div class="fa fa-plus-circle text-secondary add5" style="max-width:20px;"></div>
+                                              <p class="text-secondary ml-3 add5" style="max-width:50px;">Add</p>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              </form>
+             
             </div>
           </div>
 
-          <div class="form-group">
-            <label>Light/dark sidebar</label>
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="sidebar">
+          <div class="card">
+            <div class="card-header">
+              Added staff
+            </div>
+            <div class="table-responsive nowrap">
+              <table class="table table-hover">
+                <thead>
+                <tr>
+                  <th scope="col">Staff name</th>
+                  <th scope="col">Amount paid per hour</th>
+                  
+                </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Naza</td>
+                    <td>$1000</td>
+                   
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
-          <div class="form-group mb-0">
-            <label>Boxed/fullwidth mode</label>
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="boxed" checked>
-            </div>
+          <div>
+          
           </div>
         </form>
       </div>
       <div class="modal-footer d-block">
         <div class="actions justify-content-between">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button id="reset-to-default" type="button" class="btn btn-error">Reset to default</button>
+          <button type="button" class="btn btn-error" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-info">Create</button>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!--start setting overlay -->
+
+<!--start Recurring rule  -->
+<div class="modal fade" id="RecurringRule" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        <i class="icofont-close-line"></i>
+      </button>
+
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+      </div>
+      <div class="modal-body">
+        <div class="card">
+          <div class="card-body" >
+            <ul class="nav nav-pills mb-2" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab2-1" type="button" role="tab" aria-selected="true">Daily</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab2-2" type="button" role="tab" aria-selected="false">Weekly</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab2-3" type="button" role="tab" aria-selected="false">Monthly</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab2-4" type="button" role="tab" aria-selected="false">Yearly</button>
+              </li>
+            </ul>
+            
+            <div class="tab-content pb-5 ">
+              
+              <div class="tab-pane fade show active" id="tab2-1" role="tabpanel">
+
+                  <div class="input-group mb-3" style="width: 260px;">
+                    <span class="input-group-text">Repeat every</span>
+                    <input type="tel" class="form-control interval" style="border:1px solid black;"  placeholder="1" > 
+                    <span class="input-group-text">day(s)</span>
+                  </div>
+                  <span class="text-muted"> The event will be repeated every day or every x days, depending on the value.</span>
+                 
+              </div>
+
+              <div class="tab-pane fade" id="tab2-2" role="tabpanel">
+                <div class="input-group mb-3" style="width: 270px;">
+                  <span class="input-group-text">Repeat every</span>
+                  <input type="tel" class="form-control interval" style="border:1px solid black;"  placeholder="1" > 
+                  <span class="input-group-text">week(s)</span>
+                </div>
+
+                <span class="text-muted"> The event will be repeated every  x week, on specific weekdays.</span>
+
+
+                <div class="row mt-4">
+
+                  <div class="col-md-3">
+                    <div class="form-check">
+                      <input class="form-check-input checkBox" type="checkbox" value="0">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Sun
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="form-check">
+                      <input class="form-check-input checkBox" type="checkbox" value="1" >
+                      <label class="form-check-label" for="defaultCheck1">
+                        Mon
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="form-check">
+                    <input class="form-check-input checkBox" type="checkbox" value="2" >
+                    <label class="form-check-label" for="defaultCheck1">
+                      Tue
+                    </label>
+                  </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-check">
+                      <input class="form-check-input checkBox" type="checkbox" value="3" >
+                      <label class="form-check-label" for="defaultCheck1">
+                        Wed
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-check">
+                      <input class="form-check-input checkBox" type="checkbox" value="4">
+                      <label class="form-check-label" for="defaultCheck1">
+                       Thu
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-check">
+                      <input class="form-check-input checkBox" type="checkbox" value="5" >
+                      <label class="form-check-label" for="defaultCheck1">
+                       Fri
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-check">
+                      <input class="form-check-input checkBox" type="checkbox" value="6" >
+                      <label class="form-check-label" for="defaultCheck1">
+                       Sat
+                      </label>
+                    </div>
+                  </div>
+                
+      
+                 
+                </div>
+
+
+
+              </div>
+
+              <div class="tab-pane fade" id="tab2-3" role="tabpanel">
+                <div class="input-group mb-3" style="width: 320px;">
+                  <span class="input-group-text">Repeat every</span>
+                  <input type="tel" class="form-control interval" style="border:1px solid black;"  placeholder="1" > 
+                  <span class="input-group-text">month(s) on the</span>
+                </div>
+                  
+                <div class="card text-secondary border-secondary">
+                  <div class="card-body">
+                    <div class="form-check">
+                      <input class="form-check-input  mt-3" type="radio" name="monthly"  id="monthly1CheckRadio">
+                      <label class="form-check-label" for="defaultCheck1">
+                        <div class="form-group mb-md-0">
+                          <select class="selectpicker" id="monthly1">
+                            <option value="1">First</option><option value="2">Second</option><option value="3">Third</option><option value="4">Fourth</option><option value="5">Fifth</option><option value="6">Sixth</option><option value="7">Seventh</option><option value="8">Eighth</option><option value="9">Ninth</option><option value="10">Tenth</option><option value="11">Eleventh</option><option value="12">Twelfth</option><option value="13">Thirteenth</option><option value="14">Fourteenth</option><option value="15">Fifteenth</option><option value="16">Sixteenth</option><option value="17">Seventeenth</option><option value="18">Eighteenth</option><option value="19">Nineteenth</option><option value="20">Twentieth</option><option value="21">Twenty-first</option><option value="22">Twenty-second</option><option value="23">Twenty-third</option><option value="24">Twenty-fourth</option><option value="25">Twenty-fifth</option><option value="26">Twenty-sixth</option><option value="27">Twenty-seventh</option><option value="28">Twenty-eighth</option><option value="29">Twenty-ninth</option><option value="30">Thirtieth</option><option value="31">Thirty-first</option><option value="-1">Last</option><option value="-2">Penultimate</option><option value="-3">Third to last</option><option value="-4">Fourth to last</option><option value="-5">Fifth to last</option><option value="-6">Sixth to last</option><option value="-7">Seventh to last</option><option value="-8">Eighth to last</option><option value="-9">Ninth to last</option><option value="-10">Tenth to last</option><option value="-11">Eleventh to last</option><option value="-12">Twelfth to last</option><option value="-13">Thirteenth to last</option><option value="-14">Fourteenth to last</option><option value="-15">Fifteenth to last</option><option value="-16">Sixteenth to last</option><option value="-17">Seventeenth to last</option><option value="-18">Eighteenth to last</option><option value="-19">Nineteenth to last</option><option value="-20">Twentieth to last</option><option value="-21">Twenty-first to last</option><option value="-22">Twenty-second to last</option><option value="-23">Twenty-third to last</option><option value="-24">Twenty-fourth to last</option><option value="-25">Twenty-fifth to last</option><option value="-26">Twenty-sixth to last</option><option value="-27">Twenty-seventh to last</option><option value="-28">Twenty-eighth to last</option><option value="-29">Twenty-ninth to last</option><option value="-30">Thirtieth to last</option>
+                          </select>
+                        </div>
+                      </label>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-12 col-md-6">
+                        <div class="form-check">
+                          <input class="form-check-input  mt-3  " type="radio" name="monthly" id="monthly2CheckRadio"  value="2" >
+                          <label class="form-check-label" for="defaultCheck1">
+                            <div class="form-group mb-md-0">
+                              <select class="selectpicker" id="monthly2">
+                                <option value="1" selected="">First</option>
+                                <option value="2">Second</option>
+                                <option value="3">Third</option>
+                                <option value="4">Fourth</option>
+                                <option value="-1">Last</option>
+                              </select>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+          
+                      <div class="col-12 col-md-6">
+                      
+                            <div class="form-group mb-md-0">
+                              <select class="selectpicker" id="monthly3">
+                                <option value="1" selected="">Sunday</option>
+                                <option value="2">Monday</option>
+                                <option value="3">Tuesday</option>
+                                <option value="4">Wednesday</option>
+                                <option value="5">Thursday</option>
+                                <option value="6">Friday</option>
+                                <option value="7">Saturday</option>
+                              </select>
+                            </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              
+              </div>
+
+              <div class="tab-pane fade" id="tab2-4" role="tabpanel">
+                <div class="input-group mb-3" style="width: 310px;">
+                  <span class="input-group-text">Repeat every</span>
+                  <input type="tel" class="form-control interval" style="border:1px solid black;"  placeholder="1" > 
+                  <span class="input-group-text">Year(s) on the</span>
+                </div>
+                  
+                <div class="card text-secondary border-secondary">
+                  <div class="card-body">
+                    <div class="row">
+
+                      <div class="col-12 col-md-5">
+                        <div class="form-check">
+                          <input class="form-check-input mt-3" type="radio"  name="yearly" id="yearly1CheckRadio">
+                          <label class="form-check-label" for="defaultCheck1">
+                            <div class="form-group mb-md-0">
+                              <select class="selectpicker" id="yearly1">
+                                <option value="1">First2</option><option value="2">Second</option><option value="3">Third</option><option value="4">Fourth</option><option value="5">Fifth</option><option value="6">Sixth</option><option value="7">Seventh</option><option value="8">Eighth</option><option value="9">Ninth</option><option value="10">Tenth</option><option value="11">Eleventh</option><option value="12">Twelfth</option><option value="13">Thirteenth</option><option value="14">Fourteenth</option><option value="15">Fifteenth</option><option value="16">Sixteenth</option><option value="17">Seventeenth</option><option value="18">Eighteenth</option><option value="19">Nineteenth</option><option value="20">Twentieth</option><option value="21">Twenty-first</option><option value="22">Twenty-second</option><option value="23">Twenty-third</option><option value="24">Twenty-fourth</option><option value="25">Twenty-fifth</option><option value="26">Twenty-sixth</option><option value="27">Twenty-seventh</option><option value="28">Twenty-eighth</option><option value="29">Twenty-ninth</option><option value="30">Thirtieth</option><option value="31">Thirty-first</option><option value="-1">Last</option><option value="-2">Penultimate</option><option value="-3">Third to last</option><option value="-4">Fourth to last</option><option value="-5">Fifth to last</option><option value="-6">Sixth to last</option><option value="-7">Seventh to last</option><option value="-8">Eighth to last</option><option value="-9">Ninth to last</option><option value="-10">Tenth to last</option><option value="-11">Eleventh to last</option><option value="-12">Twelfth to last</option><option value="-13">Thirteenth to last</option><option value="-14">Fourteenth to last</option><option value="-15">Fifteenth to last</option><option value="-16">Sixteenth to last</option><option value="-17">Seventeenth to last</option><option value="-18">Eighteenth to last</option><option value="-19">Nineteenth to last</option><option value="-20">Twentieth to last</option><option value="-21">Twenty-first to last</option><option value="-22">Twenty-second to last</option><option value="-23">Twenty-third to last</option><option value="-24">Twenty-fourth to last</option><option value="-25">Twenty-fifth to last</option><option value="-26">Twenty-sixth to last</option><option value="-27">Twenty-seventh to last</option><option value="-28">Twenty-eighth to last</option><option value="-29">Twenty-ninth to last</option><option value="-30">Thirtieth to last</option>
+                              </select>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-md-2">
+                        <div class="form-group mb-md-0">
+                          of
+                        </div>
+                      </div>
+                        
+                      <div class="col-12 col-md-5">
+                            <div class="form-group mb-md-0">
+                              <select class="selectpicker" id="yearly2">
+                                <option value="1" selected="">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option>
+                              </select>
+                            </div>
+                      </div>
+
+                    </div>
+                
+                    <div class="row">
+                      <div class="col-12 col-md-5">
+                        <div class="form-check">
+                          <input class="form-check-input mt-3" type="radio"  name="yearly" id="yearly2CheckRadio">
+                          <label class="form-check-label" for="defaultCheck1">
+                            <div class="form-group mb-md-0">
+                              <select class="selectpicker" id="yearly3">
+                                <option value="1" selected="">First</option>
+                                <option value="2">Second</option>
+                                <option value="3">Third</option>
+                                <option value="4">Fourth</option>
+                                <option value="-1">Last</option>
+                              </select>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+          
+                      <div class="col-12 col-md-5">
+                            <div class="form-group mb-md-0">
+                              <select class="selectpicker" id="yearly4">
+                                <option value="1" selected="">Sunday</option><option value="2">Monday</option><option value="3">Tuesday</option><option value="4">Wednesday</option><option value="5">Thursday</option><option value="6">Friday</option><option value="7">Saturday</option>
+                              </select>
+                            </div>
+                      </div>
+                      
+                      <div class="col-12 col-md-2">
+                        <div class="form-group mb-md-0">
+                         of
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-md-6">
+                        <div class="form-group mb-md-0">
+                          <select class="selectpicker" id="yearly5">
+                            <option value="1" selected="">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="actions">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="saveData">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--end Recurring rule  -->
+
 
 
 <script src="../assets/js/jquery-3.6.0.min.js"></script>
@@ -1053,6 +1683,7 @@
 <script src="../assets/js/echarts-gl.min.js"></script>
 
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/job.js"></script>
 
 
 </body>
