@@ -76,17 +76,16 @@
                       <div class="icon  icofont-hour-glass"></div> 
 
                       <div class="content">
-                        <span class="desc">new Pending job</span>
+                        <span class="desc">new Pending project requires action</span>
                         <span class="date">17 minutes ago</span>
                       </div>
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <div class="icon  icofont-hour-glass"></div> 
-
-                      <div class="content">
-                        <span class="desc">new Pending job</span>
+                      <div class="icon sli-target"></div>
+                      <div class="content  p-2">
+                        <span class="desc">you tried to clocking-in on the wrong location</span>
                         <span class="date">17 minutes ago</span>
                       </div>
                     </a>
@@ -101,10 +100,11 @@
                       </div>
                     </a>
                   </li>
+                
                 </ul>
 
                 <div class="menu-footer">
-                  <button class="btn btn-primary w-100">
+                  <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#notification">
                     View all notifications
                     <span class="btn-icon ms-2 icofont-tasks-alt"></span>
                   </button>
@@ -151,24 +151,7 @@
               </div>
             </div>
           </div>
-        
-        <div class="navbar-skeleton horizontal">
-          <div class="left-part d-flex align-items-center">
-            <span class="navbar-button bg animated-bg d-lg-none"></span>
-            <span class="sk-logo bg animated-bg d-none d-lg-block"></span>
-            <span class="search d-none d-md-block bg animated-bg"></span>
-          </div>
-
-          <div class="right-part d-flex align-items-center">
-            <div class="icon-box">
-              <span class="icon bg animated-bg"></span>
-              <span class="badge"></span>
-            </div>
-            <span class="avatar bg animated-bg"></span>
-          </div>
-        </div>
-        
-
+    
         
       </div>
     </div>
@@ -223,7 +206,7 @@
                  
                   <li class="menu-item">
                     <a class="item-link" href="shift.html">
-                      <span class="link-icon icofont-pay"></span>
+                      <div class="link-icon sli-speedometer"></div>
                       <span class="link-text">Shift</span>
                     </a>
                   </li>
@@ -234,52 +217,7 @@
           <!-- end menu --> 
         
         
-        <div class="navbar-skeleton vertical">
-          <div class="top-part">
-            <div class="sk-logo bg animated-bg"></div>
-            <div class="sk-menu">
-              <span class="sk-menu-item menu-header bg-1 animated-bg"></span>
-              <span class="sk-menu-item bg animated-bg w-75"></span>
-              <span class="sk-menu-item bg animated-bg w-80"></span>
-              <span class="sk-menu-item bg animated-bg w-50"></span>
-              <span class="sk-menu-item bg animated-bg w-75"></span>
-              <span class="sk-menu-item bg animated-bg w-50"></span>
-              <span class="sk-menu-item bg animated-bg w-60"></span>
-            </div>
-            <div class="sk-menu">
-              <span class="sk-menu-item menu-header bg-1 animated-bg"></span>
-              <span class="sk-menu-item bg animated-bg w-60"></span>
-              <span class="sk-menu-item bg animated-bg w-40"></span>
-              <span class="sk-menu-item bg animated-bg w-60"></span>
-              <span class="sk-menu-item bg animated-bg w-40"></span>
-              <span class="sk-menu-item bg animated-bg w-40"></span>
-              <span class="sk-menu-item bg animated-bg w-40"></span>
-              <span class="sk-menu-item bg animated-bg w-40"></span>
-            </div>
-            <div class="sk-menu">
-              <span class="sk-menu-item menu-header bg-1 animated-bg"></span>
-              <span class="sk-menu-item bg animated-bg w-60"></span>
-              <span class="sk-menu-item bg animated-bg w-50"></span>
-            </div>
-            <div class="sk-button animated-bg w-90"></div>
-          </div>
-
-          <div class="bottom-part">
-            <div class="sk-menu">
-              <span class="sk-menu-item bg-1 animated-bg w-60"></span>
-              <span class="sk-menu-item bg-1 animated-bg w-80"></span>
-            </div>
-          </div>
-
-          <div class="horizontal-menu">
-            <span class="sk-menu-item bg animated-bg"></span>
-            <span class="sk-menu-item bg animated-bg"></span>
-            <span class="sk-menu-item bg animated-bg"></span>
-            <span class="sk-menu-item bg animated-bg"></span>
-            <span class="sk-menu-item bg animated-bg"></span>
-            <span class="sk-menu-item bg animated-bg"></span>
-          </div>
-        </div>
+      
         
       </div>
     </div>
@@ -820,6 +758,66 @@
     </div>
 
     <div class="content-overlay"></div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="notification" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        <i class="icofont-close-line"></i>
+      </button>
+
+      <div class="modal-header">
+        <h5 class="page-title"  style="clear: both;">Notification</h5>
+      </div>
+      <div class="modal-body">
+        <main class="main-content mb-0">
+          <div class="app-loader"><i class="icofont-spinner-alt-4 rotate"></i></div>
+    
+          <div class="main-content-wrap">
+            <div class="page-content">
+              <div class="col-12">
+                <div class="card">
+                  
+                  <div class="card-body">
+                    <div class="alert alert-secondary with-before-icon" role="alert">
+                      <div class="alert-icon"> <div class="icon  icofont-hour-glass"></div> </div>
+                      <div class="alert-content">new Pending project requires action</div>
+                      <span class="date">1 minutes ago</span>
+                    </div>
+                    <div class="alert alert-danger with-before-icon" role="alert">
+                      <div class="alert-icon">
+                        <div class="icon sli-target"></div>
+                      </div>
+                      <div class="alert-content">you tried to clocking-in on the wrong location</div>
+                      <span class="date">10 minutes ago</span>
+                    </div>
+                    
+                    <div class="alert alert-secondary with-before-icon" role="alert">
+                      <div class="alert-icon"><div class="icon icofont-letter"></div>
+                    </div>
+                      <div class="alert-content">new memo requires your attention</div>
+                      <span class="date">17 minutes ago</span>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+
+            </div>
+  
+          </div>
+        </main>
+    
+      </div>
+      <div class="modal-footer">
+        <div class="actions">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

@@ -4,7 +4,7 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-:root {
+ :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
@@ -3021,7 +3021,7 @@ fieldset:disabled .btn {
 }
 .btn-check:focus + .btn-outline-info,
 .btn-outline-info:focus {
-  box-shadow: 0 0 0 0.25rem rgba(28, 13, 46, 0.488);;
+  box-shadow: 0 0 0 0.25rem rgba(100, 181, 246, 0.5);
 }
 .btn-check:active + .btn-outline-info,
 .btn-check:checked + .btn-outline-info,
@@ -3037,7 +3037,7 @@ fieldset:disabled .btn {
 .btn-outline-info.active:focus,
 .btn-outline-info.dropdown-toggle.show:focus,
 .btn-outline-info:active:focus {
-  box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(100, 181, 246, 0.5);
 }
 .btn-outline-info.disabled,
 .btn-outline-info:disabled {
@@ -3622,7 +3622,7 @@ fieldset:disabled .btn {
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
-  color:  black;
+  color: #336cfb;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out;
@@ -3634,7 +3634,7 @@ fieldset:disabled .btn {
 }
 .nav-link:focus,
 .nav-link:hover {
-  color: #d3d303;
+  color: #2956c9;
 }
 .nav-link.disabled {
   color: #6c757d;
@@ -6744,8 +6744,8 @@ fieldset:disabled .btn {
   word-break: break-word !important;
 }
 .text-primary {
-  color: rgb(28,13, 46) !important;
-}   
+  color: #336cfb !important;
+}
 .text-secondary {
   color: #626364 !important;
 }
