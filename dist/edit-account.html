@@ -231,7 +231,7 @@
               <form class="mb-4">
                 <label>Photo</label>
                 <div class="form-group avatar-box d-flex align-items-center">
-                  <img src="../assets/content/user-400-1.jpg" width="100" height="100" alt="" class="rounded-500 me-4">
+                  <img id="profile" src="../assets/content/user-400-1.jpg" width="100" height="100" alt="" class="rounded-500 me-4">
 
                   <button class="btn btn-outline-primary" type="button">
                     Change photo<span class="btn-icon icofont-ui-user ms-2"></span>
@@ -240,31 +240,31 @@
 
                 <div class="form-group">
                   <label>First name</label>
-                  <input class="form-control" type="text" placeholder="First name" value="Liam">
+                  <input class="form-control" id="firstName" type="text" placeholder="First name" value="Liam">
                 </div>
 
                 <div class="form-group">
                   <label>Last name</label>
-                  <input class="form-control" type="text" placeholder="Last name" value="Jouns">
+                  <input class="form-control" id="lastName" type="text" placeholder="Last name" value="Jouns">
                 </div>
 
                 
                 <div class="form-group">
                   <label>Email address</label>
-                  <input class="form-control" type="text" placeholder="Last name" value="Jouns">
+                  <input class="form-control" id="email" type="text" placeholder="Last name" value="Jouns">
                 </div>
 
                 <div class="row">
                   <div class="col-12 col-sm-6">
                     <div class="form-group">
                       <label>Date of birth</label>
-                      <input class="form-control" type="date" >
+                      <input class="form-control" id="dataOfBirth" type="date" >
                     </div>
                   </div>
                   <div class="col-12 col-sm-6">
                     <div class="form-group">
                       <label>Gender</label>
-                      <select class="selectpicker" title="Gender">
+                      <select class="selectpicker" title="gender" id="gender">
                         <option selected>Male</option>
                         <option>Female</option>
                       </select>
@@ -274,12 +274,12 @@
 
                 <div class="form-group">
                   <label>Phone number</label>
-                  <input class="form-control" type="number" placeholder="Age" value="0126596578">
+                  <input class="form-control" id="tel" type="number" placeholder="Age" value="0126596578">
                 </div>
 
                 <div class="form-group">
                   <label>Address</label>
-                  <textarea class="form-control" placeholder="Address" rows="3">71 Pilgrim Avenue Chevy Chase, MD 20815</textarea>
+                  <textarea id="address" class="form-control" placeholder="Address" rows="3">71 Pilgrim Avenue Chevy Chase, MD 20815</textarea>
                 </div>
 
                 <div class="form-group">
@@ -290,7 +290,7 @@
 
                 <div class="form-group">
                   <label>Status</label>
-                  <select class="selectpicker" title="Status">
+                  <select class="selectpicker" title="Status" id="status">
                     <option selected>Available to Accept Jobs</option>
                     <option>Not Available for Jobs</option>
                   </select>
@@ -496,6 +496,8 @@
 <script src="../assets/js/echarts-gl.min.js"></script>
 
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/edit-account.js"></script>
+
 
 
 </body>

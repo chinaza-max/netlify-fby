@@ -1544,9 +1544,14 @@
   });
 
   $(window).on('load', function(){
+
     $.ready.then(function(){
+      if((!sessionStorage.getItem("hasVisited"))&&(window.location.pathname!="/dist/sign-in.html")){
+        window.location.replace('/dist/sign-in.html')
+      }
       $('body').addClass('loaded');
     });
+
   });
 
   //Window Resize
@@ -1592,6 +1597,11 @@ function initGoogleMap(val) {
       zoom: 8
     });
   }
+}
+
+function clearUserData(){
+  sessionStorage.removeItem("hasVisited")
+  localStorage.removeItem("myUser")
 }
 
 window.smoothScroll = function(target) {

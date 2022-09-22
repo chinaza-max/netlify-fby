@@ -44,11 +44,11 @@
     <!-- Horizontal navbar -->
     <div id="navbar1" class="app-navbar horizontal">
       <div class="navbar-wrap">
+
+        <button class="no-style navbar-toggle navbar-open d-lg-none">
+          <span></span><span></span><span></span>
+        </button>
         
-          <button class="no-style navbar-toggle navbar-open d-lg-none">
-            <span></span><span></span><span></span>
-          </button>
- 
           <div class="app-actions">
             <div class="dropdown item">
               <button
@@ -142,7 +142,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="./sign-in.html" class="align-items-center">
+                    <a onclick="clearUserData()" href="./sign-in.html" class="align-items-center">
                       <span class="icon icofont-logout"></span>
                       Log Out
                     </a>
@@ -181,7 +181,7 @@
                   <span class="group-title">MENU</span>
                 </li>
                 <li class="menu-item active">
-                  <a class="item-link" href="index.html">
+                  <a class="item-link" href="#">
                     <div class="link-icon icon sli-grid"></div>
                     <span class="link-text">Dashboard</span>
                   </a>
