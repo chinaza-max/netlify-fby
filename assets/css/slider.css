@@ -1,6 +1,6 @@
   .thething {
       margin:0 auto;
-      width: 290px;
+      width: 235px;
       height: 60px;
   }
   
@@ -60,7 +60,7 @@
   }
   #switch .handle {
     display: block;
-    background: #A8B1BB;
+    background: #ffffff;
     height: 35px;
     width: 70px;
     border-radius: 40px;
@@ -69,7 +69,7 @@
   }
   #switch2 .handle {
     display: block;
-    background: #A8B1BB;
+    background: #fefefe;
     height: 35px;
     width: 70px;
     border-radius: 40px;

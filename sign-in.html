@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>FBY security app</title>
+  <meta name="keywords" content="MedicApp">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+  <link rel="manifest" href="/manifest.json"></link>
+
+  <!-- Plugins CSS -->
+  <link rel="stylesheet" href="/assets/css/bootstrap/bootstrap.css">
+  <link rel="stylesheet" href="/assets/css/icofont.min.css">
+  <link rel="stylesheet" href="/assets/css/simple-line-icons.css">
+  <link rel="stylesheet" href="/assets/css/jquery.typeahead.css">
+  <link rel="stylesheet" href="/assets/css/datatables.min.css">
+  <link rel="stylesheet" href="/assets/css/bootstrap-select.min.css">
+  <link rel="stylesheet" href="/assets/css/Chart.min.css">
+  <link rel="stylesheet" href="/assets/css/morris.css">
+  <link rel="stylesheet" href="/assets/css/leaflet.css">
+
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+
+<body class="public-layout">
+<div class="app-loader main-loader">
+  <div class="loader-box">
+    <div class="bounceball"></div>
+    <div class="text">FBY<span>app</span></div>
+  </div>
+</div>
+<!-- .main-loader -->
+
+<div class="page-box">
+  <div class="app-container page-sign-in">
+    <div class="content-box">
+      <div class="content-header">
+        <div class="app-logo">
+          <div class="logo-wrap">
+            <img src="/assets/img/logo.png" alt="" width="147" height="33" class="logo-img">
+              <!-- end Image logo --> FBY
+          </div>
+        </div>
+      </div>
+
+      <div class="content-body">
+        <div class="w-100">
+          <h2 class="h4 mt-0 mb-1">Sign in</h2>
+          <p class="text-muted">Sign in to access your Account</p>
+
+          <form id="myForm">
+            <div class="form-group">
+              <span style="color:red;" id="alert1"></span>
+              <input class="form-control" type="email" id="email"  placeholder="Email" required>
+              <span style="color:red;" id="alert2"></span>
+            </div>
+
+            <div class="form-group">
+              <input class="form-control" type="password" id="password" placeholder="Password" required>
+            </div>
+
+            <div class="actions justify-content-between">
+              <button class="btn btn-primary">
+                <span class="btn-icon icofont-login me-2"></span>Sign in
+              </button>
+            </div>
+          </form>
+
+          <p class="mt-5 mb-1"><a href="forgotPassword.html">Forgot password?</a></p>
+    
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/jquery-3.6.0.min.js"></script>
+<script src="/assets/js/jquery-migrate-1.4.1.min.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/jquery.typeahead.min.js"></script>
+<script src="/assets/js/datatables.min.js"></script>
+<script src="/assets/js/bootstrap-select.min.js"></script>
+<script src="/assets/js/jquery.barrating.min.js"></script>
+<script src="/assets/js/Chart.min.js"></script>
+<script src="/assets/js/raphael-min.js"></script>
+<script src="/assets/js/morris.min.js"></script>
+<script src="/assets/js/echarts.min.js"></script>
+<script src="/assets/js/echarts-gl.min.js"></script>
+
+<script src="/assets/js/main.js"></script>
+
+
+</body>
+
+
+<script>
+  $("#myForm").on("submit", (event) => {
+    event.preventDefault();
+
+    if (typeof $("#email").val() === 'string') {
+
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($("#email").val())){
+        
+        $.ajax({
+          type: "post", url: "https://fby-security.herokuapp.com/api/v1/auth/login",
+          data: {
+            email:$("#email").val(),
+            password: $("#password").val()
+          },
+          success: function (data, text) {
+
+              if(data.data.token){
+                sessionStorage.setItem("hasVisited", true);
+                localStorage.setItem('myUser',btoa(data.data.token))
+                window.location.replace('https://sunny-kataifi-7adb6f.netlify.app/index.html')
+                // window.location.replace('/index.html')
+              }
+             
+          },
+          error: function (request, status, error) {
+            console.log(status)
+            $("#alert1").text(JSON.parse(request.responseText).message)
+          }
+        });
+
+      }
+      else {
+        $("#alert2").text("wrong type")
+      }
+  
+    } 
+    else {
+      $("#alert2").text("wrong type")
+    }
+
+  })
+
+</script>
+<script src="/assets/js/app.js"></script>
+</html>

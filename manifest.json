@@ -1,0 +1,32 @@
+{
+    "theme_color": "rgb(28,13, 46)",
+    "background_color": "rgb(28,13, 46)",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/index.html",
+    "name": "SECURITY APP FBY",
+    "short_name": "FBY",
+    "description": "portrait-primary",
+    "icons": [
+        {
+            "src": "/imgManifest/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/imgManifest/icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/imgManifest/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/imgManifest/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

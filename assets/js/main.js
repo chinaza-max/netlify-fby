@@ -29,7 +29,7 @@
           groupName: {
             // Ajax Request
             ajax: {
-              url: '../assets/data/autocomplete.json'
+              url: '/assets/data/autocomplete.json'
             }
           }
         }
@@ -46,7 +46,7 @@
           groupName: {
             // Ajax Request
             ajax: {
-              url: '../assets/data/search-menu.json'
+              url: '/assets/data/search-menu.json'
             }
           }
         }
@@ -1264,7 +1264,7 @@
     if ($('#echart-map').length) {
       var echartMap = echarts.init(document.getElementById('echart-map'));
 
-      $.get('../assets/data/world.json', function (usaJson) {
+      $.get('/assets/data/world.json', function (usaJson) {
         echarts.registerMap('USA', usaJson, {
           Alaska: {
             left: -131,
@@ -1544,16 +1544,49 @@
   });
 
   $(window).on('load', function(){
+    
 
+    console.log("kkkkkkkkk")
     $.ready.then(function(){
-      if((!sessionStorage.getItem("hasVisited"))&&(window.location.pathname!="/dist/sign-in.html")){
-        window.location.replace('/dist/sign-in.html')
+      
+      if((!sessionStorage.getItem("hasVisited"))&&(window.location.pathname!="/sign-in.html")){
+        
+        //window.location.href =window.location.toString().split('/')[0] + "/dist/sign-in.html"
+        window.location.replace('https://sunny-kataifi-7adb6f.netlify.app/sign-in.html')
+        //window.location.replace('/sign-in.html')
+       // window.location.href =window.location.toString().split('/')[0] + "/chinaza/html/dist/sign-in.html"
+       
       }
+      else{
+
+        if(window.location.pathname!="/sign-in.html"){
+          $.ajax({
+            type: "get", url: "https://fby-security.herokuapp.com/api/v1/auth/",
+            headers: {
+                "Authorization": `Bearer ${atob(localStorage.getItem("myUser"))}`
+            },
+            success: function (data, text) {
+              console.log("change")
+              $("#profile").attr("src",data.data.user.image);
+            },
+            error: function (request, status, error) {
+              console.log("errorr errorr errorr errorr errorr errorr")
+                localStorage.removeItem("myUser")
+               // window.location.replace('https://sunny-kataifi-7adb6f.netlify.app/sign-in.html')
+  
+                //window.location.replace('/sign-in.html')
+                window.location.href =window.location.toString().split('/')[0] + "/chinaza/html/dist/sign-in.html"
+            }
+          });
+        }
+       
+      }
+    
       $('body').addClass('loaded');
-    });
+    })
 
   });
-
+  $('body').addClass('loaded');
   //Window Resize
   (function() {
     var delay = (function(){
@@ -1749,5 +1782,4 @@ $(document).ready(function(){
   });
   
 });
-
 
