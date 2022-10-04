@@ -65,16 +65,32 @@
               <input class="form-control" type="password" id="password" placeholder="Password" required>
             </div>
 
-            <div class="actions justify-content-between">
+            <div class="actions justify-content-between"  id="signInButton">
               <button class="btn btn-primary">
                 <span class="btn-icon icofont-login me-2"></span>Sign in
               </button>
             </div>
+
+            <button type="button" class="btn btn-primary btn-load" id="loadingButton">
+              Primary
+              <span class="btn-loader icofont-spinner"></span>
+            </button>
           </form>
+
 
           <p class="mt-5 mb-1"><a href="forgotPassword.html">Forgot password?</a></p>
     
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalWaring" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        Check your internet
       </div>
     </div>
   </div>
@@ -101,8 +117,14 @@
 
 
 <script>
+
+ 
+
   $("#myForm").on("submit", (event) => {
     event.preventDefault();
+
+    $("#signInButton").css("display","none")
+    $("#loadingButton").css("display","block")
 
     if (typeof $("#email").val() === 'string') {
 
@@ -119,24 +141,39 @@
               if(data.data.token){
                 sessionStorage.setItem("hasVisited", true);
                 localStorage.setItem('myUser',btoa(data.data.token))
-                window.location.replace('https://sunny-kataifi-7adb6f.netlify.app/index.html')
-                // window.location.replace('/index.html')
+                //window.location.replace('https://sunny-kataifi-7adb6f.netlify.app/index.html')
+                 window.location.replace('/index.html')
               }
              
           },
           error: function (request, status, error) {
-            console.log(status)
-            $("#alert1").text(JSON.parse(request.responseText).message)
+          
+            $("#signInButton").css("display","block")
+            $("#loadingButton").css("display","none")
+            if(request.readyState===0){ 
+
+              let myModal = new bootstrap.Modal(document.getElementById('modalWaring'), {})
+              myModal.toggle()
+              
+            }
+            else{
+              $("#alert1").text(JSON.parse(request.responseText).message)
+            }
+           
           }
         });
 
       }
       else {
+        $("#signInButton").css("display","block")
+        $("#loadingButton").css("display","none")
         $("#alert2").text("wrong type")
       }
   
     } 
     else {
+      $("#signInButton").css("display","block")
+      $("#loadingButton").css("display","none")
       $("#alert2").text("wrong type")
     }
 

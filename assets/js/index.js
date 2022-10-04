@@ -39,9 +39,9 @@ $.ajax({
                       
                       <div class="col-12">
                         <div class="card-body">
-                          <button class="btn btn-outline-info mt-1" data-bs-toggle="modal" data-bs-target="#modalPending_${data.data[i].id}">View</button>
-                          <button type="button" class="btn btn-primary mt-1" onclick="acceptDecline( ${data.data[i].id},true)">Accept</button>
-                          <button type="button" class="btn btn-secondary mt-1" onclick="acceptDecline( ${data.data[i].id},false)">Decline </button>
+                          <button class="btn btn-outline-info mt-3" data-bs-toggle="modal" data-bs-target="#modalPending_${data.data[i].id}">View</button>
+                          <button type="button" class="btn btn-primary mt-3" onclick="acceptDecline( ${data.data[i].id},true)">Accept</button>
+                          <button type="button" class="btn btn-secondary mt-3" style="background-color:rgb(221, 51, 51)" onclick="acceptDecline( ${data.data[i].id},false)">Decline </button>
                         </div>
                       </div>
                     </div>
@@ -214,14 +214,7 @@ $.ajax({
             
             }
     
-        }
-        else{
-            $("#pendingJob").append(`
-            <div class="alert alert-warning outline" role="alert">
-               No pending  job
-            </div>
-            `)
-        }
+        }  
 
         if(pendingJobCount==0){
           $("#pendingJob").append(`

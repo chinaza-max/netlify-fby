@@ -6,6 +6,8 @@ $.ajax({
     },
     success: function (data, text) {
         
+
+        //console.log(data)
         $("#profile2").attr("src",data.data.user.image);
         $("#firstName").val(data.data.user.first_name);
         $("#lastName").val(data.data.user.last_name);

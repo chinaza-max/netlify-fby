@@ -33,6 +33,8 @@ qrcode2.callback = (res) => {
 
 
   btnScanQR.onclick = () =>{
+
+    $("#stopScan").css("display","flex")
   navigator.mediaDevices
     .getUserMedia({ video: { facingMode: "environment" } })
     .then(function(stream) {
@@ -64,4 +66,21 @@ function tick() {
     } catch (e) {
       setTimeout(scan, 300);
     }
+  }
+
+  function stopScan(){
+    $("#btn-scan-qr").css("display","flex")
+    $("#stopScan").css("display","none")
+
+    outputData.innerText = '';
+    scanning = false;
+
+    video.srcObject.getTracks().forEach(track => {
+      track.stop();
+    });
+
+    qrResult.hidden = false;
+    btnScanQR.hidden = false;
+    canvasElement.hidden = true;
+
   }

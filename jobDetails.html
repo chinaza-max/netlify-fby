@@ -240,15 +240,16 @@
 
 
           <div class="card mb-10">
-            <div class="card-header">
-              Job reward
-            </div>
+           
             <div class="card-body">
+              <div class="card-header">
+                Job Reward
+              </div>
               <div class="table-responsive">
                 <table class="table table-bordered">
                   <thead>
                   <tr>
-                    <th scope="col">Per / Hour</th>
+                    <th scope="col">Per / hour</th>
                     <th scope="col">Hours worked </th>
                     <th scope="col">Earned</th>
                   </tr>
@@ -270,9 +271,7 @@
           <!-- START JOB SCHEDULE -->
 
           <div class="card">
-            <div class="card-header">
-              Job schedule
-            </div>
+           
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered table-sm">
@@ -301,6 +300,10 @@
                 Job type: <strong id="jobType"> Subscription</strong>
               </div>
               
+
+              <div class="card-header">
+                Job schedule
+              </div>
               <div class="table-responsive">
                 <table class="table table-dark table-sm">
                   <thead>
@@ -324,6 +327,9 @@
 
           <div class="card mt-4">
             <div class="card-body">
+              <div class="card-header">
+              Next Shift Begins in
+              </div>
               <div class="table-responsive ">
                 <table class="table table-sm ">
                   <thead>
@@ -349,7 +355,6 @@
                     <td style="text-align:Center">Minutes</td>
                     <td style="text-align:Center">Seconds</td>
                   </tr>
-                  
                   </tbody>
                 </table>
               </div>
@@ -364,13 +369,20 @@
              
               <button type="button" class="btn btn-outline-secondary mt-3">
                 <div class="icon icofont-tick-boxed"></div>
-                
-                Security  Check</button>
+                Safety  Check
+              </button>
+
               <button type="button" class="btn btn-outline-secondary mt-3" id="btn-scan-qr" >
 
                 <div class="icon icofont-qr-code"></div>
-                
-                Scan QR Code</button>
+                Scan QR Code
+              </button>
+
+              <button type="button" class="btn btn-outline-secondary mt-3" id="stopScan" onclick="stopScan()">
+
+                <div class="icon icofont-ui-close"></div>
+                Stop Scan
+              </button>
             </div>
 
 
@@ -380,11 +392,7 @@
             </div>
 
             <div class="alert alert-light outline text-dark mt-3" role="alert">
-
- 
               
-             
-
               <div class="thething">
                 <div id="switch">
                   <span class="handle">Check in</span>
@@ -403,8 +411,6 @@
 
           <!-- END Job SCHEDULE -->
 
-          
-
             <div class="add-action-box" onclick="smoothScroll(document.getElementById('chatContainer'))">
               <button class="btn btn-primary rounded-0 btn-sm" data-bs-toggle="modal" data-bs-target="#modal-2" >
                 <span style="font-size:15px ;">Report</span>
@@ -413,12 +419,8 @@
             </div>
           </div>
 
-
-
-         
           <!--START TABS-->
           
-
           <div class="card">
             <div class="card-body">
               <ul class="nav nav-tabs mb-3" role="tablist">
@@ -469,14 +471,11 @@
                   </div>
                 </div>
 
-
               </div>
             </div>
           </div>
 
           <!--END TABS-->
-
-
           
         </div>
     </main>
@@ -724,5 +723,7 @@
 <script src="/assets/js/jobDetails.js"></script>
 <script src="/assets/js/app.js"></script>
 <script src="/assets/js/qrCodeScanner.js"></script>
+
+
 </body>
 </html>

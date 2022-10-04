@@ -201,30 +201,32 @@
         <div class="page-content">
           <div class="row justify-content-center">
             <div class="col col-12 col-xl-8">
-              <form class="mb-4">
+              <form class="mb-4" id="formProfile">
                 <label>Photo</label>
                 <div class="form-group avatar-box d-flex align-items-center">
                   <img id="profile" src="/assets/content/user-400-1.jpg" width="100" height="100" alt="" class="rounded-500 me-4">
 
-                  <button class="btn btn-outline-primary" type="button">
-                    Change photo<span class="btn-icon icofont-ui-user ms-2"></span>
+                  <button class="btn btn-outline-primary" type="button" onClick="document.getElementById('profilePicturePath').click()" >
+                    Change photo<span class="btn-icon icofont-ui-user ms-2" ></span>
                   </button>
+                  <input type='file' onchange="checkImg(this)" id="profilePicturePath" style="display: none;" accept=".jpg, .jpeg, .png"/> 
+
                 </div>
 
                 <div class="form-group">
                   <label>First name</label>
-                  <input class="form-control" id="firstName" type="text" placeholder="First name" value="Liam">
+                  <input class="form-control" id="firstName" type="text" placeholder="First name" >
                 </div>
 
                 <div class="form-group">
                   <label>Last name</label>
-                  <input class="form-control" id="lastName" type="text" placeholder="Last name" value="Jouns">
+                  <input class="form-control" id="lastName" type="text" placeholder="Last name">
                 </div>
 
                 
                 <div class="form-group">
                   <label>Email address</label>
-                  <input class="form-control" id="email" type="text" placeholder="Last name" value="Jouns">
+                  <input class="form-control" id="email" type="text" placeholder="Last name" >
                 </div>
 
                 <div class="row">
@@ -237,7 +239,7 @@
                   <div class="col-12 col-sm-6">
                     <div class="form-group">
                       <label>Gender</label>
-                      <select class="selectpicker" title="gender" name="gender">
+                      <select class="selectpicker gender" title="gender" name="gender">
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                       </select>
@@ -247,19 +249,18 @@
 
                 <div class="form-group">
                   <label>Phone number</label>
-                  <input class="form-control" id="tel" type="number" placeholder="Age" value="0126596578">
+                  <input class="form-control" id="tel" type="number">
                 </div>
 
                 <div class="form-group">
                   <label>Address</label>
-                  <textarea id="address" class="form-control" placeholder="Address" rows="3">71 Pilgrim Avenue Chevy Chase, MD 20815</textarea>
+                  <textarea id="address" class="form-control" placeholder="Address ......" rows="3"></textarea>
                 </div>
 
-           
-
+          
                 <div class="form-group">
                   <label>Status</label>
-                  <select class="selectpicker" title="Status" name="status">
+                  <select class="selectpicker status" title="Status" name="status">
                     <option value="Available" >Available to Accept Jobs</option>
                     <option value="notAvailable">Not Available for Jobs</option>
                   </select>
@@ -267,7 +268,7 @@
 
                 <div class="row">
                   <div class="col">
-                    <button type="button" class="btn btn-success">Save changes</button>
+                    <button type="submit" class="btn btn-success">Save changes</button>
                   </div>
                   <div class="col text-end">
                     <button type="button" class="btn btn-outline-danger">
@@ -282,18 +283,18 @@
 
               <h4>Change password</h4>
 
-              <form>
+              <form id="formChangePassword">
                 <div class="row">
                   <div class="col-12 col-sm-6">
                     <div class="form-group">
                       <label>Current password</label>
-                      <input class="form-control" type="text" placeholder="Current password">
+                      <input class="form-control" type="text" placeholder="Current password" id="password" required>
                     </div>
                   </div>
                 </div>
             
 
-                <button type="button" class="btn btn-outline-dark">Change password</button>
+                <button type="submit" class="btn btn-outline-dark">Change password</button>
               </form>
               <hr>
 
@@ -304,21 +305,19 @@
                 <div class="row">
                   <div class="col-12 col-sm-6">
                     <div class="mb-3">
-                      <label for="formFile" class="form-label">Default file input example</label>
-                      <input class="form-control" type="file" id="licenceFile">
+                      <label for="formFile" class="form-label">Your file</label>
+                      <input class="form-control" type="file" id="licenceFile" required>
                     </div>
                   </div>
                   <div class="col-12 col-sm-6">
                     <div class="form-group">
                       <label>licence expiry date</label>
-                      <input class="form-control" id="expiryDate" type="date" >
+                      <input class="form-control" id="expiryDate" type="date" required>
                     </div>
                   </div>
                 </div>
 
-                
-            
-                <button type="button" class="btn btn-outline-dark">Submit</button>
+                <button type="submit" class="btn btn-outline-dark">Submit</button>
               </form>
             </div>
           </div>
@@ -485,21 +484,24 @@
 <script src="/assets/js/edit-account.js"></script>
 <script src="/assets/js/app.js"></script>
 <script>
+
+
+
     $("#formLicence").on("submit", (event) => {
-    
 
-      console.log("hhhhhhhhh")
       event.preventDefault();
+      const formData=new FormData()
+      const expiryDate = document.getElementById("expiryDate");
+      const inputFile = document.getElementById("licenceFile");
       
-    formData.append("expiryDate", file);
-    const form = document.getElementById("expiryDate");
-    const inputFile = document.getElementById("licenceFile");
-    
+        console.log(expiryDate)
+      for (const file of inputFile.files) {
+          formData.append("files", file);
+          console.log(file)
 
-    console.log(inputFile.files)
-    for (const file of inputFile.files) {
-        formData.append("files", file);
-    }
+      }
+
+  
    
 
 
@@ -531,7 +533,48 @@
 
   })
 
-</script>
+
+
+  $("#formChangePassword").on("submit", (event) => {
+
+    event.preventDefault();
+    const formData=new FormData()
+    const password = document.getElementById("password").value;
+    
+  })
+
+
+  $("#formProfile").on("submit", (event) => {
+
+    event.preventDefault();
+    const formData=new FormData()
+    const lastName= document.querySelector("#firstName").value;
+    const firstName = document.querySelector("#lastName").value;
+    const email = document.querySelector("#email").value;
+    const dataOfBirth = document.querySelector("#dataOfBirth").value;
+    const gender =$('.gender').selectpicker('val')
+    const tel = document.querySelector("#tel").value;
+    const address = document.querySelector("#address").value;
+    const status = $('.status').selectpicker('val')
+
+    //const img = document.querySelector("password").value;
+  
+    console.log(lastName,firstName,email,dataOfBirth,gender,status,tel,address)
+    
+
+  
+  
+  
+  
+  
+  })
+
+  function checkImg(e){
+      document.getElementById('profile').src = window.URL.createObjectURL(e.files[0])
+  }
+
+      
+</script> 
 
 </body>
 </html>

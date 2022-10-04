@@ -1546,41 +1546,38 @@
   $(window).on('load', function(){
     
 
-    console.log("kkkkkkkkk")
-    $.ready.then(function(){
-      
-      if((!sessionStorage.getItem("hasVisited"))&&(window.location.pathname!="/sign-in.html")){
+    if((!sessionStorage.getItem("hasVisited"))&&(window.location.pathname!="/sign-in.html")&&(window.location.pathname!="/forgotPassword.html")){
         
-        //window.location.href =window.location.toString().split('/')[0] + "/dist/sign-in.html"
-        window.location.replace('https://sunny-kataifi-7adb6f.netlify.app/sign-in.html')
-        //window.location.replace('/sign-in.html')
-       // window.location.href =window.location.toString().split('/')[0] + "/chinaza/html/dist/sign-in.html"
-       
-      }
-      else{
+      //window.location.href =window.location.toString().split('/')[0] + "/dist/sign-in.html"
+     // window.location.replace('https://sunny-kataifi-7adb6f.netlify.app/sign-in.html')
+      window.location.replace('/sign-in.html')
+     // window.location.href =window.location.toString().split('/')[0] + "/chinaza/html/dist/sign-in.html"
+     
+    }
+    else{
 
-        if(window.location.pathname!="/sign-in.html"){
-          $.ajax({
-            type: "get", url: "https://fby-security.herokuapp.com/api/v1/auth/",
-            headers: {
-                "Authorization": `Bearer ${atob(localStorage.getItem("myUser"))}`
-            },
-            success: function (data, text) {
-              console.log("change")
-              $("#profile").attr("src",data.data.user.image);
-            },
-            error: function (request, status, error) {
-              console.log("errorr errorr errorr errorr errorr errorr")
-                localStorage.removeItem("myUser")
-               // window.location.replace('https://sunny-kataifi-7adb6f.netlify.app/sign-in.html')
-  
-                //window.location.replace('/sign-in.html')
-                window.location.href =window.location.toString().split('/')[0] + "/chinaza/html/dist/sign-in.html"
-            }
-          });
-        }
-       
+      if(window.location.pathname!="/sign-in.html"){
+        $.ajax({
+          type: "get", url: "https://fby-security.herokuapp.com/api/v1/auth/",
+          headers: {
+              "Authorization": `Bearer ${atob(localStorage.getItem("myUser"))}`
+          },
+          success: function (data, text) {
+            $("#profile").attr("src",data.data.user.image);
+          },
+          error: function (request, status, error) {
+            console.log("errorr errorr errorr errorr errorr errorr")
+              localStorage.removeItem("myUser")
+              //window.location.replace('https://sunny-kataifi-7adb6f.netlify.app/sign-in.html')
+
+              window.location.replace('/sign-in.html')
+              //window.location.href =window.location.toString().split('/')[0] + "/chinaza/html/dist/sign-in.html"
+          }
+        });
       }
+     
+    }
+    $.ready.then(function(){
     
       $('body').addClass('loaded');
     })

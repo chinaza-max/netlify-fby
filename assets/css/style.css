@@ -2463,7 +2463,12 @@ input:-webkit-autofill {
   max-width: 400px;
   margin: 10px auto;
 }
-
+#loadingButton{
+  display: none;
+}
+#stopScan{
+  display: none;
+}
 
 
 label {

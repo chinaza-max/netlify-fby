@@ -244,7 +244,7 @@
                     <div class="row" id="pendingJob">
                       <div  class="btn btn-load jobLoader" style="background-color:white; border: none;">
                         Light
-                        <span class="btn-loader icofont-spinner"></span>
+                        <span  class="btn-loader icofont-spinner"></span>
                       </div>
                       
                     </div>
@@ -529,140 +529,18 @@
                   </select>
                 </div>
 
-                <div class="form-group">
-                  <label>Status</label>
-                  <div class="form-group mb-md-0">
-                    <select class="selectpicker">
-                      <option selected>Ongoing</option>
-                      <option>Awaiting Payment</option>
-                      <option>Completed</option>
-                      <option>Active</option>
-                      <option>Suspended</option>
-                    </select>
-                  </div>
-                </div>
-               
-                <div class="card mb-10">
-                  <div class="card-header">
-                     Schedule
-                  </div>
-                  <div class="card-body">
-                    <div class="form-group">
-                      <label>Job type</label>
-                      <div class="form-group mb-md-0">
-                        <select class="selectpicker" id="JobTypeSelect" >
-                          <option selected>Select</option>
-                          <option value="Instant">Instant/one off</option>
-                          <option value="Ongoing">Ongoing</option>
-                          <option value="Temporary">Temporary</option>
-                          <option value="Permanent">Permanent</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
+             
+              
               <div class="row StartDateEndDate"> 
                   <div class="col-sm-6">
                     <div class="form-group">
-                        <label>Start date </label>
+                        <label>Date </label>
                         <input class="form-control" type="date">
                     </div>
                   </div>
-
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                        <label>End date</label>
-                        <input class="form-control" type="date" >
-                    </div>
-                  </div>
-
               </div>
 
-                <div class="row startDate" >    
-                  <div class="col-12">
-                      <div class="form-group">
-                        <label>Start Date </label>
-                        <input class="form-control" type="date">
-                      </div>
-                  </div>
-                </div>
-
-            
-
-                <div class="row  dateTime">    
-                  <div class="col-12 col-sm-6">
-                      <div class="form-group">
-                        <label>Start date </label>
-                        <input class="form-control" type="date">
-                      </div>
-                  </div>
-                  <div class="col-12 col-sm-6">
-                      <div class="form-group">
-                        <label>Start time</label>
-                        <input class="form-control" type="time" >
-                      </div>
-                  </div>
-                </div>
-
-                <div class="form-group" id="JobTypeOccurance">
-                  <label>JobType occurance</label>
-                  <div class="form-group mb-md-0">
-                    <select class="selectpicker" id="JobTypeOccuranceType">
-                      <option >Select</option>
-                      <option value="Occurance">Occurance</option>
-                      <option value="Manually">Manually occurance</option>
-                    </select>
-                  </div>
-                </div>
-              
-                <div class="form-group" id="manually">
-                  <div class="addMultipleItem"  >
-                    <label>Set manually schedule</label>
-                    <div class="container-fluid px-0 px-sm-4 py-0 mx-auto">
-                      <div class="row d-flex justify-content-center">
-                          <div class="col-md-12 col-lg-12 col-xl-12">
-                              <div class="card border-0">
-                                  <div class="row px-3">
-                                      <div class="col-sm-10 list">
-                                          <div class="mb-2 row justify-content-between px-3"> 
-                                              <input class="mb-2 mob" style="max-width:120px;" type="date" >
-                                              <div class="mob" style="max-width:180px;" > <label class="text-grey mr-1">From</label> <input class="ml-1" type="time" name="from"> </div>
-                                              <div class="mob mb-2" style="max-width:180px;"> <label class="text-grey mr-4">To</label> <input class="ml-1" type="time" name="to"> </div>
-                                              <div class="mt-1 cancel fa fa-times text-danger" style="max-width:15px;"></div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="row px-3 mt-3">
-                                      <div class="col-sm-2"></div>
-                                      <div class="col-sm-10">
-                                          <div class="row px-3">
-                                              <div class="fa fa-plus-circle text-secondary add" style="max-width:20px;"></div>
-                                              <p class="text-secondary ml-3 add" style="max-width:50px;">Add</p>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-             
-
-                <div class="form-group" id="Recurring" onMouseOver="this.style.cursor='pointer'" data-bs-toggle="modal" data-bs-target="#RecurringRule">
-                  <label>Set schedule</label>
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="alert alert-secondary with-before-icon" role="alert">
-                        <div class="alert-icon"><i class="icofont-edit"></i></div>
-                        <div class="alert-content"><h5 id="scheduleData">Recurring Daily; Repeat every 1 day(s); Run until: 2022-08-17;</h3> </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row StartTimeEndTime" >    
+                <div class="row " >    
                   <div class="col-12 col-sm-6">
                       <div class="form-group">
                         <label>Start time </label>
@@ -677,170 +555,7 @@
                   </div>
                 </div>
                <hr>
-                <div class="card text-dark border-dark mt-4">  
-                  <div class="card-body">
-                    This section is optional depend on customer requirement.
-                    The Instruction covers all staff.
-                  </div>
-                </div>
-
-                <div class="form-group" >
-                  <label>Special Instruction Type</label>
-                  <div class="form-group mb-md-0">
-                    <select class="selectpicker" id="SpecialInstructionType">
-                      <option selected>Select</option>
-                      <option value="Repeat">Repeat</option>
-                      <option value="manually">Follow manually input date below</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-group" id="SpecialInstruction1">     
-                  <div class="addMultipleItem">
-                    <label>Special Instruction<span class="badge badge-secondary badge-inside">Optional</span></label>
-                    <div class="container-fluid px-0 px-sm-4 py-0 mx-auto">
-                      <div class="row d-flex justify-content-center">
-                          <div class="col-md-12 col-lg-12 col-xl-12">
-                              <div class="card border-0">
-                                  <div class="row px-3">
-                                      <div class="col-sm-10 list2">
-                                          <div class="mb-2 row justify-content-between px-3"> 
-                                            <textarea class="form-control border-secondary" rows="4" placeholder="Enter Special Instruction ...."></textarea>
-                                              <div class="mob" style="min-width:295px;"> <label class="text-grey mr-1" >Date</label> <input class="ml-1" type="date" name="from"> </div>
-                                              <div class="mt-1 cancel fa fa-times text-danger" style="max-width:15px;"></div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="row px-3 mt-3">
-                                      <div class="col-sm-2"></div>
-                                      <div class="col-sm-10">
-                                          <div class="row px-3">
-                                              <div class="fa fa-plus-circle text-secondary add2" style="max-width:20px;"></div>
-                                              <p class="text-secondary ml-3 add2" style="max-width:50px;">Add</p>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group" id="SpecialInstruction2">     
-                  <div class="addMultipleItem">
-                    <label>Special Instruction<span class="badge badge-secondary badge-inside">Optional</span></label>
-                    <div class="container-fluid px-0 px-sm-4 py-0 mx-auto">
-                      <div class="row d-flex justify-content-center">
-                          <div class="col-md-12 col-lg-12 col-xl-12">
-                              <div class="card border-0">
-                                  <div class="row px-3">
-                                      <div class="col-sm-10 list3">
-                                          <div class="mb-2 row justify-content-between px-3"> 
-                                              <textarea class="form-control border-secondary" style="max-width:280px;" rows="4" placeholder="Enter Special Instruction ...."></textarea>
-                                              <div class="mt-1 cancel fa fa-times text-danger" style="max-width:15px;"></div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="row px-3 mt-3">
-                                      <div class="col-sm-2"></div>
-                                      <div class="col-sm-10">
-                                          <div class="row px-3">
-                                              <div class="fa fa-plus-circle text-secondary add3" style="max-width:20px;"></div>
-                                              <p class="text-secondary ml-3 add3" style="max-width:50px;">Add</p>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="form-group">
-                  <label>Special Task Type</label>
-                  <div class="form-group mb-md-0">
-                    <select class="selectpicker" id="SpecialTaskType">
-                      <option selected>Select</option>
-                      <option value="Repeat">Repeat</option>
-                      <option value="manually">Follow manually input date below</option>
-                    </select>
-                  </div>
-                </div>
-
-                
-
-                <div class="form-group" id="SpecialTask1">
-                  <div class="addMultipleItem">
-                    <label>Special Task<span class="badge badge-secondary badge-inside">Optional</span></label>
-                    <div class="container-fluid px-0 px-sm-4 py-0 mx-auto">
-                      <div class="row d-flex justify-content-center">
-                          <div class="col-md-12 col-lg-12 col-xl-12">
-                              <div class="card border-0">
-                                  <div class="row px-3">
-                                      <div class="col-sm-10 list">
-                                          <div class="mb-2 row justify-content-between px-3"> 
-                                              <input class="mb-2 mob"  type="text"  placeholder="Enter title">
-                                              <textarea class="form-control border-secondary" rows="4" placeholder="Enter Special task ...."></textarea>
-
-                                              <div class="mob mb-2" style="max-width:200px;"> <label class="text-grey mr-4">Time</label> <input class="ml-1" type="time" name="to"> </div>
-                                              <div class="mt-1 cancel fa fa-times text-danger" style="max-width:15px;"></div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="row px-3 mt-3">
-                                      <div class="col-sm-2"></div>
-                                      <div class="col-sm-10">
-                                          <div class="row px-3">
-                                              <div class="fa fa-plus-circle text-secondary add" style="max-width:20px;"></div>
-                                              <p class="text-secondary ml-3 add" style="max-width:50px;">Add</p>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group"  id="SpecialTask2">
-                  <div class="addMultipleItem">
-                    <label>Special Task<span class="badge badge-secondary badge-inside">Optional</span></label>
-                    <div class="container-fluid px-0 px-sm-4 py-0 mx-auto">
-                      <div class="row d-flex justify-content-center">
-                          <div class="col-md-12 col-lg-12 col-xl-12">
-                              <div class="card border-0">
-                                  <div class="row px-3">
-                                      <div class="col-sm-10 list5">
-                                          <div class="mb-2 row justify-content-between px-3"> 
-                                              <input class="mb-2 mob w-100"  type="text"  placeholder="Enter title">
-                                              <textarea class="form-control border-secondary" rows="4" placeholder="Enter Special Instruction ...."></textarea>
-
-                                              <div class="mob mb-2" style="min-width:295px;"> <label class="text-grey mr-4">Time</label> <input class="ml-1" type="time" name="to"> </div>
-                                              <div class="mob mb-2" style="min-width:295px;"> <label class="text-grey mr-4">Date</label> <input class="ml-1" type="date" name="to"> </div>
-                                              <div class="mt-1 cancel fa fa-times text-danger" style="max-width:15px;"></div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="row px-3 mt-3">
-                                      <div class="col-sm-2"></div>
-                                      <div class="col-sm-10">
-                                          <div class="row px-3">
-                                              <div class="fa fa-plus-circle text-secondary add5" style="max-width:20px;"></div>
-                                              <p class="text-secondary ml-3 add5" style="max-width:50px;">Add</p>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
+               
               </form>
              
             </div>

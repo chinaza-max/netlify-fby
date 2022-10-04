@@ -14,7 +14,7 @@ self.addEventListener("install",(event)=>{
             cache.addAll(assets)
         })
     )
-})
+})  
 
 self.addEventListener("activate",(event)=>{
     console.log("activated")

@@ -2,116 +2,6 @@ let pending=0;
 let active=0
 let completed=0
 
-document.getElementById("SpecialInstruction1").style.display="none"
-document.getElementById("SpecialInstruction2").style.display="none"
-document.getElementById("SpecialTask1").style.display="none"
-document.getElementById("SpecialTask2").style.display="none"
-
-
-
-
-document.getElementById("SpecialInstructionType").addEventListener("change", function() {
-
-  if(this.value=="Repeat"){
-    document.getElementById("SpecialInstruction2").style.display="block";
-    document.getElementById("SpecialInstruction1").style.display="none";
-
-  }
-  else if(this.value=="manually"){
-    document.getElementById("SpecialInstruction1").style.display="block";
-    document.getElementById("SpecialInstruction2").style.display="none";
-  }
-  else{
-    document.getElementById("SpecialInstruction1").style.display="none";
-    document.getElementById("SpecialInstruction2").style.display="none";
-  }
-
-});
-
-document.getElementById("SpecialTaskType").addEventListener("change", function() {
-
-  if(this.value=="Repeat"){
-    document.getElementById("SpecialTask1").style.display="block";
-    document.getElementById("SpecialTask2").style.display="none";
-
-  }
-  else if(this.value=="manually"){
-    document.getElementById("SpecialTask2").style.display="block";
-    document.getElementById("SpecialTask1").style.display="none";
-  }
-  else{
-    document.getElementById("SpecialTask1").style.display="none";
-    document.getElementById("SpecialTask2").style.display="none";
-  }
-
-});
-
-
-
-
-
-
-
-function displayNone(){
-  document.querySelector(".StartTimeEndTime").style.display="none";
-  document.querySelector(".StartDateEndDate").style.display="none";
-  document.querySelector(".dateTime").style.display="none";
-  document.querySelector(".startDate").style.display="none";  
-  document.querySelector("#JobTypeOccurance").style.display="none";
-  document.querySelector("#Recurring").style.display="none";
-  document.querySelector("#manually").style.display="none";
-}
-  
-displayNone()
-
-document.getElementById("JobTypeSelect").addEventListener("change", function() {
- 
-  console.log( document.getElementById("JobTypeOccuranceType").selectedIndex)
-  //document.getElementById("JobTypeOccuranceType").selectedIndex=1;
-  displayNone()
-  if(this.value=="Instant"){
-    document.querySelector(".startDate").style.display="block";
-    document.querySelector(".StartTimeEndTime").style.display="flex";
-  }
-  else if(this.value=="Ongoing"){
-    document.querySelector(".startDate").style.display="block";  
-    document.querySelector("#JobTypeOccurance").style.display="block";  
-    document.querySelector(".StartTimeEndTime").style.display="flex";
-  }
-  else if(this.value=="Temporary"){
-
-    document.querySelector(".StartDateEndDate").style.display="flex";
-    document.querySelector("#JobTypeOccurance").style.display="block";  
-    document.querySelector(".StartTimeEndTime").style.display="flex";
-  }
-  else if(this.value=="Permanent"){
-    
-    document.querySelector(".startDate").style.display="flex";
-    document.querySelector("#JobTypeOccurance").style.display="block";  
-    document.querySelector(".StartTimeEndTime").style.display="flex";
-  }
- 
-});
-
-
-document.getElementById("JobTypeOccuranceType").addEventListener("change", function() {
-  
-  if(this.value=="Occurance"){
-    document.querySelector("#Recurring").style.display="block";
-    document.querySelector("#manually").style.display="none";
-  }
-  else if(this.value=="Manually"){
-    document.querySelector("#Recurring").style.display="none";
-    document.querySelector("#manually").style.display="block";
-  }
-  else{
-    document.querySelector("#manually").style.display="none";
-    document.querySelector("#Recurring").style.display="none";
-
-  }
-
-});
-
 
 
 
@@ -152,9 +42,9 @@ $.ajax({
                   
                   <div class="col-12">
                     <div class="card-body">
-                      <button class="btn btn-outline-info mt-1" data-bs-toggle="modal" data-bs-target="#modalPending_${data.data[i].id}">View</button>
-                      <button type="button" class="btn btn-primary mt-1" onclick="acceptDecline( ${data.data[i].id},true)">Accept </button>
-                      <button type="button" class="btn btn-secondary mt-1" onclick="acceptDecline( ${data.data[i].id},false)">Decline </button>
+                      <button class="btn btn-outline-info mt-3" data-bs-toggle="modal" data-bs-target="#modalPending_${data.data[i].id}">View</button>
+                      <button type="button" class="btn btn-primary mt-3" onclick="acceptDecline( ${data.data[i].id},true)">Accept </button>
+                      <button type="button" class="btn btn-secondary mt-3" style="background-color:rgb(221, 51, 51)" onclick="acceptDecline( ${data.data[i].id},false)">Decline </button>
                     </div>
                   </div>
                 </div>
@@ -331,38 +221,38 @@ $.ajax({
             $("#pendingJob").append(
               `<nav aria-label="...">
               <ul class="pagination">
-                <li class="page-item1 disabled" >
+                <li class="page-item disabled item2" onclick="nextfilter(0,'item2')" >
                   <span class="page-link">Previous</span>
                 </li>
-                <li class="page-item1" onclick="nextfilter(1)"><a class="page-link" href="#">1</a></li>
-                <li class="page-item1 active" onclick="nextfilter(2)">
+                <li class="page-item item2" onclick="nextfilter(1,'item2')"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active item2" onclick="nextfilter(2,'item2')">
                   <span class="page-link">
                     2
                     <span class="sr-only">(current)</span>
                   </span>
                 </li>
-                <li class="page-item1" onclick="nextfilter(3)"><a class="page-link" href="#">3</a></li>
-                <li class="page-item1">
+                <li class="page-item item2" onclick="nextfilter(3,'item2')"><a class="page-link" href="#">3</a></li>
+                <li class="page-item item2" onclick="nextfilter(4,'item2')">
                   <a class="page-link" href="#">Next</a>
                 </li>
               </ul>
-            </nav> `);
+            </nav> `)
         
             $("#activeJob").append(
               `<nav aria-label="...">
               <ul class="pagination">
-                <li class="page-item disabled">
+                <li class="page-item item1 disabled"  onclick="nextfilter(0,'item1') ">
                   <span class="page-link">Previous</span>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active">
+                <li class="page-item item1" onclick="nextfilter(1,'item1')"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active item1" onclick="nextfilter(2,'item1')">
                   <span class="page-link">
                     2
                     <span class="sr-only">(current)</span>
                   </span>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
+                <li class="page-item item1" onclick="nextfilter(3,'item1')"><a class="page-link" href="#" >3</a></li>
+                <li class="page-item item1" onclick="nextfilter(4,'item1')">
                   <a class="page-link" href="#">Next</a>
                 </li>
               </ul>
@@ -414,13 +304,14 @@ function setJobDetail(val){
 }
 
 
-function nextfilter(val){
-  let element = document.querySelectorAll(".page-item1");
-  element.forEach(()=>{
+function nextfilter(val,myClass){
 
+  let element = document.querySelectorAll(`.${myClass}`);
+  element.forEach((e)=>{
+    e.classList.remove("active");
   })
-  element.classList.remove("active");
 
+  element[val].classList.add('active');
 }
 
 
