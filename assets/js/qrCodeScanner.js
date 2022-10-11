@@ -16,6 +16,7 @@ let scanning = false;
 
 
 qrcode2.callback = (res) => {
+
     if (res) {
       outputData.innerText = res;
       scanning = false;
@@ -34,7 +35,7 @@ qrcode2.callback = (res) => {
 
   btnScanQR.onclick = () =>{
 
-    $("#stopScan").css("display","flex")
+   
   navigator.mediaDevices
     .getUserMedia({ video: { facingMode: "environment" } })
     .then(function(stream) {
@@ -47,7 +48,17 @@ qrcode2.callback = (res) => {
       video.play();
       tick();
       scan();
-    });
+    })
+    .catch((e)=>{
+      Swal.fire({
+        icon:"warning",
+        title:'Permission required',
+        text: 'Allow camera access',
+        confirmButtonColor: '#1c0d2e',
+        footer:e
+      })
+    })
+    
 };
 
 
@@ -61,10 +72,20 @@ function tick() {
 
 
   function scan() {
+
+    if(scanning==true){
+      $("#stopScan").css("display","flex")
+    }
+
+    console.log("check")
     try {
       qrcode2.decode();
+      
     } catch (e) {
-      setTimeout(scan, 300);
+      if(scanning==true){
+        setTimeout(scan, 300);
+      }
+
     }
   }
 

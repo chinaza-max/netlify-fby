@@ -1,6 +1,6 @@
 
-const staticCacheName="site-static2"
-const dynamicCacheName="site-dynamic2"
+const staticCacheName="site-static1"
+const dynamicCacheName="site-dynamic1"
 const assets=[
     '/index.html',
     '/fallBack.html',

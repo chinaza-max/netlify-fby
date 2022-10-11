@@ -42,7 +42,7 @@ $.ajax({
                   
                   <div class="col-12">
                     <div class="card-body">
-                      <button class="btn btn-outline-info mt-3" data-bs-toggle="modal" data-bs-target="#modalPending_${data.data[i].id}">View</button>
+                      <button class="btn btn-outline-primary mt-3" data-bs-toggle="modal" data-bs-target="#modalPending_${data.data[i].id}">View</button>
                       <button type="button" class="btn btn-primary mt-3" onclick="acceptDecline( ${data.data[i].id},true)">Accept </button>
                       <button type="button" class="btn btn-secondary mt-3" style="background-color:rgb(221, 51, 51)" onclick="acceptDecline( ${data.data[i].id},false)">Decline </button>
                     </div>
@@ -173,7 +173,7 @@ $.ajax({
                   <div class="modal-footer">
                     <div class="actions">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary" >Accept </button>
+                      <button type="button" class="btn btn-primary">Accept </button>
                     </div>
                   </div>
                 </div>
@@ -205,7 +205,7 @@ $.ajax({
                   
                   <div class="col-12">
                     <div class="card-body">
-                      <a onclick="setJobDetail(${data.data[i].id})" href="jobDetails.html" class="btn btn-outline-info">View</a>
+                      <a onclick="setJobDetail(${data.data[i].id})" href="jobDetails.html" class="btn btn-outline-primary mt-3">View</a>
                      
                     </div>
                   </div>
@@ -344,6 +344,8 @@ function acceptDecline(id,val){
                 'Declined!',
                 'success'
               )
+
+              window.location.reload();
             }
           },
           error: function (request, status, error) {
@@ -380,6 +382,7 @@ function acceptDecline(id,val){
             showConfirmButton: false,
             timer: 1500
           })
+          window.location.reload();
         }
       },
       error: function (request, status, error) {

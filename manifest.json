@@ -3,7 +3,7 @@
     "background_color": "rgb(28,13, 46)",
     "display": "standalone",
     "scope": "/",
-    "start_url": "/index.html",
+    "start_url": "/sign-in.html",
     "name": "SECURITY APP FBY",
     "short_name": "FBY",
     "description": "portrait-primary",

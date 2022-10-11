@@ -62,7 +62,6 @@ function conditionMove() {
         }
         function showPosition(position) {
          
-          console.log("hhhhhhppppppppppppp")
           $.ajax({
             type: "post", url: "https://fby-security.herokuapp.com/api/v1/job/check-in",
             data: {
@@ -263,57 +262,7 @@ function conditionMove2() {
 
           mySchedule=data.data[i].schedule
           startCountDown()
-      /*
-          // Update the count down every 1 second
-          let x = setInterval(function() {
-
-            // Get today's date and time
-            let now = new Date().getTime();
-              
-            // Find the distance between now and the count down date
-            let distance = countDownDate - now;
-              
-            // Time calculations for days, hours, minutes and seconds
-            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-
-            // Output the result in an element with id="demo"
-            if(days<0||hours<0||minutes<0||seconds<0){}
-            else{ 
-              $("#days").text(days);
-              $("#hours").text(hours);
-              $("#minute").text(minutes);
-              $("#second").text(seconds);
-            }
-           
-
-            // If the count down is over, write some text 
-            if (distance < 0) {
-
-          
-              if(data.data[i].schedule.length-1>dateIndex){
-                dateIndex++;
-                countDownDate = new Date(data.data[i].schedule[dateIndex].check_in_date).getTime();
-                
-              }
-              else{
-
-                $("#days").text(00);
-                $("#hours").text(00);
-                $("#minute").text(00);
-                $("#second").text(00);
-                clearInterval(x);
-              
-              }
-             
-            }
-          }, 1000)
-          
-          */
-
+   
           $("#jobType").text(data.data[i].job_type);
 
 
@@ -417,8 +366,139 @@ function conditionMove2() {
           break
       }
     }
-
  }
+
+
+
+ const sendMessage=document.getElementById("sendMessage")
+ const openCamera=document.getElementById("openCamera")
+
+ document.getElementById("sendMessage").addEventListener("click", ()=>{
+
+    let myMessage=document.getElementById("myMessage").value
+    document.getElementById("myMessage").value=''
+    let nodes=document.querySelectorAll(".chat-msg")
+    let nodes2=document.querySelectorAll(".chat-msg .chat-msg-content")
+
+    if(nodes.length==0){
+    }
+    else{
+      let classNames=nodes[nodes.length- 1].classList
+
+      if(classNames[classNames.length-1]=="owner"){
+
+        $($(".chat-msg .chat-msg-content")[nodes2.length- 1]).append(
+          `<div class="chat-msg-text">${myMessage}</div>
+          `
+        )
+      
+      }
+ 
+      else{
+
+        $("#chat-area-main-id").append(
+          ` <div class="chat-msg owner">
+          <div class="chat-msg-profile">
+            <img class="chat-msg-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%281%29.png" alt="" />
+            <div class="chat-msg-date">Message seen 1.22pm</div>
+          </div>
+          <div class="chat-msg-content">
+            <div class="chat-msg-text">${myMessage}</div>
+          </div>
+        </div> `)
+  
+      }
+
+    }
+    sendMessage.style.display="none"
+    openCamera.style.display="block"
+    smoothScroll(document.getElementById('chatContainer'))
+});
+
+
+
+
+
+
+
+
+function checkImg(e){
+
+  $(document).ready(function(){
+    $("#preUploadImage").modal('show');
+  });
+  document.getElementById('preUploadImageTitle').innerHTML=e.files[0].name
+  document.getElementById('myPreUploadImage').src = window.URL.createObjectURL(e.files[0])
+
+}
+
+function postAttachment(){
+
+    const attachment= document.getElementById("attachment");
+  
+    let src=window.URL.createObjectURL(attachment.files[0])
+
+    let nodes=document.querySelectorAll(".chat-msg")
+    let nodes2=document.querySelectorAll(".chat-msg .chat-msg-content")
+
+    if(nodes.length==0){
+    }
+    else{
+      let classNames=nodes[nodes.length- 1].classList
+
+      if(classNames[classNames.length-1]=="owner"){
+
+        $($(".chat-msg .chat-msg-content")[nodes2.length- 1]).append(
+          `<div class="chat-msg-text">
+            <img src=${src} />
+          </div>
+          `
+        )
+      
+      }
+ 
+      else{
+
+        $("#chat-area-main-id").append(
+          ` <div class="chat-msg owner">
+          <div class="chat-msg-profile">
+            <img class="chat-msg-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%281%29.png" alt="" />
+            <div class="chat-msg-date">Message seen 1.22pm</div>
+          </div>
+          <div class="chat-msg-content">
+            <div class="chat-msg-text">
+            <img src=${src} />
+            </div>
+          </div>
+        </div> `)
+  
+      }
+
+    }
+    smoothScroll(document.getElementById('chatContainer'))
+}
+
+
+
+
+
+sendMessage.style.display="none"
+document.getElementById("myMessage").addEventListener('input', function (evt) {
+
+    if(this.value==""){
+      sendMessage.style.display="none"
+      openCamera.style.display="block"
+    }
+    else{
+      sendMessage.style.display="block"
+      openCamera.style.display="none"
+    }
+
+
+});
+
+
+
 /*
     Reference 
 

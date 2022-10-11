@@ -39,7 +39,7 @@ $.ajax({
                       
                       <div class="col-12">
                         <div class="card-body">
-                          <button class="btn btn-outline-info mt-3" data-bs-toggle="modal" data-bs-target="#modalPending_${data.data[i].id}">View</button>
+                          <button class="btn btn-outline-primary mt-3" data-bs-toggle="modal" data-bs-target="#modalPending_${data.data[i].id}">View</button>
                           <button type="button" class="btn btn-primary mt-3" onclick="acceptDecline( ${data.data[i].id},true)">Accept</button>
                           <button type="button" class="btn btn-secondary mt-3" style="background-color:rgb(221, 51, 51)" onclick="acceptDecline( ${data.data[i].id},false)">Decline </button>
                         </div>
@@ -267,6 +267,7 @@ $.ajax({
                   'Declined!',
                   'success'
                 )
+                window.location.reload();
               }
             },
             error: function (request, status, error) {
@@ -303,13 +304,16 @@ $.ajax({
               showConfirmButton: false,
               timer: 1500
             })
+            window.location.reload();
           }
+
         },
         error: function (request, status, error) {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'Something went wrong!',
+            confirmButtonColor: '#1c0d2e',
             footer: `${ $(JSON.parse(request.responseText).message)}`
           })
         }

@@ -1613,8 +1613,8 @@ body.loaded .app-navbar .navbar-skeleton {
 }
 .active .btn.btn-outline-primary,
 .btn.btn-outline-primary:hover {
-  background: rgb(28,13, 46);;
-  color: #fff;
+  background: rgb(249, 249, 249);;
+  color:rgb(28,13, 46);
 }
 .btn.btn-secondary {
   background: #626364;
@@ -1626,9 +1626,16 @@ body.loaded .app-navbar .navbar-skeleton {
   color: #fff;
 }
 .btn.btn-outline-secondary {
-  border-color: #626364;
-  color: #626364;
+  border-color: green;
+  color: green;
 }
+
+/*
+.btn.btn-outline-secondary {
+  border-color: green;
+  color:green;
+}
+*/
 .active .btn.btn-outline-secondary,
 .btn.btn-outline-secondary:hover {
   background: #626364;
@@ -1662,10 +1669,10 @@ body.loaded .app-navbar .navbar-skeleton {
   color: #000;
 }
 .btn.btn-outline-info {
-  border-color: rgb(28,13, 46);
-  color: rgb(28,13, 46);
+  border-color: #ed5564;
+  color: #ed5564;
 }
-.active .btn.btn-outline-info,
+.active /assets,
 .btn.btn-outline-info:hover {
   background: transparent;
   color: #000;

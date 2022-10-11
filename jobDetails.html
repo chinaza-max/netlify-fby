@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>FBY security app</title>
-  <meta name="keywords" content="MedicApp">
+  <meta name="keywords" content="FBY app">
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -206,6 +206,10 @@
         </div>
 
         <header class="page-header" style="clear: right;">
+          <div   class="btn btn-load jobLoader w-95" style="background-color:white; border: none;box-shadow: none;"> 
+            Light
+            <span class="btn-loader icofont-spinner"></span>
+          </div>
           <h1 class="page-title" id="myPageTitle"  style="clear: both;"></h1>
         </header>
         
@@ -224,7 +228,9 @@
                     </div>
                     <div class="col">
                       <div>Job Address</div>
-                      <span id="address">71 Pilgrim Avenue Chevy Chase, MD 20815</span>
+                      <span id="address">
+                       
+                      </span>
                       
                     </div>
                   </div>
@@ -257,9 +263,9 @@
                   <tbody>
                  
                   <tr>
-                    <td id="amountPerHour">$1</td>
-                    <td id="hoursWorked">1</td>
-                    <td id="earned">$1</td>
+                    <td id="amountPerHour">0</td>
+                    <td id="hoursWorked">0</td>
+                    <td id="earned">0</td>
                   </tr>
 
                   </tbody>
@@ -302,7 +308,7 @@
               
 
               <div class="card-header">
-                Job schedule
+                Job Schedule
               </div>
               <div class="table-responsive">
                 <table class="table table-dark table-sm">
@@ -367,18 +373,18 @@
 
             <div class="elements-list  mt-3">
              
-              <button type="button" class="btn btn-outline-secondary mt-3">
+              <button type="button" class="btn btn-outline-secondary mt-3" >
                 <div class="icon icofont-tick-boxed"></div>
                 Safety  Check
               </button>
 
-              <button type="button" class="btn btn-outline-secondary mt-3" id="btn-scan-qr" >
-
+              <button type="button" class="btn btn-outline-primary mt-3" id="btn-scan-qr" >
+ 
                 <div class="icon icofont-qr-code"></div>
                 Scan QR Code
               </button>
 
-              <button type="button" class="btn btn-outline-secondary mt-3" id="stopScan" onclick="stopScan()">
+              <button type="button" class="btn btn-outline-danger mt-3" id="stopScan" onclick="stopScan()">
 
                 <div class="icon icofont-ui-close"></div>
                 Stop Scan
@@ -513,6 +519,7 @@
     </div>
       <!-- end map -->
 
+
     <!--start chat -->
     <div class="modal fade" id="modal-2" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -531,17 +538,57 @@
                 <div class="wrapper">
                   <div class="chat-area" id="chat-areaId">
                  
-                    <div class="chat-area-main">
-                  
+                    <div class="chat-area-main" id="chat-area-main-id">
+
+                      <div class="chat-msg">
+                        <div class="chat-msg-profile">
+                          <img class="chat-msg-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%283%29+%281%29.png" alt="" />
+                          <div class="chat-msg-date">Message seen 1.22pm</div>
+                        </div>
+                        <div class="chat-msg-content">
+                          <div class="chat-msg-text">Luctus et ultrices posuere cubilia curae.</div>
+                          <div class="chat-msg-text">
+                            <img src="https://media0.giphy.com/media/yYSSBtDgbbRzq/giphy.gif?cid=ecf05e47344fb5d835f832a976d1007c241548cc4eea4e7e&rid=giphy.gif" />
+                          </div>
+                          <div class="chat-msg-text">Neque gravida in fermentum et sollicitudin ac orci phasellus egestas. Pretium lectus quam id leo.</div>
+                        </div>
+                      </div>
+
+                      <div class="chat-msg owner">
+                        <div class="chat-msg-profile">
+                          <img class="chat-msg-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%281%29.png" alt="" />
+                          <div class="chat-msg-date">Message seen 1.22pm</div>
+                        </div>
+                        <div class="chat-msg-content">
+                          <div class="chat-msg-text">Sit amet risus nullam eget felis eget. Dolor sed viverra ipsum😂😂😂</div>
+                          <div class="chat-msg-text">Cras mollis nec arcu malesuada tincidunt.</div>
+                        </div>
+                      </div>
+
+                      <div class="chat-msg">
+                        <div class="chat-msg-profile">
+                          <img class="chat-msg-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%282%29.png" alt="">
+                          <div class="chat-msg-date">Message seen 2.45pm</div>
+                        </div>
+                        <div class="chat-msg-content">
+                          <div class="chat-msg-text">Aenean tristique maximus tortor non tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae😊</div>
+                          <div class="chat-msg-text">Ut faucibus pulvinar elementum integer enim neque volutpat.</div>
+                        </div>
+                      </div>
+                   
                     </div>
                     <div class="chat-area-footer">
-                         
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-paperclip">
+
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-paperclip" onClick="document.getElementById('attachment').click()">
                         <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48" />
                       </svg>
-                      <input type="text" placeholder="Type something here..." />
+                      <input type='file' onchange="checkImg(this)" id="attachment" style="display: none;" accept=".jpg, .jpeg, .png"/> 
+
+                      <input type="text" id="myMessage" placeholder="Type something here..."  />
                      
-                      <div class="icon icofont-hand-drawn-alt-right"></div>
+                      <div class="icon icofont-hand-drawn-alt-right"  id="sendMessage"></div>
+                      <div class="icon sli-camera ml" id="openCamera"></div>
+
                     </div>
                   </div>
                 </div>
@@ -658,6 +705,31 @@
   </div>
 </div>
 
+
+
+<div class="modal fade" id="preUploadImage" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        <i class="icofont-close-line"></i>
+      </button>
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="preUploadImageTitle">Name </h5>
+      </div>
+      <div class="modal-body">
+        <img id="myPreUploadImage"  src="/#" />
+      </div>
+      <div class="modal-footer">
+        <div class="actions">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary"  onclick="postAttachment()" data-bs-dismiss="modal">post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -700,6 +772,8 @@
 </div>
 
 
+
+
 <script src="/assets/js/jquery-3.6.0.min.js"></script>
 <script src="/assets/js/jquery-migrate-1.4.1.min.js"></script>
 <script src="/assets/js/popper.min.js"></script>
@@ -723,6 +797,7 @@
 <script src="/assets/js/jobDetails.js"></script>
 <script src="/assets/js/app.js"></script>
 <script src="/assets/js/qrCodeScanner.js"></script>
+
 
 
 </body>
