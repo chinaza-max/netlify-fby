@@ -141,8 +141,12 @@
               if(data.data.token){
                 sessionStorage.setItem("hasVisited", true);
                 localStorage.setItem('myUser',btoa(data.data.token))
+                localStorage.setItem('userDetails', btoa(JSON.stringify(data.data.user)));
                 //window.location.replace('https://sunny-kataifi-7adb6f.netlify.app/index.html')
-                 window.location.replace('/index.html')
+                // window.location.replace('/index.html')
+                window.location.href =window.location.toString().split('/')[0] + "/index.html"
+                // window.location.href =window.location.toString().split('/')[0] + "https://sunny-kataifi-7adb6f.netlify.app/index.html"
+
               }
              
           },

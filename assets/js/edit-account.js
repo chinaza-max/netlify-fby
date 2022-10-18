@@ -41,8 +41,10 @@ $.ajax({
     error: function (request, status, error) {
         localStorage.removeItem("myUser");
         
-        window.location.replace('https://sunny-kataifi-7adb6f.netlify.app/sign-in.html')
+      //  window.location.replace('https://sunny-kataifi-7adb6f.netlify.app/sign-in.html')
       //  window.location.replace('/sign-in.html')
+      window.location.href =window.location.toString().split('/')[0] + "/sign-in.html"
+
 
     }
   });

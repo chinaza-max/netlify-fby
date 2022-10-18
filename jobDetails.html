@@ -22,6 +22,10 @@
   <link rel="stylesheet" href="/assets/css/morris.css">
   <link rel="stylesheet" href="/assets/css/leaflet.css">
   <link rel="stylesheet" href="/assets/css/chatUI.css">
+  <link rel="stylesheet" href="/assets/css/mediaAttachment.css">
+  <link rel="stylesheet" href="/assets/css/startAudioVisualizer.css">
+
+
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js">
   </script>
@@ -579,15 +583,31 @@
                     </div>
                     <div class="chat-area-footer">
 
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-paperclip" onClick="document.getElementById('attachment').click()">
-                        <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48" />
-                      </svg>
+                      <div id="circularMenu1" class="circular-menu circular-menu-left">
+  
+                        <a class="floating-btn" onclick="document.getElementById('circularMenu1').classList.toggle('active');">
+                          <i class="fa fa-bars">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-paperclip">
+                              <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48" />
+                            </svg>
+                          </i>
+                        </a>
+                      
+                        <menu class="items-wrapper">
+                          <div class="icon menu-item sli-camera" id="openCamera"></div>
+                          <div class="icon menu-item sli-camrecorder" id="start-camera"></div>
+                          <div class="icon menu-item sli-paper-clip" onClick="document.getElementById('attachment').click()"></div>
+                          <div class="icon menu-item sli-microphone" id="audioButton"></div>
+                        </menu>
+                      
+                      </div>
+
+                     
                       <input type='file' onchange="checkImg(this)" id="attachment" style="display: none;" accept=".jpg, .jpeg, .png"/> 
 
                       <input type="text" id="myMessage" placeholder="Type something here..."  />
                      
                       <div class="icon icofont-hand-drawn-alt-right"  id="sendMessage"></div>
-                      <div class="icon sli-camera ml" id="openCamera"></div>
 
                     </div>
                   </div>
@@ -596,7 +616,7 @@
             </div>
           </div>
           <div class="modal-footer" >
-            <h6 style="margin-right:72%">san building</h6>
+            <h6 style="margin-right:72%" id="myPageTitle2"></h6>
             <div class="actions">
               
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -710,15 +730,12 @@
 <div class="modal fade" id="preUploadImage" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-        <i class="icofont-close-line"></i>
-      </button>
-
-      <div class="modal-header">
-        <h5 class="modal-title" id="preUploadImageTitle">Name </h5>
-      </div>
+  
       <div class="modal-body">
-        <img id="myPreUploadImage"  src="/#" />
+
+        <canvas hidden  id="canvas" width="320" height="240" ></canvas>
+        <img id="myPreUploadImage2" style="height:320px; width:220px; margin: 0 auto; display: block;"  src="/#" />
+        <img id="myPreUploadImage" style="max-height:300px; width:270px; margin: 0 auto; display: block;"  src="/#"  />
       </div>
       <div class="modal-footer">
         <div class="actions">
@@ -728,6 +745,175 @@
       </div>
     </div>
   </div>
+</div>
+
+
+<div class="modal fade" id="viewUploadedImage" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+  
+      <div class="modal-body">
+        <img id="viewUploadedImageTag" style="height:320px; width:220px; margin: 0 auto; display: block;"  src="/#" />
+      </div>
+
+      <div class="modal-footer">
+        <div class="actions">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary"  style="background-color:rgb(221, 51, 51)" onclick="deleteUploadedImage()" data-bs-dismiss="modal">delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="cameraModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+     
+      <div class="modal-body">
+      
+        <video id="video" style="height:300px; width: 100%;" autoplay></video>
+      </div>
+      <div class="modal-footer">
+        <div class="actions">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="stopVideo1()">Close</button>
+          <button type="button" class="btn btn-primary"  id="click-photo" data-bs-dismiss="modal">capture</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="audioModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+     
+      <div class="modal-body  position-relative">
+
+        <svg  preserveAspectRatio="none" id="visualizer" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <defs>
+      
+              <mask id="mask">
+                  <g id="maskGroup">
+                </g>
+              </mask>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" style="stop-color:#ff0a0a;stop-opacity:1" />
+                  <stop offset="20%" style="stop-color:#f1ff0a;stop-opacity:1" />
+                  <stop offset="90%" style="stop-color:#d923b9;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#050d61;stop-opacity:1" />
+              </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="100%" height="100%" fill="url(#gradient)" mask="url(#mask)"></rect>
+      </svg>
+      
+      <h1></h1>
+
+      </div>
+      <div class="modal-footer">
+        <div class="actions">
+          <button type="button" class="btn btn-primary" id="btnStart" >Start</button>
+          <button type="button" class="btn btn-secondary"  style="background-color:rgb(221, 51, 51)"  id="btnStop" data-bs-dismiss="modal">Stop</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="preUploadAudio" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+  
+      <div class="modal-body">
+        <audio id="audioPlay" controls></audio>
+      </div>
+      <div class="modal-footer">
+        <div class="actions">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="postAudio()"  data-bs-dismiss="modal">post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="cameraModalRecording" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+     
+      <div class="modal-body">
+      
+        <video id="video2" style="height:300px; width: 100%;" autoplay></video>
+        <a id="download-video" download="test.webm">Download Video</a>
+
+      </div>
+      <div class="modal-footer">
+        <div class="actions">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+          <button type="button" class="btn btn-primary"  id="start-record" >Start</button>
+          <button type="button" class="btn btn-secondary"  style="background-color:rgb(221, 51, 51)" id="stop-record" data-bs-dismiss="modal">Stop</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="modal fade" id="preUploadVideo"  tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+  
+      <div class="modal-body">
+        <video width="500px" height="500px" controls="controls">
+          <source src="/#" id="preUploadVideoSource" type="video/webm">
+        </video>
+      </div>
+      
+      <div class="modal-footer">
+        <div class="actions">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary"  onclick="postAttachment()" data-bs-dismiss="modal">post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="warning" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        Not yet time
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="warning2" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+     
+      <div class="modal-header">
+        <h5 class="modal-title">Permission required
+        </h5>
+      </div>
+      <div class="modal-body">
+        Allow camera access
+      </div>
+      <div class="modal-footer">
+        <div class="actions">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-hidden="true">
@@ -791,12 +977,21 @@
 
 <script src="/assets/js/main.js"></script>
 
-
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
 <script src="/assets/js/jquery.ui.touch-punch.min.js"></script>
+<script src="/assets/js/util.js"></script>
 <script src="/assets/js/jobDetails.js"></script>
 <script src="/assets/js/app.js"></script>
 <script src="/assets/js/qrCodeScanner.js"></script>
+<script src="/assets/js/takePicture.js"></script>
+<script src="/assets/js/recordVideo.js"></script>
+<script src="/assets/js/startAudioVisualizer.js"></script>
+<script src="/assets/js/audioRecord.js"></script>
+
+
+
+
+
 
 
 

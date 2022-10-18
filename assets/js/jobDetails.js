@@ -1,4 +1,8 @@
-let  sizeSwitch =175;
+//$(window).on('load', function(){
+
+
+
+let sizeSwitch =175;
 let switchHandle = $('#switch .handle');
 let switchHandle2 = $('#switch2 .handle');
 let switchArea =  $('#switch');
@@ -22,7 +26,7 @@ switchHandle2.draggable({
     stop: function() {
       conditionMove2();
     }
-  });
+})
 
 function conditionMove() {
   if(parseInt(switchHandle.css('left')) <= (sizeSwitch / 2)) {
@@ -106,11 +110,16 @@ function conditionMove() {
       }
 
       if(k==mySchedule.length-1){
-        Swal.fire({
+      /*  Swal.fire({
           title: 'Not yet time',
           confirmButtonColor: '#1c0d2e',
           confirmButtonText: 'ok'
         })
+        */
+
+        $(document).ready(function(){
+          $("#warning").modal('show');
+        });
         switchHandle.animate({
           left: 0
         }, 100);
@@ -192,6 +201,7 @@ function conditionMove2() {
                   text: request.responseJSON.message,
                  
                 })
+                
 
                 switchHandle2.animate({
                   left: 0
@@ -204,12 +214,19 @@ function conditionMove2() {
           return
         }
         if(k==mySchedule.length-1){
+
+          /*
           Swal.fire({
             title: 'Not yet time',
             confirmButtonColor: '#1c0d2e',
             confirmButtonText: 'ok'
           })
 
+          */
+
+          $(document).ready(function(){
+            $("#warning").modal('show');
+          });
           switchHandle2.animate({
             left: 0
           }, 100);
@@ -230,7 +247,13 @@ function conditionMove2() {
       for(let i=0; i<data.data.length;i++){
        
         if(data.data[i].id==localStorage.getItem("viewedJobID")){
-      
+          
+          $.ready.then(function(){
+    
+            $("#myPageTitle2").text(data.data[i].facility.name);
+
+          })
+
           $("#myPageTitle").text(data.data[i].facility.name);
           $("#address").text(data.data[i].facility.location.address);
           
@@ -286,7 +309,9 @@ function conditionMove2() {
     error: function (request, status, error) {
         localStorage.removeItem("myUser");
         //window.location.replace('https://sunny-kataifi-7adb6f.netlify.app/sign-in.html')
-        window.location.replace('/sign-in.html')
+       // window.location.replace('/sign-in.html')
+        window.location.href =window.location.toString().split('/')[0] + "/sign-in.html"
+
     }
   });
 
@@ -372,15 +397,46 @@ function conditionMove2() {
 
  const sendMessage=document.getElementById("sendMessage")
  const openCamera=document.getElementById("openCamera")
+ const input=document.getElementById("myMessage")
+ let imgSelected=null
+
+ input.addEventListener('keydown', ()=>{
+
+  smoothScroll(document.getElementById('modal-bodyID'))
+  smoothScroll(document.getElementById('chatContainer'))
+ });
+ input.addEventListener('click', ()=>{
+
+  smoothScroll(document.getElementById('modal-bodyID'))
+  smoothScroll(document.getElementById('chatContainer'))
+ });
+
 
  document.getElementById("sendMessage").addEventListener("click", ()=>{
 
+    document.getElementById("myMessage").focus();
     let myMessage=document.getElementById("myMessage").value
-    document.getElementById("myMessage").value=''
+
+    if(myMessage==""||myMessage==null){
+      return
+    }
+    else{
+      document.getElementById("myMessage").value=''
     let nodes=document.querySelectorAll(".chat-msg")
     let nodes2=document.querySelectorAll(".chat-msg .chat-msg-content")
+    let srcUser = getUserProfilePic();
 
     if(nodes.length==0){
+      $("#chat-area-main-id").append(
+        ` <div class="chat-msg owner">
+        <div class="chat-msg-profile">
+          <img class="chat-msg-img" src="${srcUser}" alt="" />
+          <div class="chat-msg-date">Message seen 1.22pm</div>
+        </div>
+        <div class="chat-msg-content">
+          <div class="chat-msg-text">${myMessage}</div>
+        </div>
+      </div> `)
     }
     else{
       let classNames=nodes[nodes.length- 1].classList
@@ -399,7 +455,7 @@ function conditionMove2() {
         $("#chat-area-main-id").append(
           ` <div class="chat-msg owner">
           <div class="chat-msg-profile">
-            <img class="chat-msg-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%281%29.png" alt="" />
+            <img class="chat-msg-img" src="${srcUser}" alt="" />
             <div class="chat-msg-date">Message seen 1.22pm</div>
           </div>
           <div class="chat-msg-content">
@@ -410,15 +466,11 @@ function conditionMove2() {
       }
 
     }
-    sendMessage.style.display="none"
-    openCamera.style.display="block"
+    }
+    
+    
     smoothScroll(document.getElementById('chatContainer'))
 });
-
-
-
-
-
 
 
 
@@ -427,76 +479,224 @@ function checkImg(e){
   $(document).ready(function(){
     $("#preUploadImage").modal('show');
   });
-  document.getElementById('preUploadImageTitle').innerHTML=e.files[0].name
+  document.getElementById("myPreUploadImage2").style.display="none"
+  document.getElementById("myPreUploadImage").style.display="block"
+
   document.getElementById('myPreUploadImage').src = window.URL.createObjectURL(e.files[0])
 
 }
 
-function postAttachment(){
 
-    const attachment= document.getElementById("attachment");
-  
-    let src=window.URL.createObjectURL(attachment.files[0])
+function viewUploadedImage(e){
 
-    let nodes=document.querySelectorAll(".chat-msg")
-    let nodes2=document.querySelectorAll(".chat-msg .chat-msg-content")
+  imgSelected=e
+  document.getElementById("viewUploadedImageTag").src=e.src
 
-    if(nodes.length==0){
-    }
-    else{
-      let classNames=nodes[nodes.length- 1].classList
-
-      if(classNames[classNames.length-1]=="owner"){
-
-        $($(".chat-msg .chat-msg-content")[nodes2.length- 1]).append(
-          `<div class="chat-msg-text">
-            <img src=${src} />
-          </div>
-          `
-        )
-      
-      }
- 
-      else{
-
-        $("#chat-area-main-id").append(
-          ` <div class="chat-msg owner">
-          <div class="chat-msg-profile">
-            <img class="chat-msg-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%281%29.png" alt="" />
-            <div class="chat-msg-date">Message seen 1.22pm</div>
-          </div>
-          <div class="chat-msg-content">
-            <div class="chat-msg-text">
-            <img src=${src} />
-            </div>
-          </div>
-        </div> `)
-  
-      }
-
-    }
-    smoothScroll(document.getElementById('chatContainer'))
+  $(document).ready(function(){
+    $("#viewUploadedImage").modal('show');
+  });
 }
 
 
+function deleteUploadedImage(){
 
+  if(imgSelected){
+    imgSelected.parentElement.remove();
+    imgSelected=null
+  }
+}
 
+function postAttachment(){
 
-sendMessage.style.display="none"
-document.getElementById("myMessage").addEventListener('input', function (evt) {
+  document.getElementById('circularMenu1').classList.remove('active');
+  const attachment= document.getElementById("attachment");
+  let src=''
 
-    if(this.value==""){
-      sendMessage.style.display="none"
-      openCamera.style.display="block"
+  if(attachment.files[0]){
+    src=window.URL.createObjectURL(attachment.files[0])
+    document.getElementById('attachment').value= null;
+
+  }else{
+    src= document.getElementById('myPreUploadImage2').src
+    document.getElementById('myPreUploadImage2').src=""
+  }
+ 
+  let srcUser = getUserProfilePic();
+  let nodes=document.querySelectorAll(".chat-msg")
+  let nodes2=document.querySelectorAll(".chat-msg .chat-msg-content")
+
+  if(nodes.length==0){
+    $("#chat-area-main-id").append(
+      ` <div class="chat-msg owner">
+      <div class="chat-msg-profile">
+        <img class="chat-msg-img " src="${srcUser}" alt="" />
+        <div class="chat-msg-date">Message seen 1.22pm</div>
+      </div>
+      <div class="chat-msg-content">
+        <div class="chat-msg-text">
+        <img src=${src}  onclick="viewUploadedImage(this)" />
+        </div>
+      </div>
+    </div> `)
+  }
+  else{
+    let classNames=nodes[nodes.length- 1].classList
+
+    if(classNames[classNames.length-1]=="owner"){
+
+      $($(".chat-msg .chat-msg-content")[nodes2.length- 1]).append(
+        `<div class="chat-msg-text">
+          <img src=${src}  onclick="viewUploadedImage(this)"/>
+        </div>
+        `
+      )
+    
     }
     else{
-      sendMessage.style.display="block"
-      openCamera.style.display="none"
+
+      $("#chat-area-main-id").append(
+        ` <div class="chat-msg owner">
+        <div class="chat-msg-profile">
+          <img class="chat-msg-img " src="${srcUser}" alt="" />
+          <div class="chat-msg-date">Message seen 1.22pm</div>
+        </div>
+        <div class="chat-msg-content">
+          <div class="chat-msg-text">
+            <img src=${src} onclick="viewUploadedImage(this)"/>
+          </div>
+        </div>
+      </div> `)
+
     }
 
+  }
+  smoothScroll(document.getElementById('chatContainer'))
+}
 
-});
 
+function postVideo(){
+
+  const src= document.getElementById("download-video").href;
+
+  if(nodes.length==0){
+    $("#chat-area-main-id").append(
+      ` <div class="chat-msg owner">
+      <div class="chat-msg-profile">
+        <img class="chat-msg-img " src="${srcUser}" alt="" />
+        <div class="chat-msg-date">Message seen 1.22pm</div>
+      </div>
+      <div class="chat-msg-content">
+        <div class="chat-msg-text">
+          <video  controls="controls"/>
+            <source src=${src} type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div> `)
+  }
+  else{
+    let classNames=nodes[nodes.length- 1].classList
+
+    if(classNames[classNames.length-1]=="owner"){
+
+      $($(".chat-msg .chat-msg-content")[nodes2.length- 1]).append(
+        `<div class="chat-msg-text">
+          <video  controls="controls"/> 
+            <source src=${src} type="video/mp4">
+          </video>
+        </div>
+        `
+      )
+    
+    }
+    else{
+
+      $("#chat-area-main-id").append(
+        ` <div class="chat-msg owner">
+        <div class="chat-msg-profile">
+          <img class="chat-msg-img " src="${srcUser}" alt="" />
+          <div class="chat-msg-date">Message seen 1.22pm</div>
+        </div>
+        <div class="chat-msg-content">
+          <div class="chat-msg-text">
+            <video  controls="controls"/>
+            
+              <source src=${src} type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div> `)
+
+    }
+
+  }
+  smoothScroll(document.getElementById('chatContainer'))
+}
+
+
+function postAudio(){
+
+
+  document.getElementById('circularMenu1').classList.remove('active');
+  const src= document.getElementById("audioPlay").src;
+   
+  let srcUser = getUserProfilePic();
+  let nodes=document.querySelectorAll(".chat-msg")
+  let nodes2=document.querySelectorAll(".chat-msg .chat-msg-content")
+
+  if(nodes.length==0){
+    $("#chat-area-main-id").append(
+      ` <div class="chat-msg owner">
+      <div class="chat-msg-profile">
+        <img class="chat-msg-img " src="${srcUser}" alt="" />
+        <div class="chat-msg-date">Message seen 1.22pm</div>
+      </div>
+      <div class="chat-msg-content">
+        <div class="chat-msg-text">
+          <audio controls style="max-width:190px;">
+            <source src=${src} type="audio/mp3">
+          </audio>
+        </div>
+      </div>
+    </div> `)
+  }
+  else{
+    let classNames=nodes[nodes.length- 1].classList
+
+    if(classNames[classNames.length-1]=="owner"){
+
+      $($(".chat-msg .chat-msg-content")[nodes2.length- 1]).append(
+        `<div class="chat-msg-text">
+            <audio controls style="max-width:190px;">
+              <source src=${src} type="audio/mp3">
+            </audio>
+        </div>
+        `
+      )
+    
+    }
+    else{
+
+      $("#chat-area-main-id").append(
+        ` <div class="chat-msg owner">
+        <div class="chat-msg-profile">
+          <img class="chat-msg-img " src="${srcUser}" alt="" />
+          <div class="chat-msg-date">Message seen 1.22pm</div>
+        </div>
+        <div class="chat-msg-content">
+          <div class="chat-msg-text">
+            <audio controls style="max-width:190px;">
+              <source src=${src} type="audio/mp3">
+            </audio>
+          </div>
+        </div>
+      </div> `)
+
+    }
+
+  }
+  smoothScroll(document.getElementById('chatContainer'))
+}
 
 
 /*
@@ -504,3 +704,4 @@ document.getElementById("myMessage").addEventListener('input', function (evt) {
 
     https://codepen.io/stevenfabre/pen/OJgoOp
 */
+//})

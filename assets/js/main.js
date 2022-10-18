@@ -1550,7 +1550,8 @@
         
       //window.location.href =window.location.toString().split('/')[0] + "/dist/sign-in.html"
      // window.location.replace('https://sunny-kataifi-7adb6f.netlify.app/sign-in.html')
-      window.location.replace('/sign-in.html')
+     // window.location.replace('/sign-in.html')
+      window.location.href =window.location.toString().split('/')[0] + "/sign-in.html"
      // window.location.href =window.location.toString().split('/')[0] + "/chinaza/html/dist/sign-in.html"
      
     }
@@ -1566,19 +1567,20 @@
             $("#profile").attr("src",data.data.user.image);
           },
           error: function (request, status, error) {
-            console.log("errorr errorr errorr errorr errorr errorr")
               localStorage.removeItem("myUser")
               //window.location.replace('https://sunny-kataifi-7adb6f.netlify.app/sign-in.html')
+              window.location.href =window.location.toString().split('/')[0] + "/sign-in.html"
+              //window.location.href =window.location.toString().split('/')[0] + "https://sunny-kataifi-7adb6f.netlify.app/sign-in.html"
 
-              window.location.replace('/sign-in.html')
+              //window.location.replace('/sign-in.html')
               //window.location.href =window.location.toString().split('/')[0] + "/chinaza/html/dist/sign-in.html"
           }
         });
       }
      
     }
+
     $.ready.then(function(){
-    
       $('body').addClass('loaded');
     })
 
