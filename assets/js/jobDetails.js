@@ -399,6 +399,8 @@ function conditionMove2() {
  const openCamera=document.getElementById("openCamera")
  const input=document.getElementById("myMessage")
  let imgSelected=null
+ let videoSelected=null
+ 
 
  input.addEventListener('keydown', ()=>{
 
@@ -506,6 +508,31 @@ function deleteUploadedImage(){
   }
 }
 
+
+
+
+function viewUploadedVideo(parent){
+
+ 
+  let e= parent.querySelector('.video-fluid')
+
+  videoSelected=e
+  document.getElementById("viewUploadedVideoTag").src=e.src
+
+  $(document).ready(function(){
+    $("#viewUploadedVideo").modal('show');
+  });
+}
+
+
+function deleteUploadedVideo(){
+
+  if(videoSelected){
+    videoSelected.parentElement.remove();
+    videoSelected=null
+  }
+}
+
 function postAttachment(){
 
   document.getElementById('circularMenu1').classList.remove('active');
@@ -576,8 +603,10 @@ function postAttachment(){
 
 function postVideo(){
 
-  const src= document.getElementById("download-video").href;
-
+  let nodes=document.querySelectorAll(".chat-msg")
+  let nodes2=document.querySelectorAll(".chat-msg .chat-msg-content")
+  let srcUser = getUserProfilePic();
+  const src= document.getElementById("preUploadVideoSource").src;
   if(nodes.length==0){
     $("#chat-area-main-id").append(
       ` <div class="chat-msg owner">
@@ -587,9 +616,10 @@ function postVideo(){
       </div>
       <div class="chat-msg-content">
         <div class="chat-msg-text">
-          <video  controls="controls"/>
-            <source src=${src} type="video/mp4">
-          </video>
+          <div class="wrapper" onclick="viewUploadedVideo(this)">
+            <video class="video-fluid"   src=${src}  style="height:200px; width: 100%;"  ></video>
+            <div class="playpause"></div>
+          </div>
         </div>
       </div>
     </div> `)
@@ -601,9 +631,10 @@ function postVideo(){
 
       $($(".chat-msg .chat-msg-content")[nodes2.length- 1]).append(
         `<div class="chat-msg-text">
-          <video  controls="controls"/> 
-            <source src=${src} type="video/mp4">
-          </video>
+            <div class="wrapper" onclick="viewUploadedVideo(this)">
+                <video class="video-fluid"   src=${src}  style="height:200px; width: 100%;" ></video>
+            <div class="playpause"></div>
+          </div>
         </div>
         `
       )
@@ -619,10 +650,10 @@ function postVideo(){
         </div>
         <div class="chat-msg-content">
           <div class="chat-msg-text">
-            <video  controls="controls"/>
-            
-              <source src=${src} type="video/mp4">
-            </video>
+            <div class="wrapper" onclick="viewUploadedVideo(this)">
+              <video class="video-fluid"   src=${src}  style="height:200px; width: 100%;" ></video>
+              <div class="playpause"></div>
+            </div>
           </div>
         </div>
       </div> `)

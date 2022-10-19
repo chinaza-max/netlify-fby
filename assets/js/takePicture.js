@@ -51,14 +51,6 @@ $(window).on('load', function(){
 
     function stopVideo(){
         
-        /*
-        video.pause();
-        video.src = "";
-    
-        console.log(localstream)
-        localstream.getTracks()[0].stop();
-    
-    */
         
         video.srcObject.getTracks().forEach(track => {
             track.stop();

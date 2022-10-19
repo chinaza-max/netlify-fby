@@ -766,6 +766,24 @@
   </div>
 </div>
 
+<div class="modal fade" id="viewUploadedVideo" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+  
+      <div class="modal-body">
+        <video id="viewUploadedVideoTag"  src="/#"  style="height:300px; width: 100%;"  controls></video>
+      </div>
+
+      <div class="modal-footer">
+        <div class="actions">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary"  style="background-color:rgb(221, 51, 51)" onclick="deleteUploadedVideo()" data-bs-dismiss="modal">delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div class="modal fade" id="cameraModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -790,7 +808,6 @@
     <div class="modal-content">
      
       <div class="modal-body  position-relative">
-
         <svg  preserveAspectRatio="none" id="visualizer" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <defs>
       
@@ -809,10 +826,12 @@
       </svg>
       
       <h1></h1>
+      <div><span id="audioTimeH">0</span> <span> : </span><span id="audioTimeS">0</span></div>
 
       </div>
       <div class="modal-footer">
         <div class="actions">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
           <button type="button" class="btn btn-primary" id="btnStart" >Start</button>
           <button type="button" class="btn btn-secondary"  style="background-color:rgb(221, 51, 51)"  id="btnStop" data-bs-dismiss="modal">Stop</button>
         </div>
@@ -844,10 +863,8 @@
     <div class="modal-content">
      
       <div class="modal-body">
-      
-        <video id="video2" style="height:300px; width: 100%;" autoplay></video>
-        <a id="download-video" download="test.webm">Download Video</a>
-
+        <video id="video2" style="height:300px; width: 100%;" muted autoplay></video>
+        <div><span id="videoTimeH">0</span> <span> : </span><span id="videoTimeS">0</span></div>
       </div>
       <div class="modal-footer">
         <div class="actions">
@@ -868,15 +885,13 @@
     <div class="modal-content">
   
       <div class="modal-body">
-        <video width="500px" height="500px" controls="controls">
-          <source src="/#" id="preUploadVideoSource" type="video/webm">
-        </video>
+        <video id="preUploadVideoSource"  src="/#"  style="height:300px; width: 100%;"  controls></video>
       </div>
       
       <div class="modal-footer">
         <div class="actions">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary"  onclick="postAttachment()" data-bs-dismiss="modal">post</button>
+          <button type="button" class="btn btn-secondary" onclick="initializeVideoState()" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary"  onclick="postVideo();initializeVideoState()" data-bs-dismiss="modal">post</button>
         </div>
       </div>
     </div>
@@ -914,6 +929,48 @@
     </div>
   </div>
 
+</div>
+
+
+
+<div class="modal fade" id="warning3" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+     
+      <div class="modal-header">
+        <h5 class="modal-title">Video 
+        </h5>
+      </div>
+      <div class="modal-body">
+       Video recording has started or it is on 
+      </div>
+      <div class="modal-footer">
+        <div class="actions">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="warning4" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+       
+      <div class="modal-header">
+        <h5 class="modal-title">Video 
+        </h5>
+      </div>
+      <div class="modal-body">
+       Video recording has stoped already or has not started
+      </div>
+      <div class="modal-footer">
+        <div class="actions">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-hidden="true">

@@ -43,7 +43,6 @@ function startAudioVisualizer(){
                     let adjustedLength;
                     for (let i = 0 ; i < 255; i++) {
                         adjustedLength = Math.floor(frequencyArray[i]) - (Math.floor(frequencyArray[i]) % 5);
-                        console.log(adjustedLength)
                         paths[i==0?1:i].setAttribute('d', 'M '+ (i) +',255 l 0,-' + adjustedLength);
                     }
                 }
