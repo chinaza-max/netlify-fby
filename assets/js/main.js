@@ -1585,7 +1585,6 @@
     })
 
   });
-  $('body').addClass('loaded');
   //Window Resize
   (function() {
     var delay = (function(){
@@ -1782,3 +1781,4 @@ $(document).ready(function(){
   
 });
 
+//https://stackoverflow.com/questions/67346232/android-emulator-issues-in-new-versions-the-emulator-process-has-terminated
