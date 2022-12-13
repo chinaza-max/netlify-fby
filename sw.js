@@ -52,8 +52,8 @@ self.addEventListener("fetch",(event)=>{
            // return  caches.match("https://sunny-kataifi-7adb6f.netlify.app/fallBack.html")
             // return  caches.match("/fallBack.html")
 
-            if(event.request.url.indexOf('.html')>-1){
-            }
+          //  if(event.request.url.indexOf('.html')>-1){
+           // }
            // return  caches.match("dist/fallBack.html")
         })
     )

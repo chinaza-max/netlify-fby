@@ -109,7 +109,7 @@
 <script src="/assets/js/morris.min.js"></script>
 <script src="/assets/js/echarts.min.js"></script>
 <script src="/assets/js/echarts-gl.min.js"></script>
-
+<script src="/assets/js/globalVar.js"></script>
 <script src="/assets/js/main.js"></script>
 
 
@@ -131,7 +131,7 @@
       if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($("#email").val())){
         
         $.ajax({
-          type: "post", url: "https://fby-security.herokuapp.com/api/v1/auth/login",
+          type: "post", url: `${domain}/api/v1/auth/login`,
           data: {
             email:$("#email").val(),
             password: $("#password").val()
@@ -152,6 +152,9 @@
           },
           error: function (request, status, error) {
           
+
+
+            console.log(request)
             $("#signInButton").css("display","block")
             $("#loadingButton").css("display","none")
             if(request.readyState===0){ 

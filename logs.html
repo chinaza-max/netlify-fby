@@ -22,8 +22,15 @@
   <link rel="stylesheet" href="/assets/css/morris.css">
   <link rel="stylesheet" href="/assets/css/leaflet.css">
 
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.8/css/rowReorder.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
+
   <!-- Theme CSS -->
   <link rel="stylesheet" href="/assets/css/style.css">
+
 </head>
 
 
@@ -38,8 +45,6 @@
 
 <div class="page-box">
   <div class="app-container">
-
-
     <!-- Horizontal navbar -->
     <div id="navbar1" class="app-navbar horizontal">
       <div class="navbar-wrap">
@@ -94,7 +99,7 @@
                 data-bs-offset="0, 10"
               >
                 <span class="d-flex align-items-center">
-                  <img id="profile2" src="/assets/content/user-400-1.jpg" alt="" width="40" height="40" class="rounded-500 me-1">
+                  <img id="profile" src="/assets/content/user-400-1.jpg" alt="" width="40" height="40" class="rounded-500 me-1">
                   <i class="icofont-simple-down"></i>
                 </span>
               </button>
@@ -124,7 +129,7 @@
               </div>
             </div>
           </div>
-        
+
       </div>
     </div>
 
@@ -152,7 +157,7 @@
                 <li class="menu-item">
                   <span class="group-title">MENU</span>
                 </li>
-                <li class="menu-item active">
+                <li class="menu-item">
                   <a class="item-link" href="index.html">
                     <div class="link-icon icon sli-grid"></div>
                     <span class="link-text">Dashboard</span>
@@ -165,6 +170,7 @@
                     <span class="link-text">Jobs</span>
                   </a>
                 </li>
+              
                
                 <li class="menu-item">
                   <a class="item-link" href="FBYmemo.html">
@@ -172,8 +178,8 @@
                     <span class="link-text">FBY memo</span>
                   </a>
                 </li>
-                
-                <li class="menu-item">
+
+                <li class="menu-item ">
                   <a class="item-link" href="shift.html">
                     <div class="link-icon sli-speedometer"></div>
                     <span class="link-text">Shift</span>
@@ -183,151 +189,65 @@
               </ul>
             </nav>
           </div>
-        <!-- end menu --> 
-               
+        <!-- end menu -->     
+
+
       </div>
     </div>
 
-    <!-- end Vertical navbar -->
-
     <main class="main-content">
-      <div class="app-loader"><i class="icofont-spinner-alt-4 rotate"></i></div>
-
-      <div class="main-content-wrap">
-        <header class="page-header">
-          <h1 class="page-title">Edit account</h1>
-        </header>
-
-        <div class="page-content">
-          <div class="row justify-content-center">
-            <div class="col col-12 col-xl-8">
-              <form class="mb-4" id="formProfile">
-                <label>Photo</label>
-                <div class="form-group avatar-box d-flex align-items-center">
-                  <img id="profile" src="/assets/content/user-400-1.jpg" width="100" height="100" alt="" class="rounded-500 me-4">
-
-                  <button class="btn btn-outline-primary" type="button" onClick="document.getElementById('profilePicturePath').click()" >
-                    Change photo<span class="btn-icon icofont-ui-user ms-2" ></span>
-                  </button>
-                  <input type='file' onchange="checkImg(this)" id="profilePicturePath" style="display: none;" accept=".jpg, .jpeg, .png"/> 
-
-                </div>
-
-                <div class="form-group">
-                  <label>First name</label>
-                  <input class="form-control" id="firstName" type="text" placeholder="First name" >
-                </div>
-
-                <div class="form-group">
-                  <label>Last name</label>
-                  <input class="form-control" id="lastName" type="text" placeholder="Last name">
-                </div>
-
-                
-                <div class="form-group">
-                  <label>Email address</label>
-                  <input class="form-control" id="email" type="text" placeholder="Last name" >
-                </div>
-
-                <div class="row">
-                  <div class="col-12 col-sm-6">
-                    <div class="form-group">
-                      <label>Date of birth</label>
-                      <input class="form-control" id="dataOfBirth" type="date" >
-                    </div>
-                  </div>
-                  <div class="col-12 col-sm-6">
-                    <div class="form-group">
-                      <label>Gender</label>
-                      <select class="selectpicker gender" title="gender" name="gender">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label>Phone number</label>
-                  <input class="form-control" id="tel" type="number">
-                </div>
-
-                <div class="form-group">
-                  <label>Address</label>
-                  <textarea id="address" class="form-control" placeholder="Address ......" rows="3"></textarea>
-                </div>
-
-          
-                <div class="form-group">
-                  <label>Status</label>
-                  <select class="selectpicker status" title="Status" name="status">
-                    <option value="Available" >Available to Accept Jobs</option>
-                    <option value="notAvailable">Not Available for Jobs</option>
-                  </select>
-                </div>
-
-                <div class="row">
-                  <div class="col">
-                    <button type="submit" class="btn btn-success">Save changes</button>
-                  </div>
-                  <div class="col text-end">
-                    <button type="button" class="btn btn-outline-danger">
-                      <span class="d-none d-sm-block">Delete account</span>
-                      <span class="d-sm-none">Delete</span>
-                    </button>
-                  </div>
-                </div>
-              </form>
-
-              <hr>
-
-              <h4>Change password</h4>
-
-              <form id="formChangePassword">
-                <div class="row">
-                  <div class="col-12 col-sm-6">
-                    <div class="form-group">
-                      <label>Current password</label>
-                      <input class="form-control" type="text" placeholder="Current password" id="password" required>
-                    </div>
-                  </div>
-                </div>
-            
-
-                <button type="submit" class="btn btn-outline-dark">Change password</button>
-              </form>
-              <hr>
-
-              <h4>Upload your licence</h4>
-
-              <form id="formLicence">
-
-                <div class="row">
-                  <div class="col-12 col-sm-6">
-                    <div class="mb-3">
-                      <label for="formFile" class="form-label">Your file</label>
-                      <input class="form-control" type="file" id="licenceFile" required>
-                    </div>
-                  </div>
-                  <div class="col-12 col-sm-6">
-                    <div class="form-group">
-                      <label>licence expiry date</label>
-                      <input class="form-control" id="expiryDate" type="date" required>
-                    </div>
-                  </div>
-                </div>
-
-                <button type="submit" class="btn btn-outline-dark">Submit</button>
-              </form>
+        <div class="app-loader"><i class="icofont-spinner-alt-4 rotate"></i></div>
+  
+        <div class="main-content-wrap">
+  
+          <div class="page-content">
+  
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <p class="text-muted mb-4">
+                </p>
+              </div>
+             
             </div>
+  
+           
+            <div class="card">
+              <div class="card-body">
+                <table
+                  id="example" 
+                  class="table table-bordered table-striped dataTable no-footer"
+                
+                >
+                  <thead>
+                  <tr>
+                    <th>check_in_date</th>
+                    <th>check_in_time </th>
+                    <th>check_out_date</th>
+                    <th >check_out_time</th>
+                    <th>guard_id</th>
+                    <th>hours</th>
+                    <th>job_id</th>
+                    <th>lat</th>
+                    <th>location_message</th>
+                    <th>log</th>
+                    <th>log_id</th>
+                  </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+                
+              </div>
+            </div>
+  
           </div>
         </div>
-      </div>
-    </main>
+      </main>
 
-    <div class="app-footer">
+     <!--start Footer  -->
+     <div class="app-footer">
       <div class="footer-wrap">
         <div class="row h-100 align-items-center">
+         
           <div class="col-12 col-md-6 text-end">
             <div class="d-flex align-items-center justify-content-center justify-content-md-end">
               <span>Settings</span>
@@ -357,12 +277,11 @@
         </div>
       </div>
     </div>
-
+  <!--End Footer  -->
     <div class="content-overlay"></div>
 
   </div>
 </div>
-
 
 <div class="modal fade" id="notification" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -424,6 +343,8 @@
 </div>
 
 
+
+<!-- start setting overlay -->
 <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -432,6 +353,7 @@
       </div>
       <div class="modal-body">
         <form>
+        
           <div class="form-group">
             <label>Light/dark topbar</label>
             <div class="form-check form-switch">
@@ -463,6 +385,8 @@
     </div>
   </div>
 </div>
+<!--start setting overlay -->
+
 
 
 
@@ -479,102 +403,19 @@
 <script src="/assets/js/morris.min.js"></script>
 <script src="/assets/js/echarts.min.js"></script>
 <script src="/assets/js/echarts-gl.min.js"></script>
-<script src="/assets/js/main.js"></script>
 <script src="/assets/js/globalVar.js"></script>
-<script src="/assets/js/edit-account.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/logs.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+<script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
+
+<script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
 <script src="/assets/js/app.js"></script>
-<script>
 
 
-
-    $("#formLicence").on("submit", (event) => {
-
-      event.preventDefault();
-      const formData=new FormData()
-      const expiryDate = document.getElementById("expiryDate");
-      const inputFile = document.getElementById("licenceFile");
-      
-        console.log(expiryDate)
-      for (const file of inputFile.files) {
-          formData.append("files", file);
-          console.log(file)
-
-      }
-
-  
-   
-
-
-    
-
-    /*
-    $.ajax({
-          type: "post", url: "https://fby-security.herokuapp.com/api/v1/auth/login",
-          data: {
-            email:$("#email").val(),
-            password: $("#password").val()
-          },
-          success: function (data, text) {
-
-              if(data.data.token){
-                sessionStorage.setItem("hasVisited", true);
-                localStorage.setItem('myUser',btoa(data.data.token))
-                //window.location.replace('https://sunny-kataifi-7adb6f.netlify.app/index.html')
-                window.location.replace('/index.html')
-              }
-             
-          },
-          error: function (request, status, error) {
-            console.log(status)
-           // $("#alert1").text(JSON.parse(request.responseText).message)
-          }
-        });
-*/
-
-  })
-
-
-
-  $("#formChangePassword").on("submit", (event) => {
-
-    event.preventDefault();
-    const formData=new FormData()
-    const password = document.getElementById("password").value;
-    
-  })
-
-
-  $("#formProfile").on("submit", (event) => {
-
-    event.preventDefault();
-    const formData=new FormData()
-    const lastName= document.querySelector("#firstName").value;
-    const firstName = document.querySelector("#lastName").value;
-    const email = document.querySelector("#email").value;
-    const dataOfBirth = document.querySelector("#dataOfBirth").value;
-    const gender =$('.gender').selectpicker('val')
-    const tel = document.querySelector("#tel").value;
-    const address = document.querySelector("#address").value;
-    const status = $('.status').selectpicker('val')
-
-    //const img = document.querySelector("password").value;
-  
-    console.log(lastName,firstName,email,dataOfBirth,gender,status,tel,address)
-    
-
-  
-  
-  
-  
-  
-  })
-
-  function checkImg(e){
-      document.getElementById('profile').src = window.URL.createObjectURL(e.files[0])
-  }
-
-      
-</script> 
 
 </body>
 </html>

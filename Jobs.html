@@ -242,6 +242,7 @@
                   </div>
                   <div class="card-body">
                     <div class="row" id="pendingJob">
+
                       <div  class="btn btn-load jobLoader" style="background-color:white; border: none;">
                         Light
                         <span  class="btn-loader icofont-spinner"></span>
@@ -259,14 +260,34 @@
                     Completed  job
                   </div>
                   <div class="card-body">
-                    <div class="row">
+                    <div class="row" id="completedJob">
                       
-                      <div  class="btn btn-load jobLoader" style="background-color:white; border: none;">
+                      <div  class="btn btn-load completedJobLoader" style="background-color:white; border: none;">
                         Light
                         <span class="btn-loader icofont-spinner"></span>
                       </div>
 
                     </div>
+                    <nav class="mt-4">
+                      <ul class="pagination">
+                        <li id="Previous" class="page-item page-item1 disabled" onclick="Previous()">
+                          <a class="page-link" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
+                            <span class="icofont-simple-left"></span>
+                          </a>
+                        </li>
+                        <li class="page-item page-item1 active" aria-current="page" id="page1" onclick="page(1)"><a
+                            class="page-link" href="#">1</a></li>
+                        <li class="page-item page-item1" id="page2"><a class="page-link" href="#"
+                            onclick="page(2)">2</a></li>
+                        <li class="page-item page-item1" id="page3"><a class="page-link" href="#"
+                            onclick="page(3)">3</a></li>
+                        <li id="Next" class="page-item page-item1" onclick="Next()">
+                          <a class="page-link" href="#" aria-label="Next">
+                            <span class="icofont-simple-right"></span>
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
                   </div>
                 </div>
               </div>
@@ -998,7 +1019,7 @@
 <script src="/assets/js/morris.min.js"></script>
 <script src="/assets/js/echarts.min.js"></script>
 <script src="/assets/js/echarts-gl.min.js"></script>
-
+<script src="/assets/js/globalVar.js"></script>
 <script src="/assets/js/main.js"></script>
 <script src="/assets/js/job.js"></script>
 <script src="/assets/js/app.js"></script>

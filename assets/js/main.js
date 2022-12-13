@@ -1559,7 +1559,7 @@
 
       if(window.location.pathname!="/sign-in.html"){
         $.ajax({
-          type: "get", url: "https://fby-security.herokuapp.com/api/v1/auth/",
+          type: "get", url: `${domain}/api/v1/auth/`,
           headers: {
               "Authorization": `Bearer ${atob(localStorage.getItem("myUser"))}`
           },

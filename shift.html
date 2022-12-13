@@ -213,12 +213,12 @@
                     <div class="row text-center">
                       <div class="col-6">
                         <div>Total hours</div>
-                        <strong class="fs-20 text-success">0</strong>
+                        <strong class="fs-20 text-success" id="totalHours">0</strong>
                       </div>
   
                       <div class="col-6">
                         <div>Amount pending</div>
-                        <strong class="fs-20 text-danger">$0</strong>
+                        <strong class="fs-20 text-danger" id="amountPending">$0</strong>
                       </div>
                     </div>
                   </div>
@@ -235,22 +235,19 @@
                     <div class="card-body w-100">
   
                       <div class="d-flex flex-row justify-content-between flex-wrap bd-highlight mb-3">
-                        <div class="form-group mb-md-0">
+                        <div class="form-group mb-md-0  w-100" >
                           <label>Customer name</label>
-                          <select class="selectpicker" id="customerName">
+                          <select class="selectpicker selectpickerCustomer" id="customerName" data-live-search="true">
                             <option  value="" selected>Select</option>
-                            <option value="Tokyo">Tokyo</option>
-                            <option value="desk">desk</option>
+                           
                           </select>
                         </div>
-                        <div class="form-group mb-md-0">
+
+                        <div class="form-group mb-md-0 w-100">
                           <label>Site</label>
-                          <select class="selectpicker" id="Site">
+                          <select class="selectpicker selectpickerSite" id="Site" data-live-search="true">
                             <option value="" selected>Select</option>
-                            <option value="Koforidua Central Business">Koforidua Central Business</option>
-                            <option value="Koforidua Business District">Koforidua Business District</option>
-                            <option value="Koforidua Central  District">Koforidua Central  District</option>
-                            <option value="Koforidua Central Business k">Koforidua Central Business k</option>
+                      
                           </select>
                         </div>
                       
@@ -275,38 +272,29 @@
   
                 <table
                   id="example" 
-                  class="table table-bordered table-striped dataTable no-footer"
-                  data-ajax="/assets/data/view-shift.json"
-                  data-columns='[
-                    { "data": "start-date" },
-                    { "data": "customer" },
-                    { "data": "site" },
-                    { "data": "start-time" },
-                    { "data": "end-time" },
-                    { "data": "shift-hour" },
-                    { "data": "hourly-rate" },
-                    { "data": "check-in" },
-                    { "data": "check-out" },
-                    { "data": "shift-hour2"},
-                    { "data": "total-earn"}
-                  ]'
-                  data-paging="true"
-                  data-info="true"
-                  select="true"
+                  class="table table-bordered table-striped dataTable no-footer"                 
                 >
                   <thead>
                   <tr>
-                    <th>Date</th>
-                    <th>Customer </th>
-                    <th>Site</th>
+                    <th>Customer</th>
+                    <th>first name</th>
+                    <th>last name</th>
+                    <th>Site </th>
+                    <th>Start date</th>
                     <th >Start time</th>
+                    <th>End date</th>
                     <th>End time</th>
-                    <th>Shift hour</th>
-                    <th>Hourly rate</th>
+                    <th>Hours</th>
                     <th>Check in</th>
                     <th>Check out</th>
-                    <th>Shift hour</th>
+                    <th>Hours worked</th>
+                    <th>Guard charge</th>
+                    <th>Client charge</th>
+                    <th>guard id</th>
                     <th>Total earn</th>
+                    <th>Settlement status</th>
+                    
+
                   </tr>
                   </thead>
                   <tbody></tbody>
@@ -479,7 +467,7 @@
 <script src="/assets/js/morris.min.js"></script>
 <script src="/assets/js/echarts.min.js"></script>
 <script src="/assets/js/echarts-gl.min.js"></script>
-
+<script src="/assets/js/globalVar.js"></script>
 <script src="/assets/js/main.js"></script>
 <script src="/assets/js/shift.js"></script>
 

@@ -1,3 +1,6 @@
+//$(window).on('load', function(){
+
+
 
 let sizeSwitch =175;
 let switchHandle = $('#switch .handle');
@@ -6,7 +9,6 @@ let switchArea =  $('#switch');
 let switchArea2 =  $('#switch2');
 let dateIndex=0;
 let mySchedule=[0]
-let myTimeZone=''
 
 switchHandle.draggable({
   axis: 'x',
@@ -14,12 +16,7 @@ switchHandle.draggable({
   stop: function() {
     conditionMove();
   }
-})
-
-
-
-
-
+});
 
 
 
@@ -42,9 +39,14 @@ function conditionMove() {
       left: sizeSwitch + 'px'
     }, 100);
 
+    for(let k=0; k<mySchedule.length;k++){
+           
+      if(isSameDate(new Date(mySchedule[k].check_in_date), new Date())){
+        
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition, () => {
 
+           
             Swal.fire({
               title: 'Action Required',
               text: "Location permission is required to proceed!",
@@ -55,7 +57,7 @@ function conditionMove() {
 
             switchHandle.animate({
               left: 0
-            }, 100)
+            }, 100);
         
           });
           
@@ -65,12 +67,12 @@ function conditionMove() {
         function showPosition(position) {
          
           $.ajax({
-            type: "post", url: `${domain}/api/v1/job/check-in`,
+            type: "post", url: "https://fby-security.herokuapp.com/api/v1/job/check-in",
             data: {
+              operation_id:mySchedule[k].operations.id,
               check_in: true,
               latitude: position.coords.latitude,
-              longitude:position.coords.longitude,
-              job_id:myActiveJob_id
+              longitude:position.coords.longitude
             },
             headers: {
               "Authorization": `Bearer ${atob(localStorage.getItem("myUser"))}`
@@ -90,7 +92,7 @@ function conditionMove() {
             },
             error: function (request, status, error) {
 
-              console.log(request)
+              console.log(request.responseJSON.message)
               Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -104,24 +106,28 @@ function conditionMove() {
           });
     
         }
-  
+        return
+      }
 
-     // if(k==mySchedule.length-1){
+      if(k==mySchedule.length-1){
       /*  Swal.fire({
           title: 'Not yet time',
           confirmButtonColor: '#1c0d2e',
           confirmButtonText: 'ok'
         })
         */
-/*
+
         $(document).ready(function(){
           $("#warning").modal('show');
         });
         switchHandle.animate({
           left: 0
         }, 100);
-      }*/
-         
+      }
+      
+    }
+
+   
   }
 }
 
@@ -139,8 +145,8 @@ function conditionMove2() {
       }, 100);
       
 
-     // for(let k=0; k<mySchedule.length;k++){
-      //  if(isSameDate(new Date(mySchedule[k].check_in_date), new Date())){
+      for(let k=0; k<mySchedule.length;k++){
+        if(isSameDate(new Date(mySchedule[k].check_in_date), new Date())){
           
           if (navigator.geolocation) {
             
@@ -163,17 +169,16 @@ function conditionMove2() {
            
      
             $.ajax({
-              type: "post", url: `${domain}/api/v1/job/check-in`,
+              type: "post", url: "https://fby-security.herokuapp.com/api/v1/job/check-in",
+              data: {
+                operation_id:mySchedule[k].operations.id,
+                check_in: false,
+                latitude: position.coords.latitude,
+                longitude:position.coords.longitude
+              },
               headers: {
                 "Authorization": `Bearer ${atob(localStorage.getItem("myUser"))}`
               },
-              data: {
-                check_in: false,
-                latitude: position.coords.latitude,
-                longitude:position.coords.longitude,
-                job_id:myActiveJob_id
-              },
-          
               success: function (data, text) {
                 Swal.fire({
                   position: 'top-end',
@@ -205,86 +210,72 @@ function conditionMove2() {
             });
       
           }
+
+          return
+        }
+        if(k==mySchedule.length-1){
+
+          /*
+          Swal.fire({
+            title: 'Not yet time',
+            confirmButtonColor: '#1c0d2e',
+            confirmButtonText: 'ok'
+          })
+
+          */
+
+          $(document).ready(function(){
+            $("#warning").modal('show');
+          });
+          switchHandle2.animate({
+            left: 0
+          }, 100);
+
+        }
+      }
   }
 }
 
-
-
-let getActiveJob
-
-
-$(document).ready(function() {
-
-
-
-  if(viewedJobStatus=="completed"){
-    
-    $("#emergencyButton").addClass("disabled");
-    $("#btn-scan-qr").addClass("disabled");
-    $("#safetyCheck").addClass("disabled");
-
-    $("#check_in_and_out").css({'z-index':'-1'});
-
-
-    
-  }
-  else{
-    $("#emergencyButton").removeClass("disabled");
-    $("#btn-scan-qr").removeClass("disabled");
-    $("#safetyCheck").removeClass("disabled");
-  }
-
-
-  getActiveJob=function(){
-              
   $.ajax({
-    type: "get", url: `${domain}/api/v1/job/myJobs/getSinglejob?job_id=${myActiveJob_id}`,
+    type: "get", url: `${domain}/api/v1/job/myjobs`,
     headers: {
         "Authorization": `Bearer ${atob(localStorage.getItem("myUser"))}`
     },
     success: function (data, text) {
 
       $(".jobLoader").css("display", "none");
-
-          setGuardId(data.data[0].guard_id)
-          if(data.data.length==0){
-            window.location.href =window.location.toString().split('/')[0] + "/index.html"
-          }     
-          myTimeZone=data.data[0].time_zone||'Africa/Lagos'
+      for(let i=0; i<data.data.length;i++){
+       
+        if(data.data[i].id==localStorage.getItem("viewedJobID")){
+          
           $.ready.then(function(){
     
-            $("#myPageTitle2").text(data.data[0].facility_name);
+            $("#myPageTitle2").text(data.data[i].facility.name);
 
           })
 
-          $("#myPageTitle").text(data.data[0].facility_name);
-          $("#address").text(data.data[0].address);
-          $("#amountPerHour").text(data.data[0].guard_charge);
-          $("#hoursWorked").text(data.data[0].hours_worked);
-          $("#earned").text(data.data[0].earn);
+          $("#myPageTitle").text(data.data[i].facility.name);
+          $("#address").text(data.data[i].facility.location.address);
+          
+          $("#amountPerHour").text(data.data[i].payment);
+          $("#hoursWorked").text(data.data[i].statistics.hours_worked);
+          $("#earned").text(data.data[i].statistics.payment);
 
           $("#date").append(
             ` 
             <tr>
-                <td class="text-nowrap"> ${data.data[0].schedule[0].check_in_date}</td>
-                <td class="text-nowrap">${data.data[0].schedule[0].start_time}</td>
-                <td class="text-nowrap">${data.data[0].schedule[data.data[0].schedule.length-1].check_out_date}</td>
-                <td class="text-nowrap">${data.data[0].schedule[data.data[0].schedule.length-1].end_time}</td>
+                <td class="text-nowrap"> ${data.data[i].schedule[0].check_in_date}</td>
+                <td >${data.data[i].schedule[0].start_time}</td>
+                <td class="text-nowrap">${data.data[i].schedule[data.data[i].schedule.length-1].check_in_date}</td>
+                <td >${data.data[i].schedule[data.data[i].schedule.length-1].end_time}</td>
             </tr>
             `
           );
           $("#description").append(
             ` 
               <div class="custom-control custom-checkbox mb-3">
-                ${data.data[0].description}
-              </div>
-            `
-          );
-          $("#task").append(
-            ` 
-              <div class="custom-control custom-checkbox mb-3">
                 <input type="checkbox" class="custom-control-input" id="customCheck1">
-                <label class="custom-control-label" for="customCheck1">${data.data[0].description}</label>
+                <label class="custom-control-label" for="customCheck1">${data.data[i].description}</label>
               </div>
             `
           );
@@ -292,28 +283,27 @@ $(document).ready(function() {
           
           //let countDownDate = new Date(data.data[i].schedule[dateIndex].check_in_date).getTime();
 
-          mySchedule=data.data[0].schedule
+          mySchedule=data.data[i].schedule
           startCountDown()
    
-          $("#jobType").text(data.data[0].job_type);
+          $("#jobType").text(data.data[i].job_type);
 
 
-          for(let j=0; j<data.data[0].schedule.length;j++){
+          for(let j=0; j<data.data[i].schedule.length;j++){
                 
             $(`#scheduleTable`).append(
                 ` 
                 <tr>
-                <td class="text-nowrap"> ${data.data[0].schedule[j].check_in_date}</td>
-                <td class="text-nowrap">${data.data[0].schedule[j].start_time}</td>
-                <td class="text-nowrap"> ${data.data[0].schedule[j].check_out_date}</td>
-                <td class="text-nowrap">${data.data[0].schedule[j].end_time}</td>
-            </tr>
+                  <td>${data.data[i].schedule[j].check_in_date}</td>
+                  <td>${data.data[i].schedule[j].start_time}</td>
+                  <td>${data.data[i].schedule[j].end_time}</td>
+                </tr>
                 `
             )
           }
           return
-        
-    
+        }
+      }
     
     },
     error: function (request, status, error) {
@@ -324,16 +314,6 @@ $(document).ready(function() {
 
     }
   });
-  }
-
-
-
-  getActiveJob()
-
-})
-
-
-
 
 
   function isSameDate(date1, date2){
@@ -356,10 +336,9 @@ $(document).ready(function() {
     for(let i=0; i<mySchedule.length; i++){
 
      // mySchedule[i].check_in_date
-      let countDownDate = new Date(mySchedule[i].check_in_date +" "+mySchedule[i].start_time).getTime();
-      let now = new Date(new Date().toLocaleString('en', {timeZone:myTimeZone})).getTime();
+      let countDownDate = new Date(mySchedule[i].check_in_date).getTime();
+      let now = new Date().getTime();
       let distance = countDownDate - now;
-
       if (distance < 0) {
         continue
       }
@@ -367,8 +346,8 @@ $(document).ready(function() {
 
         let x = setInterval(function() {
 
-           countDownDate =  new Date(mySchedule[i].check_in_date +" "+mySchedule[i].start_time).getTime();
-           now = new Date(new Date().toLocaleString('en', {timeZone: myTimeZone})).getTime();
+           countDownDate = new Date(mySchedule[i].check_in_date).getTime();
+           now = new Date().getTime();
            distance = countDownDate - now;
 
           // Time calculations for days, hours, minutes and seconds
@@ -757,4 +736,61 @@ function postAudio(){
     https://codepen.io/stevenfabre/pen/OJgoOp
 */
 //})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

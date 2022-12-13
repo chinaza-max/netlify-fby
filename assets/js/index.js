@@ -2,242 +2,296 @@
 let pendingJobCount=0
 let activejobCount=0
 let completedjobCount=0
-$.ajax({
-    type: "get", url: "https://fby-security.herokuapp.com/api/v1/job/myjobs",
-    headers: {
-        "Authorization": `Bearer ${atob(localStorage.getItem("myUser"))}`
-    },
-    success: function (data, text) {
 
-      $("#pendingJobLoader").css("display", "none");
 
-        if(data.data.length > 0 ){
-            for(let i=0; i<data.data.length;i++){
 
-              if( data.data[i].status=="PENDING"){
-                pendingJobCount++;
-                $("#pendingJob").append(
-                  `<div class="col-12 col-md-6">
-                  <div class="card bg-light">
-    
-                    <div class="row">
-                      <div class="col-7">
-                        <div class="card-body">
-                          <div class="text-nowrap">
-                            <strong>${data.data[i].facility.name}</strong>
-                          </div>
-                          <div class="text-muted text-nowrap">${data.data[i].job_type}</div>
-                        </div>
-                      </div>
-                      <div class="col-5">
-                        <div class="card-body">
-                          <div class="text-nowrap text-end">$ ${data.data[i].payment}</div>
-                          <div class="text-muted text-nowrap text-end"> ${data.data[i].schedule[0].check_in_date}</div>
-                        </div>
-                      </div>
-  
-                      
-                      <div class="col-12">
-                        <div class="card-body">
-                          <button class="btn btn-outline-primary mt-3" data-bs-toggle="modal" data-bs-target="#modalPending_${data.data[i].id}">View</button>
-                          <button type="button" class="btn btn-primary mt-3" onclick="acceptDecline( ${data.data[i].id},true)">Accept</button>
-                          <button type="button" class="btn btn-secondary mt-3" style="background-color:rgb(221, 51, 51)" onclick="acceptDecline( ${data.data[i].id},false)">Decline </button>
-                        </div>
-                      </div>
-                    </div>
-                   
-                  </div>
-                </div>`);
-  
-                $("#modalContainer").append(
-                  ` <div class="modal fade" id="modalPending_${data.data[i].id}" tabindex="-1" role="dialog" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <i class="icofont-close-line"></i>
-                      </button>
+let getPendingJob
+let getDashBoardInfo
+
+
+$(document).ready(function() {
+
+
+
+
+
+
+  getPendingJob=function(){
         
-                      <div class="modal-header">
-                        <h5 class="modal-title">Job detail</h5>
-                      </div>
-                      <div class="modal-body">
-                        <main class="main-content mb-0">
-                          <div class="app-loader"><i class="icofont-spinner-alt-4 rotate"></i></div>
+                  $.ajax({
+                    type: "get", url: `${domain}/api/v1/job/myjobs?jobType=PENDING`,
+                    headers: {
+                        "Authorization": `Bearer ${atob(localStorage.getItem("myUser"))}`
+                    },
+                    success: function (data, text) {
+
+
+                      console.log(data)
+
+                      $("#pendingJobLoader").css("display", "none");
+                      $("#pendingJob").empty();
+                        if(data.data.length > 0 ){
+
                     
-                          <div class="main-content-wrap">
-                            
-                            <header class="page-header" style="clear: right;">
-                              <h1 class="page-title"  style="clear: both;">${data.data[i].facility.name}</h1>
-                            </header>
-                            
-                            <div class="page-content">
+                            for(let i=0; i<data.data.length;i++){
+
+                
+                                $("#pendingJob").append(
+                                  `<div class="col-12 col-md-6">
+                                  <div class="card bg-light">
                     
-                    
-                              <!-- START PROJECT LOCATION -->
-                              <figure>
-                                <figcaption class="blockquote-footer">
-                                  <div class="card mb-md-0">
-                                    <div class="card-body">
-                                  
-                                      <div class="row align-items-center">
-                                        <div class="col col-auto">
-                                          <div class="icon icofont-location-pin fs-30 text-muted"></div>
+                                    <div class="row">
+                                      <div class="col-7">
+                                        <div class="card-body">
+                                          <div class="text-nowrap">
+                                            <strong>${data.data[i].facility_name}</strong>
+                                          </div>
+                                          <div class="text-muted text-nowrap">${data.data[i].job_type}</div>
                                         </div>
-                                        <div class="col">
-                                          <div>Job Address</div>
-                                          ${data.data[i].facility.location.address}
+                                      </div>
+                                      <div class="col-5">
+                                        <div class="card-body">
+                                          <div class="text-nowrap text-end">$ ${data.data[i].guard_charge}</div>
+                                          <div class="text-muted text-nowrap text-end"> ${data.data[i].schedule[0].check_in_date}</div>
+                                        </div>
+                                      </div>
+
+                                      
+                                      <div class="col-12">
+                                        <div class="card-body">
+                                          <button class="btn btn-outline-primary mt-3" data-bs-toggle="modal" data-bs-target="#modalPending_${data.data[i].job_id}">View</button>
+                                          <button type="button" class="btn btn-primary mt-3" onclick="acceptDecline(${data.data[i].job_id},true)">Accept</button>
+                                          <button type="button" class="btn btn-secondary mt-3" style="background-color:rgb(221, 51, 51)" onclick="acceptDecline( ${data.data[i].job_id},false)">Decline </button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  
+                                  </div>
+                                </div>`);
+
+                                $("#modalContainer").append(
+                                  ` <div class="modal fade" id="modalPending_${data.data[i].job_id}" tabindex="-1" role="dialog" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        <i class="icofont-close-line"></i>
+                                      </button>
+                        
+                                      <div class="modal-header">
+                                        <h5 class="modal-title">Job detail</h5>
+                                      </div>
+                                      <div class="modal-body">
+                                        <main class="main-content mb-0">
+                                          <div class="app-loader"><i class="icofont-spinner-alt-4 rotate"></i></div>
+                                    
+                                          <div class="main-content-wrap">
+                                            
+                                            <header class="page-header" style="clear: right;">
+                                              <h1 class="page-title"  style="clear: both;">${data.data[i].facility_name}</h1>
+                                            </header>
+                                            
+                                            <div class="page-content">
+                                    
+                                    
+                                              <!-- START PROJECT LOCATION -->
+                                              <figure>
+                                                <figcaption class="blockquote-footer">
+                                                  <div class="card mb-md-0">
+                                                    <div class="card-body">
+                                                  
+                                                      <div class="row align-items-center">
+                                                        <div class="col col-auto">
+                                                          <div class="icon icofont-location-pin fs-30 text-muted"></div>
+                                                        </div>
+                                                        <div class="col">
+                                                          <div>Job Address</div>
+                                                          ${data.data[i].address}
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </figcaption>
+                                              </figure>
+                                    
+                                              <hr>
+                                              <!-- END PROJECT LOCATION -->
+                                    
+                                              <div class="card mb-0">
+                                                <div class="card-header">
+                                                  Job reward
+                                                </div>
+                                                <div class="card-body">
+                                                  <div class="table-responsive">
+                                                    <table class="table table-bordered">
+                                                      <thead>
+                                                      <tr>
+                                                        <th scope="col">Potential Payout</th>
+                                                        <th scope="col">Per</th>
+                                                      </tr>
+                                                      </thead>
+                                                      <tbody>
+                                                    
+                                                      <tr>
+                                                        <td>$ ${data.data[i].guard_charge}</td>
+                                                        <td>Hour</td>
+                                                      </tr>
+                        
+                                                      </tbody>
+                                                    </table>
+                                                  </div>
+                                                </div>
+                                              </div>
+                        
+                        
+                                              <!-- START JOB SCHEDULE -->
+                                              <div class="card">
+                                                <div class="card-header">
+                                                    Job schedule
+                                                </div>
+                                                <div class="card-body">
+                                                  <div class="table-responsive">
+                                                    <table class="table table-bordered table-sm">
+                                                      <thead>
+                                                      <tr>
+                                                        <th scope="col" class="text-nowrap">Start Date</th>
+                                                        <th scope="col" class="text-nowrap">Start Time</th>
+                                                        <th scope="col" class="text-nowrap">End Date</th>
+                                                        <th scope="col" class="text-nowrap">End Time</th>
+                                                      </tr>
+                                                      </thead>
+                                                      
+                                                      <tbody id="pendingscheduleTable${data.data[i].job_id}">
+                                                        
+                                                      </tbody>
+                                                    
+                                                    </table>
+                                                  </div>
+                                                  
+                                                </div>
+                                                
+                                                <div class="card-body">
+                                                  <div class="alert alert-light outline text-dark" role="alert">
+                                                    Job type:<strong> ${data.data[i].job_type}</strong>
+                                                  </div>
+                                                  
+                                                </div>
+                        
+                                              </div>
+                                              <!-- END JOB SCHEDULE -->
+                                    
+                                              <!-- END PROJECT EVENT -->
+                                    
+                        
+                                    
+                                            </div>
+                                  
+                                          </div>
+                                        </main>
+                                    
+                                      </div>
+                                      <div class="modal-footer">
+                                        <div class="actions">
+                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                          <button type="button" class="btn btn-primary" onclick="acceptDecline( ${data.data[i].job_id},true)" >Accept </button>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
-                                </figcaption>
-                              </figure>
+                                </div>`);
+                        
+                            }
                     
-                              <hr>
-                              <!-- END PROJECT LOCATION -->
+                            //this loop handles schedules for above jobs
+                            for(let i=0; i<data.data.length;i++){
                     
-                              <div class="card mb-0">
-                                <div class="card-header">
-                                  Job reward
-                                </div>
-                                <div class="card-body">
-                                  <div class="table-responsive">
-                                    <table class="table table-bordered">
-                                      <thead>
+
+                              $(`#pendingscheduleTable${data.data[i].job_id}`).empty();
+
+                                for(let j=0; j<data.data[i].schedule.length;j++){
+
+                                  $(`#pendingscheduleTable${data.data[i].job_id}`).append(
+                                      ` 
                                       <tr>
-                                        <th scope="col">Potential Payout</th>
-                                        <th scope="col">Per</th>
+                                          <td class="text-nowrap"> ${data.data[i].schedule[j].check_in_date}</td>
+                                          <td class="text-nowrap">${data.data[i].schedule[j].start_time}</td>
+                                          <td class="text-nowrap"> ${data.data[i].schedule[j].check_out_date}</td>
+                                          <td class="text-nowrap">${data.data[i].schedule[j].end_time}</td>
                                       </tr>
-                                      </thead>
-                                      <tbody>
-                                    
-                                      <tr>
-                                        <td>$ ${data.data[i].payment}</td>
-                                        <td>Hour</td>
-                                      </tr>
-        
-                                      </tbody>
-                                    </table>
-                                  </div>
-                                </div>
-                              </div>
-        
-        
-                              <!-- START JOB SCHEDULE -->
-                              <div class="card">
-                                <div class="card-header">
-                                    Job schedule
-                                </div>
-                                <div class="card-body">
-                                  <div class="table-responsive">
-                                    <table class="table table-bordered table-sm">
-                                      <thead>
-                                      <tr>
-                                        <th scope="col" class="text-nowrap">Start Date</th>
-                                        <th scope="col" class="text-nowrap">Start Time</th>
-                                        <th scope="col" class="text-nowrap">End Time</th>
-                                      </tr>
-                                      </thead>
-                                      
-                                      <tbody id="pendingscheduleTable${data.data[i].id}">
-                                         
-                                      </tbody>
-                                     
-                                    </table>
-                                  </div>
-                                  
-                                </div>
-                                
-                                <div class="card-body">
-                                  <div class="alert alert-light outline text-dark" role="alert">
-                                    Job type:<strong> ${data.data[i].job_type}</strong>
-                                  </div>
-                                  
-                                </div>
-        
-                              </div>
-                              <!-- END JOB SCHEDULE -->
-                    
-                              <!-- END PROJECT EVENT -->
-                    
-        
-                    
-                            </div>
-                  
+                                      `
+                                  );
+                              
+                              }
+                            
+                            }
+                        }  
+
+                        if(data.data.length==0){
+                          $("#pendingJob").append(`
+                          <div class="alert alert-warning outline" pendingJobAlert role="alert">
+                            NO PEDNIING JOB
                           </div>
-                        </main>
-                    
-                      </div>
-                      <div class="modal-footer">
-                        <div class="actions">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary" onclick="acceptDecline( ${data.data[i].id},true)" >Accept </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>`);
-              }
-              else if(data.data[i].status=="ACTIVE"){
-                activejobCount++
-              }
-              else if(data.data[i].status=="COMPLETED"){
-                completedjobCount++
-              }
+                          `)
+                        }
+                      
 
-              if(i==data.data.length-1){
-                $("#pendingJobCount").text(pendingJobCount);
-                $("#activeJobCount").text(activejobCount);
-                $("#completedJobCount").text(completedjobCount);
-                $("#pendingJobAlert").css("display", "none");
+                    },
+                    error: function (request, status, error) {
+                        localStorage.removeItem("myUser");
+                        //window.location.replace('https://sunny-kataifi-7adb6f.netlify.app/sign-in.html')
+                        //window.location.replace('/sign-in.html')
+                        window.location.href =window.location.toString().split('/')[0] + "/sign-in.html"
 
-              }
-            }
-    
-            //this loop handles schedules for above jobs
-            for(let i=0; i<data.data.length;i++){
-    
-              if( data.data[i].status=="PENDING"){
-                for(let j=0; j<data.data[i].schedule.length;j++){
-                    
-                  $(`#pendingscheduleTable${data.data[i].id}`).append(
-                      ` 
-                      <tr>
-                          <td> ${data.data[i].schedule[j].check_in_date}</td>
-                          <td>${data.data[i].schedule[j].start_time}</td>
-                          <td>${data.data[i].schedule[j].end_time}</td>
-                      </tr>
-                      `
-                  );
-              }
-              }
-            
-            }
-    
-        }  
+                    }
+                  });
+                }
+  getPendingJob()
 
-        if(pendingJobCount==0){
-          $("#pendingJob").append(`
-          <div class="alert alert-warning outline" pendingJobAlert role="alert">
-             No pending  job
-          </div>
-          `)
-        }
+
+
+
+
+
+
+  getDashBoardInfo=function(){
+        
+    $.ajax({
+      type: "get", url: `${domain}/api/v1/job/getDashBoardInfoGuard`,
+      headers: {
+          "Authorization": `Bearer ${atob(localStorage.getItem("myUser"))}`
+      },
+      success: function (data, text) {
+
+
+        console.log(data)
+        
+
+        $("#pendingJobCount").text(data.data.pending);
+        $("#activeJobCount").text(data.data.active);
+        $("#completedJobCount").text(data.data.completed);
+        $("#pendingJobAlert").css("display", "none");
       
+        
+        
 
-    },
-    error: function (request, status, error) {
-        localStorage.removeItem("myUser");
+      },
+      error: function (request, status, error) {
+          localStorage.removeItem("myUser");
+          //window.location.replace('https://sunny-kataifi-7adb6f.netlify.app/sign-in.html')
+          //window.location.replace('/sign-in.html')
+          window.location.href =window.location.toString().split('/')[0] + "/sign-in.html"
 
-        //window.location.replace('https://sunny-kataifi-7adb6f.netlify.app/sign-in.html')
-        //window.location.replace('/sign-in.html')
-        window.location.href =window.location.toString().split('/')[0] + "/sign-in.html"
-
-    }
-  });
+      }
+    });
+  }
+getDashBoardInfo()
 
 
 
+
+
+
+
+});
 
 
   function acceptDecline(id,val){
@@ -255,7 +309,7 @@ $.ajax({
   
         if(result.isConfirmed==true){
           $.ajax({
-            type: "post", url: "https://fby-security.herokuapp.com/api/v1/job/accept-decline-job",
+            type: "post", url: `${domain}/api/v1/job/accept-decline-job`,
             data: {
               job_id:id,
               accept:val
@@ -269,7 +323,7 @@ $.ajax({
                   'Declined!',
                   'success'
                 )
-                window.location.reload();
+                getPendingJob()
               }
             },
             error: function (request, status, error) {
@@ -288,7 +342,7 @@ $.ajax({
     }else{
 
       $.ajax({
-        type: "post", url: "https://fby-security.herokuapp.com/api/v1/job/accept-decline-job",
+        type: "post", url: `${domain}/api/v1/job/accept-decline-job`,
         data: {
           job_id:id,
           accept:val
@@ -306,7 +360,7 @@ $.ajax({
               showConfirmButton: false,
               timer: 1500
             })
-            window.location.reload();
+            getPendingJob()
           }
 
         },
