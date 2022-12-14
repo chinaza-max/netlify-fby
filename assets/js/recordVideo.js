@@ -19,9 +19,9 @@ let mySetInterval;
 let videoState=""
 
 
-
 camera_button2.addEventListener('click', async function() {
     try {
+
         
         if(videoState==""){
             start_button.style.display="none"
@@ -32,7 +32,6 @@ camera_button2.addEventListener('click', async function() {
     
             //for removing any attached stream
             if(camera_stream){
-    
                 //console.log(media_recorder.state);
                 if(camera_stream.active==true&&media_recorder.state=="recording"){
                     stop_button.style.display="flex"
@@ -79,6 +78,7 @@ camera_button2.addEventListener('click', async function() {
 start_button.addEventListener('click', function() {
     stop_button.style.display="flex"
     start_button.style.display="none"
+    blobs_recorded=[]
 
     mySetInterval=setInterval(function(){
         videoCountTime()
@@ -87,8 +87,10 @@ start_button.addEventListener('click', function() {
     // event : recording stopped & all blobs sent
     media_recorder.addEventListener('stop', function() {
     	// create local object URL from the recorded video blobs
-    	video_local = URL.createObjectURL(new Blob(blobs_recorded, { type: 'video/webm' }));
+       // console.log(blobs_recorded)
+        //console.log("llllllllllllllllllllllll")
 
+    	video_local = URL.createObjectURL(new Blob(blobs_recorded, { type: 'video/webm' }));
         preUploadVideoSource.src=video_local
 
         camera_stream.getTracks().forEach(track => {
@@ -121,7 +123,6 @@ start_button.addEventListener('click', function() {
 stop_button.addEventListener('click', function() {
 
 
-    
     if(camera_stream.active==true){
         media_recorder.stop(); 
         $(document).ready(function(){
@@ -166,7 +167,7 @@ function clearDisplayTime(){
 }
 
 function initializeVideoState(){
-    videoState=''
+    videoState=""
     camera_stream=null
     clearDisplayTime()
 }

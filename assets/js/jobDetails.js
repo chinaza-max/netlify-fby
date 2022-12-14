@@ -617,6 +617,8 @@ function postAttachment(){
 
     }
 
+
+
   }
   smoothScroll(document.getElementById('chatContainer'))
 }
@@ -624,10 +626,17 @@ function postAttachment(){
 
 function postVideo(){
 
+
   let nodes=document.querySelectorAll(".chat-msg")
   let nodes2=document.querySelectorAll(".chat-msg .chat-msg-content")
   let srcUser = getUserProfilePic();
   const src= document.getElementById("preUploadVideoSource").src;
+  //for upload
+  //const src2= document.getElementById("preUploadVideoSource");
+  //console.log(src2)
+ 
+
+
   if(nodes.length==0){
     $("#chat-area-main-id").append(
       ` <div class="chat-msg owner">
@@ -644,6 +653,8 @@ function postVideo(){
         </div>
       </div>
     </div> `)
+
+   uploadReport(src2,"VIDEO")
   }
   else{
     let classNames=nodes[nodes.length- 1].classList
@@ -662,7 +673,6 @@ function postVideo(){
     
     }
     else{
-
       $("#chat-area-main-id").append(
         ` <div class="chat-msg owner">
         <div class="chat-msg-profile">
@@ -681,8 +691,12 @@ function postVideo(){
 
     }
 
+    uploadReport(src,"VIDEO")
   }
   smoothScroll(document.getElementById('chatContainer'))
+
+
+  
 }
 
 
@@ -750,6 +764,106 @@ function postAudio(){
   smoothScroll(document.getElementById('chatContainer'))
 }
 
+
+
+function uploadReport(data,dataType){
+
+        const formData=new FormData()
+
+
+          if(dataType=="message"){
+            formData.append("job_id",myActiveJob_id);
+            formData.append("guard_id", myGuard_id);
+            formData.append("reportType", "MESSAGE");
+            formData.append("message", data);
+            formData.append("is_emergency", false);
+            formData.append("is_read",false);
+
+          }
+          else{
+
+/*
+            for (const file of data.files) {
+                formData.append("file", file);
+            }
+*/
+
+
+
+            console.log(data)
+            if(dataType=="VIDEO"){
+              formData.append("file", data);
+            }
+
+            formData.append("job_id", myActiveJob_id);
+            formData.append("guard_id", myGuard_id);
+            formData.append("reportType", "ATTACHMENT");
+            formData.append("is_emergency", false);
+            formData.append("is_read",false);
+          }
+
+          
+           fetch(`${domain}/api/v1/job/submitReportAttachment`, {
+                method: 'PUT', // or 'PUT'
+                headers: {
+                    "Authorization": `Bearer ${atob(localStorage.getItem("myUser"))}`
+                },
+                body:formData,
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log('Success:', data);
+                
+
+                    if(data.status==200){
+                      /*
+                        showModal(data.message  )
+                        setTimeout(() => {
+                                hideModal()
+                        }, 3000);
+                        */
+                    }
+                    else if(data.status=="conflict-error"){
+                        console.log(data.message)
+                        showModalError(data.message)
+                        setTimeout(() => {
+                            hideModalError()
+                        }, 3000);
+                    }
+                    else if(data.status=="validation-error"){
+                        console.log(data.errors.message)
+                        showModalError(data.errors[0].message)
+                        setTimeout(() => {
+                            hideModalError()
+                        }, 3000);
+                    }
+                    else if(data.status=="server-error"){
+                        console.log(data.message)
+                        showModalError(data.message)
+                        setTimeout(() => {
+                            hideModalError()
+                        }, 3000);
+                    }
+                    else if(data.status=="bad-request-error"){
+                        console.log(data.message)
+                        showModalError(data.message)
+                        setTimeout(() => {
+                            hideModalError()
+                        }, 3000);
+                    }
+                    else if(data.status=="notFound-error"){
+                        console.log(data.message)
+                        showModalError(data.message)
+                        setTimeout(() => {
+                            hideModalError()
+                        }, 3000);
+                    }
+
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                })
+}
 
 /*
     Reference 
