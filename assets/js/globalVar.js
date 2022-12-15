@@ -3,6 +3,7 @@ let domain=''
 let myGuard_id= atob(localStorage.getItem("guard_id"))  
 let myActiveJob_id=localStorage.getItem("viewedJobID")
 let viewedJobStatus=localStorage.getItem("JobStatus")
+let alertLifeSpan =1500
 console.log(viewedJobStatus)
 
 if(mode=="development"){
@@ -84,3 +85,23 @@ function showModalError(val){
 function hideModalError(){
     $('#userError').modal('hide');
 }
+
+
+
+function showModalSuccess(val){
+    $("#userSuccessContent").text(val);
+    $("#userSuccessContent").attr({
+        "class" : "alert alert-success outline  text-center"
+      });
+    $('#userSuccess').modal('show');
+
+    setTimeout(() => {
+       hideModalSuccess()
+    }, alertLifeSpan);
+}
+
+
+function hideModalSuccess(){
+    $('#userSuccess').modal('hide');
+}
+

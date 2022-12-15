@@ -778,11 +778,23 @@ reportForm.addEventListener("submit",(e)=>{
 
  
   const inputFile = document.getElementById("inputGroupFile02");
+  const message = document.getElementById("message").value;
 
-  for (const file of inputFile.files) {
-    uploadReport(file,"file")
-    console.log(file)
+
+
+  if(inputFile.files.length==1){
+
+    for (const file of inputFile.files) {
+      uploadReport(file,"file",message)
+      console.log("file")
+    }
   }
+  else{
+
+    console.log("text")
+    uploadReport("nofile","message",message)
+  }
+
 
 })
 
@@ -790,7 +802,7 @@ reportForm.addEventListener("submit",(e)=>{
 
 
 
-function uploadReport(data,dataType){
+function uploadReport(data,dataType,text){
 
 
 
@@ -802,10 +814,11 @@ function uploadReport(data,dataType){
             formData.append("job_id",myActiveJob_id);
             formData.append("guard_id", myGuard_id);
             formData.append("report_type", "MESSAGE");
-            formData.append("message", data);
+            formData.append("message", text);
             formData.append("is_emergency", false);
             formData.append("is_read",false);
             formData.append("who_has_it","GUARD");
+            formData.append("file", "no file");
 
           }
           else{
@@ -813,6 +826,7 @@ function uploadReport(data,dataType){
             formData.append("job_id", myActiveJob_id);
             formData.append("guard_id", myGuard_id);
             formData.append("report_type", "ATTACHMENT");
+            formData.append("message", text);
             formData.append("is_emergency", false);
             formData.append("is_read",false);
             formData.append("who_has_it","GUARD");
@@ -835,12 +849,21 @@ function uploadReport(data,dataType){
                       $("#loadingButton").css("display","none")
 
                     if(data.status==200){
-                      /*
-                        showModal(data.message  )
-                        setTimeout(() => {
-                                hideModal()
-                        }, 3000);
-                        */
+                      
+                      showModalSuccess(data.message)
+
+
+
+
+
+                      const inputFile = document.getElementById("inputGroupFile02");
+                    
+                      $('#message').val('')
+                      inputFile.value = '';
+                      inputFile.value = null
+                      inputFile.type = "text";
+                      inputFile.type = "file";
+                        
                     }
                     else if(data.status=="conflict-error"){
                         console.log(data.message)

@@ -382,11 +382,11 @@
 
             
              
-              <button type="button" class="btn btn-outline-secondary mt-3" id="safetyCheck">
+              <button type="button" class="btn btn-outline-primary mt-3" id="safetyCheck">
                 <div class="icon icofont-tick-boxed"></div>
                 Safety  Check
               </button>
-              <a   href="./logs.html" class="btn btn-outline-secondary mt-3" >
+              <a   href="./postReport.html" class="btn btn-outline-secondary mt-3" >
                 <div class="icon icofont-clip-board"></div>                
                  View Report
               </a>
@@ -561,7 +561,7 @@
 
                   <div class="form-group">
                     <label>Message</label>
-                    <textarea class="form-control" rows="4" placeholder="Comment" required></textarea>
+                    <textarea class="form-control" rows="4" placeholder="Comment" id="message" required></textarea>
                   </div>
 
                   <button class="btn btn-primary w-100" type="submit" id="signInButton" >Send form</button>
@@ -868,6 +868,18 @@
 </div>
 
 
+<div class="modal fade" id="userSuccess" style="z-index:10000;" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+          <div  id="userSuccessContent" class="alert alert-primary outline  text-center" role="alert">
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="modal fade" id="warning" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -981,6 +993,8 @@
     </div>
   </div>
 </div>
+
+
 
 
 
