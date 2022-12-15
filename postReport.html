@@ -214,32 +214,9 @@
   
               <div class="col-12 col-md-6">
                 <div class="card mb-0">
-                
-                  <div class="card-body">
-                    <div class="alert alert-primary outline" role="alert">
-                      A simple primary alert—check it out!
-                    </div>
-                    <div class="alert alert-secondary outline text-dark" role="alert">
-                      A simple secondary alert—check it out!
-                    </div>
-                    <div class="alert alert-success outline" role="alert">
-                      A simple success alert—check it out!
-                    </div>
-                    <div class="alert alert-danger outline" role="alert">
-                      A simple danger alert—check it out!
-                    </div>
-                    <div class="alert alert-warning outline" role="alert">
-                      A simple warning alert—check it ouddt!
-                    </div>
-                    <div class="alert alert-info outline" role="alert">
-                      A simple info alert—check it out!
-                    </div>
-                    <div class="alert alert-light outline text-dark" role="alert">
-                      A simple light alert—check it out!
-                    </div>
-                    <div class="alert alert-dark outline mb-0" role="alert">
-                      A simple dark alert—check it out2!
-                    </div>
+                  <div class="card-body" id="myReport">
+                   
+                 
                   </div>
                 </div>
               </div>
@@ -351,6 +328,43 @@
 
 
 
+
+<div class="modal fade" id="viewImage" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+  
+      <div class="modal-body">
+        <img id="myViewImage" style="height:320px; width:220px; margin: 0 auto; display: block;"  src="/#" />
+      </div>
+      <div class="modal-footer">
+        <div class="actions">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="viewUploadedVideo" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+  
+      <div class="modal-body">
+        <video id="viewUploadedVideoTag"  type="video/mp4" src="/#"  style="height:300px; width: 100%;"  controls></video>
+      </div>
+
+      <div class="modal-footer">
+        <div class="actions">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary"  style="background-color:rgb(221, 51, 51)" onclick="deleteUploadedVideo()" data-bs-dismiss="modal">delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!-- start setting overlay -->
 <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -411,6 +425,8 @@
 <script src="/assets/js/echarts.min.js"></script>
 <script src="/assets/js/echarts-gl.min.js"></script>
 <script src="/assets/js/globalVar.js"></script>
+<script src="/assets/js/postReport.js"></script>
+
 <script src="/assets/js/main.js"></script>
 <script src="/assets/js/app.js"></script>
 
