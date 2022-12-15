@@ -376,13 +376,20 @@
 
 
             <!--START SECURITY BUTTON-->
-
+      
             <div class="elements-list  mt-3">
+
+
+            
              
               <button type="button" class="btn btn-outline-secondary mt-3" id="safetyCheck">
                 <div class="icon icofont-tick-boxed"></div>
                 Safety  Check
               </button>
+              <a   href="./logs.html" class="btn btn-outline-secondary mt-3" >
+                <div class="icon icofont-clip-board"></div>                
+                 View Report
+              </a>
 
               <button type="button" class="btn btn-outline-primary mt-3" id="btn-scan-qr" >
                 <div class="icon icofont-qr-code"></div>
@@ -393,12 +400,15 @@
                 <div class="icon icofont-ui-close"></div>
                 Stop Scan
               </button>
+              
 
 
-              <a   href="./logs.html" class="btn btn-outline-secondary mt-3" >
+              <a  href="./logs.html" style="min-width:145px;" class="btn btn-outline-secondary mt-3" >
                 <div class="icon icofont-clip-board"></div>                
                 View Logs
               </a>
+
+              
 
             </div>
 
@@ -428,9 +438,9 @@
 
           <!-- END Job SCHEDULE -->
 
-            <div class="add-action-box" onclick="smoothScroll(document.getElementById('chatContainer'))">
+            <div class="add-action-box">
               <button class="btn btn-primary rounded-0 btn-sm" data-bs-toggle="modal" data-bs-target="#modal-2" >
-                <span style="font-size:15px ;">Report</span>
+                <span style="font-size:15px">Report</span>
                 <span class="badge badge-danger badge-sm">0</span>
               </button>
             </div>
@@ -538,87 +548,33 @@
             <h5 class="modal-title">Report issues</h5>
           </div>
           <div class="modal-body" id="modal-bodyID">
-            <div id="chatContainer">
-              <div class="app">
-              
-                <div class="wrapper">
-                  <div class="chat-area" id="chat-areaId">
-                 
-                    <div class="chat-area-main" id="chat-area-main-id">
-
-                      <div class="chat-msg">
-                        <div class="chat-msg-profile">
-                          <img class="chat-msg-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%283%29+%281%29.png" alt="" />
-                          <div class="chat-msg-date">Message seen 1.22pm</div>
-                        </div>
-                        <div class="chat-msg-content">
-                          <div class="chat-msg-text">Luctus et ultrices posuere cubilia curae.</div>
-                          <div class="chat-msg-text">
-                            <img src="https://media0.giphy.com/media/yYSSBtDgbbRzq/giphy.gif?cid=ecf05e47344fb5d835f832a976d1007c241548cc4eea4e7e&rid=giphy.gif" />
-                          </div>
-                          <div class="chat-msg-text">Neque gravida in fermentum et sollicitudin ac orci phasellus egestas. Pretium lectus quam id leo.</div>
-                        </div>
-                      </div>
-
-                      <div class="chat-msg owner">
-                        <div class="chat-msg-profile">
-                          <img class="chat-msg-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%281%29.png" alt="" />
-                          <div class="chat-msg-date">Message seen 1.22pm</div>
-                        </div>
-                        <div class="chat-msg-content">
-                          <div class="chat-msg-text">Sit amet risus nullam eget felis eget. Dolor sed viverra ipsum😂😂😂</div>
-                          <div class="chat-msg-text">Cras mollis nec arcu malesuada tincidunt.</div>
-                        </div>
-                      </div>
-
-                      <div class="chat-msg">
-                        <div class="chat-msg-profile">
-                          <img class="chat-msg-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%282%29.png" alt="">
-                          <div class="chat-msg-date">Message seen 2.45pm</div>
-                        </div>
-                        <div class="chat-msg-content">
-                          <div class="chat-msg-text">Aenean tristique maximus tortor non tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae😊</div>
-                          <div class="chat-msg-text">Ut faucibus pulvinar elementum integer enim neque volutpat.</div>
-                        </div>
-                      </div>
-                   
-                    </div>
-                    <div class="chat-area-footer">
-
-                      <div id="circularMenu1" class="circular-menu circular-menu-left">
-  
-                        <a class="floating-btn" onclick="document.getElementById('circularMenu1').classList.toggle('active');">
-                          <i class="fa fa-bars">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-paperclip">
-                              <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48" />
-                            </svg>
-                          </i>
-                        </a>
-                      
-                        <menu class="items-wrapper">
-                          <div class="icon menu-item sli-camera" id="openCamera"></div>
-                          <div class="icon menu-item sli-camrecorder" id="start-camera"></div>
-                          <div class="icon menu-item sli-paper-clip" onClick="document.getElementById('attachment').click()"></div>
-                          <div class="icon menu-item sli-microphone" id="audioButton"></div>
-                        </menu>
-                      
-                      </div>
-
-                     
-                      <input type='file' onchange="checkImg(this)" id="attachment" style="display: none;" accept=".jpg, .jpeg, .png"/> 
-
-                      <input type="text" id="myMessage" placeholder="Type something here..."  />
-                     
-                      <div class="icon icofont-hand-drawn-alt-right"  id="sendMessage"></div>
-
+            <div class="card">
+             
+              <div class="card-body">
+                <form id="reportForm">
+                  <div class="form-group">
+                    <label>Optional</label>
+                    <div class="input-group mb-3">
+                      <input type="file" class="form-control" id="inputGroupFile02">
                     </div>
                   </div>
-                </div>
+
+                  <div class="form-group">
+                    <label>Message</label>
+                    <textarea class="form-control" rows="4" placeholder="Comment" required></textarea>
+                  </div>
+
+                  <button class="btn btn-primary w-100" type="submit" id="signInButton" >Send form</button>
+
+                  <button type="button" class="btn btn-primary btn-load w-100" id="loadingButton">
+                    Primary
+                    <span class="btn-loader icofont-spinner"></span>
+                  </button>
+                </form>
               </div>
             </div>
           </div>
           <div class="modal-footer" >
-            <h6 style="margin-right:72%" id="myPageTitle2"></h6>
             <div class="actions">
               
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -1051,10 +1007,7 @@
 <script src="/assets/js/jobDetails.js"></script>
 <script src="/assets/js/app.js"></script>
 <script src="/assets/js/qrCodeScanner.js"></script>
-<script src="/assets/js/takePicture.js"></script>
-<script src="/assets/js/recordVideo.js"></script>
-<script src="/assets/js/startAudioVisualizer.js"></script>
-<script src="/assets/js/audioRecord.js"></script>
+
 
 </body>
 </html>

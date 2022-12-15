@@ -253,7 +253,7 @@ $(document).ready(function() {
           myTimeZone=data.data[0].time_zone||'Africa/Lagos'
           $.ready.then(function(){
     
-            $("#myPageTitle2").text(data.data[0].facility_name);
+           // $("#myPageTitle2").text(data.data[0].facility_name);
 
           })
 
@@ -414,7 +414,7 @@ $(document).ready(function() {
     }
  }
 
-
+/*
 
  const sendMessage=document.getElementById("sendMessage")
  const openCamera=document.getElementById("openCamera")
@@ -494,6 +494,8 @@ $(document).ready(function() {
     
     smoothScroll(document.getElementById('chatContainer'))
 });
+
+*/
 
 
 
@@ -766,40 +768,55 @@ function postAudio(){
 
 
 
+
+
+let reportForm=document.getElementById("reportForm")
+
+
+reportForm.addEventListener("submit",(e)=>{
+  e.preventDefault()
+
+ 
+  const inputFile = document.getElementById("inputGroupFile02");
+
+  for (const file of inputFile.files) {
+    uploadReport(file,"file")
+    console.log(file)
+  }
+
+})
+
+
+
+
+
 function uploadReport(data,dataType){
 
-        const formData=new FormData()
 
+
+        $("#signInButton").css("display","none")
+        $("#loadingButton").css("display","block")
+        const formData=new FormData()
 
           if(dataType=="message"){
             formData.append("job_id",myActiveJob_id);
             formData.append("guard_id", myGuard_id);
-            formData.append("reportType", "MESSAGE");
+            formData.append("report_type", "MESSAGE");
             formData.append("message", data);
             formData.append("is_emergency", false);
             formData.append("is_read",false);
+            formData.append("who_has_it","GUARD");
 
           }
           else{
-
-/*
-            for (const file of data.files) {
-                formData.append("file", file);
-            }
-*/
-
-
-
-            console.log(data)
-            if(dataType=="VIDEO"){
-              formData.append("file", data);
-            }
-
+            formData.append("file", data);
             formData.append("job_id", myActiveJob_id);
             formData.append("guard_id", myGuard_id);
-            formData.append("reportType", "ATTACHMENT");
+            formData.append("report_type", "ATTACHMENT");
             formData.append("is_emergency", false);
             formData.append("is_read",false);
+            formData.append("who_has_it","GUARD");
+
           }
 
           
@@ -812,8 +829,10 @@ function uploadReport(data,dataType){
                 })
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log('Success:', data);
-                
+                    console.log(data);
+                  
+                      $("#signInButton").css("display","block")
+                      $("#loadingButton").css("display","none")
 
                     if(data.status==200){
                       /*
