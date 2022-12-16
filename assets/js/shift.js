@@ -127,7 +127,7 @@ $(document).ready(function() {
         format: 'MMMM Do YYYY'
     });
 
-    console.log(myGuard_id)
+
     var table = $('#example').DataTable({
         ajax: {
             url: `${domain}/api/v1/job/allJobs/shiftPerGuardAllJob`,

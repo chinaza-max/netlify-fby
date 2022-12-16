@@ -3,6 +3,8 @@ let pendingJobCount=0
 let activejobCount=0
 let completedjobCount=0
 
+let totalHours=0
+let amountPending=0
 
 
 let getPendingJob
@@ -283,11 +285,42 @@ $(document).ready(function() {
       }
     });
   }
-getDashBoardInfo()
+  getDashBoardInfo()
 
 
 
 
+
+  $.ajax({
+    type: "post", url:`${domain}/api/v1/job/allJobs/shiftPerGuardAllJob`,
+    headers: {
+      "Authorization": `Bearer ${atob(localStorage.getItem("myUser"))}`
+    },
+    data: {
+      guard_id:myGuard_id,
+    },
+    success: function (data, text) {
+
+        console.log(data.data)
+                for(let i=0;i <data.data.length;i++){
+                  
+                  if(data.data[i].settlement_status==false){
+                    calPayPerSchedule(data.data[i]["guard_charge"],data.data[i]["hours_worked"])
+
+                  }
+                }
+
+    },
+    error: function (request, status, error) {
+
+        console.log(request)
+        console.log(status)
+        console.log(error)
+        console.log(request.responseJSON.status)
+       // analyzeError(request)
+     
+    }
+  });
 
 
 
@@ -381,3 +414,27 @@ getDashBoardInfo()
 
 
 
+
+  
+function calPayPerSchedule(money ,hour){
+
+
+
+  totalHours+=Number(hour)
+  amountPending+= Number(money.slice(1))*Number(hour)
+ 
+ 
+  console.log(totalHours ,amountPending)
+ 
+ 
+  calPayOff(totalHours ,amountPending)
+  
+ } 
+
+
+ 
+function calPayOff(val ,val2){
+    
+  document.getElementById("earnings").innerHTML ="$"+val2.toFixed(2)
+}
+ 
