@@ -72,6 +72,22 @@ function analyzeError(request){
 
 
 
+function generalError(val){
+    showModalError(val)
+
+
+    console.log("opened opened opened openedopened opened ")
+    setTimeout(() => {
+        hideModalError()
+    }, alertLifeSpan);
+}
+
+
+
+
+
+
+
 
 function showModalError(val){
     $("#userErrorContent").text(val);
@@ -83,6 +99,8 @@ function showModalError(val){
 }
 
 function hideModalError(){
+
+    console.log("called called called")
     $('#userError').modal('hide');
 }
 
@@ -104,4 +122,16 @@ function showModalSuccess(val){
 function hideModalSuccess(){
     $('#userSuccess').modal('hide');
 }
+
+
+let userDeatils=''
+let userEmail=''
+if(localStorage.getItem("userDetails")!=null){
+
+userDeatils=JSON.parse(atob(localStorage.getItem("userDetails")))
+    userEmail=userDeatils.email
+    $("#avatar").attr("src",userDeatils.image);
+
+}
+
 

@@ -168,14 +168,8 @@ $(document).ready(function() {
             'pdfHtml5',
             'print'
             ],
-         
-        rowReorder: {
-            selector: 'td:nth-child(2)'
-        },
-        responsive: true
-        ,
+        responsive: true,
             createdRow: function (row, data, index) {
-
 
                 if (data["settlement_status"] == "empty") {
                     $('td', row).css('background-color','#B5BCB5');
@@ -190,15 +184,16 @@ $(document).ready(function() {
                     $('td', row).css('background-color', '#39F447');
                     $('td', row).css('color', 'white');
                 }
-            }
-            ,
+            },
             rowCallback: function( row, data, index ) {
 
               if(data["settlement_status"]==false){
                 calPayPerSchedule(data["guard_charge"],data["hours_worked"])
             }
               
-          }
+          },
+          order:[[2, 'dsc']]
+
    
     })
     table.on( 'search.dt', function () {
@@ -206,16 +201,28 @@ $(document).ready(function() {
 
     } );
 
+
+
+
+    table
+        .on('order', function () {
+
+           // console.log("order order order order order order")
+        })
+        .on('search', function () {
+         // console.log("search search search search search ")
+
+        })
+        .on('page', function () {
+          initializePayOff()
+        })
     //table.row(0).select();
 
     $('a.toggle-vis').on('click', function (e) {
         e.preventDefault();
-      
         var column = table.column($(this).attr('data-column'));
         // Toggle the visibility
-        column.visible(!column.visible());
-
-        
+        column.visible(!column.visible());        
     });
      
     setTimeout(() => {
