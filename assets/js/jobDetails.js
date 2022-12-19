@@ -852,10 +852,6 @@ function uploadReport(data,dataType,text){
                       
                       showModalSuccess(data.message)
 
-
-
-
-
                       const inputFile = document.getElementById("inputGroupFile02");
                     
                       $('#message').val('')
