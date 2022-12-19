@@ -75,8 +75,6 @@ function analyzeError(request){
 function generalError(val){
     showModalError(val)
 
-
-    console.log("opened opened opened openedopened opened ")
     setTimeout(() => {
         hideModalError()
     }, alertLifeSpan);

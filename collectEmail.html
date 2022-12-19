@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Contact Form 05</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" href="../assets/img/favicon.ico">
+      <!-- Plugins CSS -->
+    <link rel="stylesheet" href="../assets/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/icofont.min.css">
+    <link rel="stylesheet" href="../assets/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../assets/css/jquery.typeahead.css">
+    <link rel="stylesheet" href="../assets/css/datatables.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../assets/css/Chart.min.css">
+    <link rel="stylesheet" href="../assets/css/morris.css">
+    <link rel="stylesheet" href="../assets/css/leaflet.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>	
+	<link rel="stylesheet" href="/assets/css/collectEmail.css">
+
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">FBY Password Reset Email</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-12">
+					<div class="wrapper">
+						<div class="row no-gutters">
+							<div class="col-lg-6">
+								<div class="contact-wrap w-100 p-md-5 p-4">
+									<div id="form-message-warning" class="mb-4"></div> 
+										<div id="form-message-success" class="mb-4">
+										Your message was sent, thank you!
+										</div>
+								
+									<form method="POST" id="contactForm" name="contactForm" class="contactForm">
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group">
+													<input type="text" class="form-control" name="email" id="email" placeholder="Enter email address" required>
+												</div>
+											</div>
+											
+											<div class="col-md-12">
+												<div class="form-group" id="signInButton">
+													<input type="submit" value="Reset password" class="btn btn-primary">
+													<div class="submitting"></div>
+												</div>
+                            <button type="button" class="btn btn-primary btn-load" id="loadingButton">
+                                Primary
+                                <span class="btn-loader icofont-spinner"></span>
+                            </button>
+											</div>
+										</div>
+									</form>
+								
+								</div>
+							</div>
+							<div class="col-lg-6 d-flex align-items-stretch">
+								<div class="info-wrap w-100 p-5 img" style="background-image: url(/assets/img/img.jpg);">
+			          </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    
+
+<div class="modal fade" id="userError" style="z-index:10000;" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body" id="userErrorContent">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="userSuccess" style="z-index:10000;" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+          <div  id="userSuccessContent" class="alert alert-primary outline  text-center" role="alert">
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <script src="../assets/js/jquery-3.6.0.min.js"></script>
+      <script src="../assets/js/jquery-migrate-1.4.1.min.js"></script>
+      <script src="../assets/js/popper.min.js"></script>
+      <script src="../assets/js/bootstrap.min.js"></script>
+      <script src="../assets/js/jquery.typeahead.min.js"></script>
+      <script src="../assets/js/datatables.min.js"></script>
+      <script src="../assets/js/bootstrap-select.min.js"></script>
+      <script src="../assets/js/jquery.barrating.min.js"></script>
+      <script src="../assets/js/Chart.min.js"></script>
+      <script src="../assets/js/raphael-min.js"></script>
+      <script src="../assets/js/morris.min.js"></script>
+      <script src="../assets/js/echarts.min.js"></script>
+      <script src="../assets/js/echarts-gl.min.js"></script>
+    <script src="../assets/js/globalVar.js"></script>
+    <script src="../assets/js/collectEmail.js"></script>
+
+	</body>
+</html>
+

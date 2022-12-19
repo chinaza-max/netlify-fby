@@ -105,11 +105,12 @@ updateUser.addEventListener("submit",(e)=>{
                 .then((response) => response.json())
                 .then((data) => {
                     console.log('Success:', data);
-                  
+
                     $("#signInButton").css("display","block")
                     $("#loadingButton").css("display","none")
 
                     if(data.status==200){
+                        getProfileData()
                         showModalSuccess(data.message  )
                         setTimeout(() => {
                             hideModalSuccess()
@@ -215,11 +216,12 @@ function checkImg(e){
 
 
 
+let getProfileData
 
 $(document).ready(function(){
 
     //update user profile
-$.ajax({
+getProfileData= $.ajax({
     type: "get", url:`${domain}/api/v1/auth`,
     headers: {
         "Authorization": `Bearer ${atob(localStorage.getItem("myUser"))}`
@@ -227,6 +229,10 @@ $.ajax({
     success: function (data, text) {
         
 
+
+        localStorage.setItem('userDetails', btoa(JSON.stringify(data.data.user)));
+
+        $("#avatar").attr("src",data.data.user.image);
         $("#avatar2").attr("src",data.data.user.image);
         $("#firstName").val(data.data.user.first_name);
         $("#lastName").val(data.data.user.last_name);
@@ -264,8 +270,6 @@ $.ajax({
       //  window.location.replace('https://sunny-kataifi-7adb6f.netlify.app/sign-in.html')
       //  window.location.replace('/sign-in.html')
       window.location.href =window.location.toString().split('/')[0] + "/dist/sign-in.html"
-
-
     }
   });
 
